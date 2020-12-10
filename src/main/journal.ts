@@ -1,15 +1,13 @@
 import {Author} from "./author";
 
-export class Book {
+export class Journal {
     title: string;
     author: Author;
     publisher: string;
-    placeOfPublication: string;
 
-    constructor(title: string, author: Author, publisher: string, pop: string) {
+    constructor(title: string, author: Author, publisher: string) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
-        this.placeOfPublication = pop;
     }
 }
