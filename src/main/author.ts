@@ -6,4 +6,12 @@ export class Author {
         this.first = first;
         this.last = last;
     }
+
+    toString() {
+        return (this.first + " " + this.last).trim();
+    }
+
+    toReverseString() {
+        return this.last + ", " + this.first;
+    }
 }

@@ -11,4 +11,12 @@ describe("Author.ts testing", () => {
     test("should have last name", () => {
         expect(author.last).toBe("Fitzgerald")
     });
+
+    test("should print name forwards", () => {
+       expect(author.toString()).toBe("F. Scott Fitzgerald");
+    });
+
+    test("should print name in reverse order", () => {
+       expect(author.toReverseString()).toBe("Fitzgerald, F. Scott");
+    });
 });
