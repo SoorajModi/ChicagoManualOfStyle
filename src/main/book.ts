@@ -8,11 +8,11 @@ export class Book {
     placeOfPublication: string;
     yearOfPublication: string;
 
-    constructor(citation: CitationInterface, pop: string, year: string) {
+    constructor(citation: CitationInterface) {
         this.title = citation.title;
         this.author = citation.author || new Author("", "");
         this.publisher = citation.publisher || "";
-        this.placeOfPublication = pop;
-        this.yearOfPublication = year;
+        this.placeOfPublication = citation.placeOfPublication || "";
+        this.yearOfPublication = citation.yearOfPublication || "";
     }
 }

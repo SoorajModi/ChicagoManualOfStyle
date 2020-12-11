@@ -7,10 +7,10 @@ export class Periodical {
     publisher: string;
     yearOfPublication: string;
 
-    constructor(citation: CitationInterface, year: string) {
+    constructor(citation: CitationInterface) {
         this.title = citation.title;
         this.author = citation.author || new Author("", "");
         this.publisher = citation.publisher || "";
-        this.yearOfPublication = year;
+        this.yearOfPublication = citation.yearOfPublication || "";
     }
 }
