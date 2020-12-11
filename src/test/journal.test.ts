@@ -3,7 +3,12 @@ import {Journal} from "../main/journal";
 
 describe("journal.ts testing", () => {
     let author = new Author("Jay", "Gatsby");
-    let journal = new Journal({title: "Periodical 123", author: author, publisher: "Oxford", yearOfPublication: "2000"}, "42", "7", "1", "10");
+    let journal = new Journal({
+        title: "Periodical 123",
+        author: author,
+        publisher: "Oxford",
+        yearOfPublication: "2000"
+    }, "42", "7", "1", "10");
 
     test("should inherit member variables from periodical", () => {
         expect(journal.title).toBe("Periodical 123");

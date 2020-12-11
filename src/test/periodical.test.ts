@@ -3,7 +3,12 @@ import {Periodical} from "../main/periodical";
 
 describe("periodical.ts testing", () => {
     let author = new Author("Jay", "Gatsby");
-    let periodical = new Periodical({title: "Periodical 123", author: author, publisher: "Oxford", yearOfPublication: "2000"});
+    let periodical = new Periodical({
+        title: "Periodical 123",
+        author: author,
+        publisher: "Oxford",
+        yearOfPublication: "2000"
+    });
 
     test("should have title member variable", () => {
         expect(periodical.title).toBe("Periodical 123");
@@ -18,7 +23,7 @@ describe("periodical.ts testing", () => {
     });
 
     test("should have periodical year of publication member variable", () => {
-       expect(periodical.yearOfPublication).toBe("2000")
+        expect(periodical.yearOfPublication).toBe("2000")
     });
 
     test("should have empty author member variable", () => {
