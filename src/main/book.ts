@@ -1,4 +1,5 @@
 import {Author} from "./author";
+import {CitationInterface} from "./citationInterface";
 
 export class Book {
     title: string;
@@ -7,10 +8,10 @@ export class Book {
     placeOfPublication: string;
     yearOfPublication: string;
 
-    constructor(title: string, author: Author, publisher: string, pop: string, year: string) {
-        this.title = title;
-        this.author = author;
-        this.publisher = publisher;
+    constructor(citation: CitationInterface, pop: string, year: string) {
+        this.title = citation.title;
+        this.author = citation.author || new Author("", "");
+        this.publisher = citation.publisher || "";
         this.placeOfPublication = pop;
         this.yearOfPublication = year;
     }

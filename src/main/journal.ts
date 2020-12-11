@@ -1,5 +1,6 @@
 import {Periodical} from "./periodical";
 import {Author} from "./author";
+import {CitationInterface} from "./citationInterface";
 
 export class Journal extends Periodical {
     volume: string;
@@ -7,8 +8,8 @@ export class Journal extends Periodical {
     startPage: string;
     endPage: string;
 
-    constructor(title: string, author: Author, pub: string, vol: string, iss: string, start: string, end: string, year: string) {
-        super(title, author, pub, year);
+    constructor(citation: CitationInterface, vol: string, iss: string, start: string, end: string, year: string) {
+        super(citation, year);
         this.volume = vol;
         this.issue = iss;
         this.startPage = start;
