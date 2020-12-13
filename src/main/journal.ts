@@ -14,4 +14,14 @@ export class Journal extends Periodical {
         this.startPage = start;
         this.endPage = end;
     }
+
+    note(page: string) {
+        return (this.author.noteString() + "\"" + this.title + ",\" " + this.publisher + " " + this.volume + ", no. " +
+            this.issue + " (" + this.yearOfPublication + "): " + page + ".");
+    }
+
+    bibliography() {
+        return (this.author.bibliographyString() + "\"" + this.title + ".\" " + this.publisher + " " + this.volume + ", no. " +
+            this.issue + " (" + this.yearOfPublication + "): " + this.startPage + "-" + this.endPage + ".")
+    }
 }
