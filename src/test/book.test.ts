@@ -30,4 +30,24 @@ describe("Book.ts testing", () => {
     test("should have year of publication member variable", () => {
         expect(book.yearOfPublication).toBe("2000")
     });
+
+    test("should create note with all fields passed", () => {
+       expect(book.note("1")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+    });
+
+    test("should create footnote with all fields", () => {
+       expect(book.bibliography()).toBe("Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000.");
+    });
+
+    test("should create note and bibliography with no author", () => {
+        let noAuthorBook = new Book({
+            title: "The Great Gatsby",
+            publisher: "Charles Scribner's Sons",
+            placeOfPublication: "New York",
+            yearOfPublication: "2000"
+        });
+        expect(noAuthorBook.note("1")).toBe("The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(noAuthorBook.bibliography()).toBe("The Great Gatsby. New York: Charles Scribner's Sons, 2000.");
+    });
+
 });

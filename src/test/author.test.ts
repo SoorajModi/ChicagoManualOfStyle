@@ -12,11 +12,15 @@ describe("Author.ts testing", () => {
         expect(author.last).toBe("Fitzgerald")
     });
 
-    test("should print name forwards", () => {
-        expect(author.toString()).toBe("F. Scott Fitzgerald");
+    test("should print author in note form", () => {
+        expect(author.noteString()).toBe("F. Scott Fitzgerald, ");
     });
 
-    test("should print name in reverse order", () => {
-        expect(author.toReverseString()).toBe("Fitzgerald, F. Scott");
+    test("should print author in bibliography form", () => {
+        expect(author.bibliographyString()).toBe("Fitzgerald, F. Scott. ");
+    });
+
+    test("should return true if empty", () => {
+        expect(new Author().isEmpty()).toBe(true);
     });
 });

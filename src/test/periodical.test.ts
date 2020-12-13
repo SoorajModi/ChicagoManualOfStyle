@@ -28,7 +28,7 @@ describe("periodical.ts testing", () => {
 
     test("should have empty author member variable", () => {
         let p = new Periodical({title: "Periodical 123", publisher: "Oxford", yearOfPublication: "2000"});
-        expect(p.author.toString()).toBe("")
+        expect(p.author.noteString()).toBe("")
     });
 
     test("should have empty publisher member variable", () => {

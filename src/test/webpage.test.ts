@@ -31,7 +31,7 @@ describe("webpage.ts tests", () => {
 
     test("should have empty author member variable", () => {
         let w = new Webpage({title: "Title of webpage", publisher: "testPublisher"}, "2000", "wwww.testwebsite.com");
-        expect(w.author.toString()).toBe("");
+        expect(w.author.noteString()).toBe("");
     });
 
     test("should have empty publisher member variable", () => {
