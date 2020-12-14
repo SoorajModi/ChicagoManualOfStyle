@@ -8,4 +8,12 @@ export class ElectronicBook extends Book {
         super(citation);
         this.url = url;
     }
+
+    eNote(page: string) {
+        return ((this.note(page)).replace(/.$/,", ") + this.url + ".");
+    }
+
+    eBibliography() {
+        return (this.bibliography() + " " + this.url + ".");
+    }
 }
