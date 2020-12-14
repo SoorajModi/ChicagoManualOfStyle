@@ -1,15 +1,15 @@
-import {Author} from "../main/author";
-import {Periodical} from "../main/periodical";
+import {Author} from "../src/author";
+import {Periodical} from "../src/periodical";
+
+let author = new Author("Jay", "Gatsby");
+let periodical = new Periodical({
+    title: "Periodical 123",
+    author: author,
+    publisher: "Oxford",
+    yearOfPublication: "2000"
+});
 
 describe("periodical.ts testing", () => {
-    let author = new Author("Jay", "Gatsby");
-    let periodical = new Periodical({
-        title: "Periodical 123",
-        author: author,
-        publisher: "Oxford",
-        yearOfPublication: "2000"
-    });
-
     test("should have title member variable", () => {
         expect(periodical.title).toBe("Periodical 123");
     });
@@ -34,5 +34,10 @@ describe("periodical.ts testing", () => {
     test("should have empty publisher member variable", () => {
         let p = new Periodical({title: "Periodical 123", author: author, yearOfPublication: "2000"});
         expect(p.publisher).toBe("");
+    });
+
+    test("should have empty year of publication member variable", () => {
+        let p = new Periodical({title: "Periodical 123", author: author, publisher: "Oxford"});
+        expect(p.yearOfPublication).toBe("");
     });
 });

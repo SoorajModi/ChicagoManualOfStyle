@@ -1,5 +1,5 @@
-import {ElectronicBook} from "../main/electronicBook";
-import {Author} from "../main/author";
+import {ElectronicBook} from "../src/electronicBook";
+import {Author} from "../src/author";
 
 describe("electronicBook.ts test", () => {
     let author = new Author("F. Scott", "Fitzgerald");

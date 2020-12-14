@@ -1,5 +1,5 @@
-import {Author} from "../main/author";
-import {Journal} from "../main/journal";
+import {Author} from "../src/author";
+import {Journal} from "../src/journal";
 
 let author = new Author("Jay", "Gatsby");
 

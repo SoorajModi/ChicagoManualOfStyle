@@ -8,4 +8,12 @@ export class ElectronicJournal extends Journal {
         super(citation, vol, iss, start, end);
         this.url = url;
     }
+
+    eNote(page: string) {
+        return ((this.note(page)).replace(/.$/,", ") + this.url + ".");
+    }
+
+    eBibliography() {
+        return (this.bibliography() + " " + this.url + ".");
+    }
 }

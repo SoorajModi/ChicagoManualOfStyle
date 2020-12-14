@@ -6,6 +6,8 @@ This is an application to create citations in Chicago Manual of Style (CMoS): ww
 
 Install node packages: `npm install`
 
-To test: `npm t`
+To test: `npm t` or `npm run test`
+
+To run tests with coverage: `npm run coverage`
 
 To run locally: `npm nodemon`

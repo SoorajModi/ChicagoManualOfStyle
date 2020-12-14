@@ -1,10 +1,17 @@
-import {Book} from "../main/book"
-import {Author} from "../main/author";
+import {Book} from "../src/book"
+import {Author} from "../src/author";
 
 let author = new Author("F. Scott", "Fitzgerald");
 let book = new Book({
     title: "The Great Gatsby",
     author: author,
+    publisher: "Charles Scribner's Sons",
+    placeOfPublication: "New York",
+    yearOfPublication: "2000"
+});
+
+let noAuthorBook = new Book({
+    title: "The Great Gatsby",
     publisher: "Charles Scribner's Sons",
     placeOfPublication: "New York",
     yearOfPublication: "2000"
@@ -30,6 +37,16 @@ describe("Book.ts member variable testing", () => {
     test("should have year of publication member variable", () => {
         expect(book.yearOfPublication).toBe("2000")
     });
+
+    test("should set member variables to empty if undefined", () => {
+        let emptyCitation = new Book({
+            title: "The Great Gatsby",
+            author: author,
+        });
+        expect(emptyCitation.placeOfPublication).toBe("");
+        expect(emptyCitation.publisher).toBe("");
+        expect(emptyCitation.yearOfPublication).toBe("");
+    });
 });
 
 describe("Book.note() testing", () => {
@@ -38,12 +55,6 @@ describe("Book.note() testing", () => {
     });
 
     test("should create note and bibliography with no author", () => {
-        let noAuthorBook = new Book({
-            title: "The Great Gatsby",
-            publisher: "Charles Scribner's Sons",
-            placeOfPublication: "New York",
-            yearOfPublication: "2000"
-        });
         expect(noAuthorBook.note("1")).toBe("The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 });
