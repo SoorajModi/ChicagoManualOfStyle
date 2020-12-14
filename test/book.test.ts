@@ -4,7 +4,7 @@ import {Author} from "../src/author";
 let author = new Author("F. Scott", "Fitzgerald");
 let book = new Book({
     title: "The Great Gatsby",
-    author: author,
+    authorList: [{first: "F. Scott", last: "Fitzgerald"}],
     publisher: "Charles Scribner's Sons",
     placeOfPublication: "New York",
     yearOfPublication: "2000"
@@ -22,8 +22,8 @@ describe("Book.ts member variable testing", () => {
         expect(book.title).toBe("The Great Gatsby");
     });
 
-    test("should have author member variable", () => {
-        expect(book.author).toBe(author);
+    test("should have author list member variable", () => {
+        expect(book.authorList).toStrictEqual([new Author("F. Scott", "Fitzgerald")]);
     });
 
     test("should have publisher member variable", () => {
@@ -46,6 +46,10 @@ describe("Book.ts member variable testing", () => {
         expect(emptyCitation.placeOfPublication).toBe("");
         expect(emptyCitation.publisher).toBe("");
         expect(emptyCitation.yearOfPublication).toBe("");
+    });
+
+    test("foo", () => {
+       expect(book.authorListNote()).toBe("F. Scott Fitzgerald, ")
     });
 });
 

@@ -5,7 +5,7 @@ import {Book} from "../src/book";
 let author = new Author("F. Scott", "Fitzgerald");
 let eBook = new ElectronicBook({
     title: "The Great Gatsby",
-    author: author,
+    authorList: [{first: "F. Scott", last: "Fitzgerald"}],
     publisher: "Charles Scribner's Sons",
     placeOfPublication: "New York",
     yearOfPublication: "2000"
@@ -21,7 +21,7 @@ let noAuthorEBook = new ElectronicBook({
 describe("electronicBook.ts test", () => {
     test("should inherit Book member variables", () => {
         expect(eBook.title).toBe("The Great Gatsby");
-        expect(eBook.author).toBe(author);
+        expect(eBook.authorList).toStrictEqual([new Author("F. Scott", "Fitzgerald")]);
         expect(eBook.publisher).toBe("Charles Scribner's Sons");
         expect(eBook.placeOfPublication).toBe("New York");
         expect(eBook.yearOfPublication).toBe("2000");

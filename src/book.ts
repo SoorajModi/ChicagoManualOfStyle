@@ -4,6 +4,7 @@ import {CitationInterface} from "./citationInterface";
 export class Book {
     title: string;
     author: Author;
+    authorList: Array<Author> = [];
     publisher: string;
     placeOfPublication: string;
     yearOfPublication: string;
@@ -14,15 +15,36 @@ export class Book {
         this.publisher = citation.publisher || "";
         this.placeOfPublication = citation.placeOfPublication || "";
         this.yearOfPublication = citation.yearOfPublication || "";
+        if (citation.authorList) {
+            citation.authorList.forEach(author => {
+                this.authorList.push(new Author(author.first, author.last));
+            });
+        }
+    }
+
+    authorListNote() {
+        let str: string = "";
+        this.authorList.forEach(author => {
+            str += author.noteString();
+        });
+        return str;
+    }
+
+    authorListBibliography() {
+        let str: string = "";
+        this.authorList.forEach(author => {
+            str += author.bibliographyString();
+        });
+        return str;
     }
 
     note(page: string) {
-        return (this.author.noteString() + this.title + " (" + this.placeOfPublication + ": " +
+        return (this.authorListNote() + this.title + " (" + this.placeOfPublication + ": " +
             this.publisher + ", " + this.yearOfPublication + "), " + page + ".");
     }
 
     bibliography() {
-        return (this.author.bibliographyString() + this.title + ". " + this.placeOfPublication + ": "
+        return (this.authorListBibliography() + this.title + ". " + this.placeOfPublication + ": "
             + this.publisher + ", " + this.yearOfPublication + ".");
     }
 }
