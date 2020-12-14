@@ -1,7 +1,7 @@
 import {Book} from "../src/book"
 import {Author} from "../src/author";
+import {AuthorList} from "../src/authorList";
 
-let author = new Author("F. Scott", "Fitzgerald");
 let book = new Book({
     title: "The Great Gatsby",
     authorList: [{first: "F. Scott", last: "Fitzgerald"}],
@@ -55,7 +55,7 @@ describe("Book.ts member variable testing", () => {
     });
 
     test("should have author list member variable", () => {
-        expect(book.authorList).toStrictEqual([new Author("F. Scott", "Fitzgerald")]);
+        expect(book.authorList).toStrictEqual(new AuthorList([{first: "F. Scott", last: "Fitzgerald"}]));
     });
 
     test("should have publisher member variable", () => {
@@ -73,15 +73,10 @@ describe("Book.ts member variable testing", () => {
     test("should set member variables to empty if undefined", () => {
         let emptyCitation = new Book({
             title: "The Great Gatsby",
-            author: author,
         });
         expect(emptyCitation.placeOfPublication).toBe("");
         expect(emptyCitation.publisher).toBe("");
         expect(emptyCitation.yearOfPublication).toBe("");
-    });
-
-    test("foo", () => {
-        expect(book.authorListNote()).toBe("F. Scott Fitzgerald, ")
     });
 });
 
@@ -126,5 +121,24 @@ describe("Book.bibliography() testing", () => {
 
     test("should create bibliography citation with four authors", () => {
         expect(fourAuthBook.bibliography()).toBe("Fitzgerald, F. Scott, Author Two, Author Three, and Author Four. The Great Gatsby. New York: Charles Scribner's Sons, 2000.");
+    });
+
+    test("should create bibliography citation with four+ authors", () => {
+        let fourAuthBook = new Book({
+            title: "The Great Gatsby",
+            authorList: [
+                {first: "F. Scott", last: "Fitzgerald"},
+                {first: "Author", last: "Two"},
+                {first: "Author", last: "Three"},
+                {first: "Author", last: "Four"},
+                {first: "Author", last: "Five"},
+                {first: "Author", last: "Six"}
+            ],
+            publisher: "Charles Scribner's Sons",
+            placeOfPublication: "New York",
+            yearOfPublication: "2000"
+        });
+        expect(fourAuthBook.bibliography()).toBe("Fitzgerald, F. Scott, Author Two, Author Three, Author Four, Author Five, and Author Six. " +
+            "The Great Gatsby. New York: Charles Scribner's Sons, 2000.");
     });
 });
