@@ -23,19 +23,42 @@ export class Book {
     }
 
     authorListNote() {
-        let str: string = "";
-        this.authorList.forEach(author => {
-            str += author.noteString();
-        });
-        return str;
+        let len: number = this.authorList.length;
+
+        if(len == 0) {
+            return "";
+        } else if (len == 1) {
+            return this.authorList[0].noteString();
+        } else if (len == 2) {
+            return this.authorList[0].noteString().trim().replace(/.$/," and ") + this.authorList[1].noteString();
+        } else if (len == 3) {
+            return this.authorList[0].noteString() + this.authorList[1].noteString().trim().replace(/.$/," and ") +
+                this.authorList[2].noteString();
+        } else if (len > 3) {
+            return this.authorList[0].noteString().trim().replace(/.$/," et al., ");
+        }
     }
 
     authorListBibliography() {
-        let str: string = "";
-        this.authorList.forEach(author => {
-            str += author.bibliographyString();
-        });
-        return str;
+        let len: number = this.authorList.length;
+
+        if(len == 0) {
+            return "";
+        } else if (len == 1) {
+            return this.authorList[0].bibliographyString();
+        } else if (len == 2) {
+            return (this.authorList[0].bibliographyString().trim().replace(/.$/, ", and ") +
+                this.authorList[1].noteString().trim().replace(/.$/, ". "));
+        } else if (len == 3) {
+            return (this.authorList[0].bibliographyString().trim().replace(/.$/, ", ") +
+                this.authorList[1].noteString().trim().replace(/.$/, ", and ") +
+                this.authorList[2].noteString().trim().replace(/.$/, ". "));
+        } else if (len > 3) {
+            return this.authorList[0].bibliographyString().trim().replace(/.$/, ", ") +
+                this.authorList[1].noteString().trim().replace(/.$/, ", ") +
+                this.authorList[2].noteString().trim().replace(/.$/, ", and ") +
+                this.authorList[3].noteString().trim().replace(/.$/, ". ");
+        }
     }
 
     note(page: string) {
