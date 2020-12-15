@@ -1,6 +1,7 @@
 import {Book} from "../src/book"
 import {Author} from "../src/author";
 import {AuthorList} from "../src/authorList";
+import {PublishingInfo} from "../src/publishingInfo";
 
 let book = new Book({
     title: "The Great Gatsby",
@@ -50,33 +51,29 @@ let fourAuthBook = new Book({
 });
 
 describe("Book.ts member variable testing", () => {
-    test("should have title member variable", () => {
+    test("should set title member variable", () => {
         expect(book.title).toBe("The Great Gatsby");
     });
 
-    test("should have author list member variable", () => {
+    test("should set publishing info member variable", () => {
+        expect(book.publishingInfo).toStrictEqual(new PublishingInfo({
+            publisher: "Charles Scribner's Sons",
+            placeOfPublication: "New York",
+            yearOfPublication: "2000"
+        }));
+    });
+
+    test("should set author list member variable", () => {
         expect(book.authorList).toStrictEqual(new AuthorList([{first: "F. Scott", last: "Fitzgerald"}]));
-    });
-
-    test("should have publisher member variable", () => {
-        expect(book.publisher).toBe("Charles Scribner's Sons");
-    });
-
-    test("should have place of publication member variable", () => {
-        expect(book.placeOfPublication).toBe("New York");
-    });
-
-    test("should have year of publication member variable", () => {
-        expect(book.yearOfPublication).toBe("2000")
-    });
-
-    test("should set member variables to empty if undefined", () => {
-        let emptyCitation = new Book({
-            title: "The Great Gatsby",
-        });
-        expect(emptyCitation.placeOfPublication).toBe("");
-        expect(emptyCitation.publisher).toBe("");
-        expect(emptyCitation.yearOfPublication).toBe("");
+        expect(twoAuthBook.authorList).toStrictEqual(new AuthorList([{first: "F. Scott", last: "Fitzgerald"},
+            {first: "Author", last: "Two"}]));
+        expect(threeAuthBook.authorList).toStrictEqual(new AuthorList([{first: "F. Scott", last: "Fitzgerald"},
+            {first: "Author", last: "Two"},
+            {first: "Author", last: "Three"}]));
+        expect(fourAuthBook.authorList).toStrictEqual(new AuthorList([{first: "F. Scott", last: "Fitzgerald"},
+            {first: "Author", last: "Two"},
+            {first: "Author", last: "Three"},
+            {first: "Author", last: "Four"}]));
     });
 });
 
@@ -124,7 +121,7 @@ describe("Book.bibliography() testing", () => {
     });
 
     test("should create bibliography citation with four+ authors", () => {
-        let fourAuthBook = new Book({
+        let sixAuthBook = new Book({
             title: "The Great Gatsby",
             authorList: [
                 {first: "F. Scott", last: "Fitzgerald"},
@@ -138,7 +135,19 @@ describe("Book.bibliography() testing", () => {
             placeOfPublication: "New York",
             yearOfPublication: "2000"
         });
-        expect(fourAuthBook.bibliography()).toBe("Fitzgerald, F. Scott, Author Two, Author Three, Author Four, Author Five, and Author Six. " +
+        expect(sixAuthBook.bibliography()).toBe("Fitzgerald, F. Scott, Author Two, Author Three, Author Four, Author Five, and Author Six. " +
             "The Great Gatsby. New York: Charles Scribner's Sons, 2000.");
     });
+});
+
+describe("Book.eNote() testing", () => {
+    test("should create book note citation with URL", () => {
+        expect(book.eNote("1", "www.thegreatgatsby.com")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.");
+    });
+});
+
+describe("Book.eBibliography() testing", () => {
+   test("should create book bibliography citation with URL", () => {
+      expect(book.eBibliography("www.thegreatgatsby.com")).toBe("Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.");
+   });
 });

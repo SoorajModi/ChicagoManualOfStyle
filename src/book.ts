@@ -21,4 +21,12 @@ export class Book {
     bibliography() {
         return (this.authorList.authorsBibliography() + this.title + ". " + this.publishingInfo.bookBibliography());
     }
+
+    eNote(page :string, url: string) {
+        return ((this.note(page)).replace(/.$/,", ") + url + ".");
+    }
+
+    eBibliography(url: string) {
+        return (this.bibliography() + " " + url + ".");
+    }
 }
