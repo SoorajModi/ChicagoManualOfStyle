@@ -13,7 +13,7 @@ export class Book {
         this.publisher = citation.publisher || "";
         this.placeOfPublication = citation.placeOfPublication || "";
         this.yearOfPublication = citation.yearOfPublication || "";
-        this.authorList = new AuthorList(citation.authorList? citation.authorList : []);
+        this.authorList = new AuthorList(citation.authorList || []);
     }
 
     note(page: string) {
