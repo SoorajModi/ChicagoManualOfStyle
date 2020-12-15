@@ -15,29 +15,27 @@ export class JournalPublishingInfo {
 
     citation() {
         if (this.journal == "" && this.volume == "" && this.issue == "" && this.date == "") return "";
-
-        let str = "";
-
-        if (this.journal != "") {
-            str += this.journal;
-            if (this.volume != "") {
-                str += " ";
-            }
-        }
-
-        str += this.volume;
-        if (this.issue != "" || this.date != "") {
-            str += ",";
-        }
-
-        if (this.issue != "") {
-            str += " no. " + this.issue;
-        }
-
-        if (this.date != "") {
-            str += " (" + this.date + ")";
-        }
-
-        return str + ":";
+        return createJournalCitation(this.journal, this.volume, this.issue, this.date);
     }
+}
+
+function createJournalCitation(title: string, vol: string, iss: string, date: string) {
+    return journalTitleCitation(title, vol) + journalVolumeCitation(vol, iss, date) + journalIssueCitation(iss) +
+        journalDateCitation(date) + ":";
+}
+
+function journalTitleCitation(title: string, vol: string) {
+    return (title != "" && vol != "") ? title + " " : title;
+}
+
+function journalVolumeCitation(vol: string, iss: string, date: string) {
+    return (iss != "" || date != "") ? vol + "," : vol;
+}
+
+function journalIssueCitation(iss: string) {
+    return (iss != "") ? " no. " + iss : iss;
+}
+
+function journalDateCitation(date: string) {
+    return (date != "") ? " (" + date + ")": date;
 }
