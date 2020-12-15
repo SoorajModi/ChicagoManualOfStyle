@@ -1,25 +1,25 @@
 import {CitationInterface} from "./citationInterface";
 import {AuthorList} from "./authorList";
-import {PublishingInfo} from "./publishingInfo";
+import {BookPublishingInfo} from "./bookPublishingInfo";
 
 export class Book {
     title: string;
     authorList: AuthorList;
-    publishingInfo: PublishingInfo;
+    publishingInfo: BookPublishingInfo;
 
     constructor(citation: CitationInterface) {
         this.title = citation.title;
-        this.publishingInfo = new PublishingInfo({publisher: citation.publisher,
+        this.publishingInfo = new BookPublishingInfo({publisher: citation.publisher,
             placeOfPublication: citation.placeOfPublication, yearOfPublication: citation.yearOfPublication});
         this.authorList = new AuthorList(citation.authorList || []);
     }
 
     note(page: string) {
-        return (this.authorList.authorsNote() + this.title + " " + this.publishingInfo.bookNote() + ", " + page + ".");
+        return (this.authorList.authorsNote() + this.title + " " + this.publishingInfo.note() + ", " + page + ".");
     }
 
     bibliography() {
-        return (this.authorList.authorsBibliography() + this.title + ". " + this.publishingInfo.bookBibliography());
+        return (this.authorList.authorsBibliography() + this.title + ". " + this.publishingInfo.bibliography());
     }
 
     eNote(page :string, url: string) {

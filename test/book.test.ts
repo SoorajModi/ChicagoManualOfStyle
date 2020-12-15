@@ -1,7 +1,7 @@
 import {Book} from "../src/book"
 import {Author} from "../src/author";
 import {AuthorList} from "../src/authorList";
-import {PublishingInfo} from "../src/publishingInfo";
+import {BookPublishingInfo} from "../src/bookPublishingInfo";
 
 let book = new Book({
     title: "The Great Gatsby",
@@ -56,7 +56,7 @@ describe("Book.ts member variable testing", () => {
     });
 
     test("should set publishing info member variable", () => {
-        expect(book.publishingInfo).toStrictEqual(new PublishingInfo({
+        expect(book.publishingInfo).toStrictEqual(new BookPublishingInfo({
             publisher: "Charles Scribner's Sons",
             placeOfPublication: "New York",
             yearOfPublication: "2000"

@@ -1,15 +1,15 @@
-import {PublishingInfo} from "../src/publishingInfo";
+import {BookPublishingInfo} from "../src/bookPublishingInfo";
 
-let publishingInfo = new PublishingInfo({publisher: "Publisher", placeOfPublication: "Place", yearOfPublication: "Year"});
-let emptyPublishingInfo = new PublishingInfo({});
-let noPlaceOfPublication = new PublishingInfo({publisher: "Publisher", yearOfPublication: "Year"});
-let noYearOfPublication = new PublishingInfo({publisher: "Publisher", placeOfPublication: "Place"});
-let noPublisher = new PublishingInfo({placeOfPublication: "Place", yearOfPublication: "Year"});
-let onlyYearOfPublication = new PublishingInfo({yearOfPublication: "Year"});
-let onlyPublisher = new PublishingInfo({publisher: "Publisher"});
-let onlyPlaceOfPublication = new PublishingInfo({placeOfPublication: "Place"});
+let publishingInfo = new BookPublishingInfo({publisher: "Publisher", placeOfPublication: "Place", yearOfPublication: "Year"});
+let emptyPublishingInfo = new BookPublishingInfo({});
+let noPlaceOfPublication = new BookPublishingInfo({publisher: "Publisher", yearOfPublication: "Year"});
+let noYearOfPublication = new BookPublishingInfo({publisher: "Publisher", placeOfPublication: "Place"});
+let noPublisher = new BookPublishingInfo({placeOfPublication: "Place", yearOfPublication: "Year"});
+let onlyYearOfPublication = new BookPublishingInfo({yearOfPublication: "Year"});
+let onlyPublisher = new BookPublishingInfo({publisher: "Publisher"});
+let onlyPlaceOfPublication = new BookPublishingInfo({placeOfPublication: "Place"});
 
-describe("publishingInfo.ts testing", () => {
+describe("bookPublishingInfo.ts testing", () => {
     test("should set publisher member variable", () => {
         expect(publishingInfo.publisher).toBe("Publisher");
         expect(noPlaceOfPublication.publisher).toBe("Publisher");
@@ -55,68 +55,68 @@ describe("publishingInfo.ts testing", () => {
 
 describe("publishingInfo.bookNote() testing", ()=> {
     test("should generate note citation with all fields specified", () => {
-        expect(publishingInfo.bookNote()).toBe("(Place: Publisher, Year)");
+        expect(publishingInfo.note()).toBe("(Place: Publisher, Year)");
     });
 
     test("should generate note citation with no publisher field", () => {
-       expect(noPublisher.bookNote()).toBe("(Place: Year)");
+       expect(noPublisher.note()).toBe("(Place: Year)");
     });
 
     test("should generate note citation with no place of publication specified", () => {
-       expect(noPlaceOfPublication.bookNote()).toBe("(Publisher, Year)");
+       expect(noPlaceOfPublication.note()).toBe("(Publisher, Year)");
     });
 
     test("should generate note citation with no year of publication specified", () => {
-       expect(noYearOfPublication.bookNote()).toBe("(Place: Publisher)");
+       expect(noYearOfPublication.note()).toBe("(Place: Publisher)");
     });
 
     test( "should generate note citation with only year of publication specified", () => {
-       expect(onlyYearOfPublication.bookNote()).toBe("(Year)");
+       expect(onlyYearOfPublication.note()).toBe("(Year)");
     });
 
     test("should generate note citation with only publisher specified", () => {
-       expect(onlyPublisher.bookNote()).toBe("(Publisher)");
+       expect(onlyPublisher.note()).toBe("(Publisher)");
     });
 
     test("should generate note citation with only place of publication specified", () => {
-       expect(onlyPlaceOfPublication.bookNote()).toBe("(Place)");
+       expect(onlyPlaceOfPublication.note()).toBe("(Place)");
     });
 
     test("should generate note citation with no fields specified", () => {
-        expect(emptyPublishingInfo.bookNote()).toBe("");
+        expect(emptyPublishingInfo.note()).toBe("");
     });
 });
 
 describe("publishingInfo.bibliography() testing", () => {
     test("should generate bibliography citation with all fields specified", () => {
-        expect(publishingInfo.bookBibliography()).toBe("Place: Publisher, Year.");
+        expect(publishingInfo.bibliography()).toBe("Place: Publisher, Year.");
     });
 
     test("should generate bibliography citation with no publisher field", () => {
-        expect(noPublisher.bookBibliography()).toBe("Place: Year.");
+        expect(noPublisher.bibliography()).toBe("Place: Year.");
     });
 
     test("should generate bibliography citation with no place of publication specified", () => {
-        expect(noPlaceOfPublication.bookBibliography()).toBe("Publisher, Year.");
+        expect(noPlaceOfPublication.bibliography()).toBe("Publisher, Year.");
     });
 
     test("should generate bibliography citation with no year of publication specified", () => {
-        expect(noYearOfPublication.bookBibliography()).toBe("Place: Publisher.");
+        expect(noYearOfPublication.bibliography()).toBe("Place: Publisher.");
     });
 
     test( "should generate bibliography citation with only year of publication specified", () => {
-        expect(onlyYearOfPublication.bookBibliography()).toBe("Year.");
+        expect(onlyYearOfPublication.bibliography()).toBe("Year.");
     });
 
     test("should generate bibliography citation with only publisher specified", () => {
-        expect(onlyPublisher.bookBibliography()).toBe("Publisher.");
+        expect(onlyPublisher.bibliography()).toBe("Publisher.");
     });
 
     test("should generate bibliography citation with only place of publication specified", () => {
-        expect(onlyPlaceOfPublication.bookBibliography()).toBe("Place.");
+        expect(onlyPlaceOfPublication.bibliography()).toBe("Place.");
     });
 
     test("should generate bibliography with no fields specified", () => {
-       expect(emptyPublishingInfo.bookBibliography()).toBe("");
+       expect(emptyPublishingInfo.bibliography()).toBe("");
     });
 });

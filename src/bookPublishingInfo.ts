@@ -1,6 +1,6 @@
 import {PublishingInfoInterface} from "./publishingInfoInterface";
 
-export class PublishingInfo {
+export class BookPublishingInfo {
     publisher: string;
     placeOfPublication: string;
     yearOfPublication: string;
@@ -11,12 +11,12 @@ export class PublishingInfo {
         this.yearOfPublication = publishingInfo.yearOfPublication || "";
     }
 
-    bookNote() {
+    note() {
         if (this.publisher == "" && this.placeOfPublication == "" && this.yearOfPublication == "") return "";
         return "(" + createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ")";
     }
 
-    bookBibliography() {
+    bibliography() {
         if (this.publisher == "" && this.placeOfPublication == "" && this.yearOfPublication == "") return "";
         return createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ".";
     }
@@ -28,7 +28,7 @@ function createBookCitation(pub: string, pop: string, year: string) {
 
 function popBookCitation(pop: string, pub: string, year: string) {
     if (pop == "") return pop;
-    return (pub != "" || year != "") ? pop + ": " : pop;
+    return (pub != "" || year != "") ? (pop + ": ") : pop;
 }
 
 function pubBookCitation(pub: string, year: string) {
