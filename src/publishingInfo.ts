@@ -13,45 +13,25 @@ export class PublishingInfo {
 
     bookNote() {
         if (this.publisher == "" && this.placeOfPublication == "" && this.yearOfPublication == "") return "";
-
-        return "(" + createBookCitation({
-            publisher: this.publisher,
-            placeOfPublication: this.placeOfPublication,
-            yearOfPublication: this.yearOfPublication
-        }) + ")";
+        return "(" + createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ")";
     }
 
     bookBibliography() {
         if (this.publisher == "" && this.placeOfPublication == "" && this.yearOfPublication == "") return "";
-
-        return createBookCitation({
-            publisher: this.publisher,
-            placeOfPublication: this.placeOfPublication,
-            yearOfPublication: this.yearOfPublication
-        }) + ".";
+        return createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ".";
     }
 }
 
-function createBookCitation(publishingInfo: PublishingInfoInterface) {
-    let bib = "";
+function createBookCitation(pub: string, pop: string, year: string) {
+    return popBookCitation(pop, pub, year) + pubBookCitation(pub, year) + year;
+}
 
-    if (publishingInfo.placeOfPublication != "") {
-        bib += publishingInfo.placeOfPublication;
-        if (publishingInfo.publisher != "" || publishingInfo.yearOfPublication != "") {
-            bib += ": ";
-        }
-    }
+function popBookCitation(pop: string, pub: string, year: string) {
+    if (pop == "") return pop;
+    return (pub != "" || year != "") ? pop + ": " : pop;
+}
 
-    if (publishingInfo.publisher != "") {
-        bib += publishingInfo.publisher;
-        if (publishingInfo.yearOfPublication != "") {
-            bib += ", ";
-        }
-    }
-
-    if (publishingInfo.yearOfPublication != "") {
-        bib += publishingInfo.yearOfPublication;
-    }
-
-    return bib;
+function pubBookCitation(pub: string, year: string) {
+    if (pub == "") return pub;
+    return (year != "") ? (pub + ", ") : pub;
 }
