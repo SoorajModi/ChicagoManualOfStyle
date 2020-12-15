@@ -36,44 +36,44 @@ describe("authorList testing", () => {
 
 describe("authorList.note() testing", () => {
     test("should create note citation with one author", () => {
-        expect(authorList.authorListNote()).toBe("Author One, ");
+        expect(authorList.authorsNote()).toBe("Author One, ");
     });
 
     test("should create note citation with no authors", () => {
-        expect(emptyAuthorList.authorListNote()).toBe("");
+        expect(emptyAuthorList.authorsNote()).toBe("");
     });
 
     test("should create note citation with two authors", () => {
-        expect(twoAuthorList.authorListNote()).toBe("Author One and Author Two, ");
+        expect(twoAuthorList.authorsNote()).toBe("Author One and Author Two, ");
     });
 
     test("should create note citation with three authors", () => {
-        expect(threeAuthorList.authorListNote()).toBe("Author One, Author Two and Author Three, ");
+        expect(threeAuthorList.authorsNote()).toBe("Author One, Author Two and Author Three, ");
     });
 
     test("should create note citation with greater than three authors", () => {
-        expect(multiAuthorList.authorListNote()).toBe("Author One et al., ");
+        expect(multiAuthorList.authorsNote()).toBe("Author One et al., ");
     });
 });
 
 describe("authorList.bibliography() testing", () => {
     test("should create bibliography citation with one author", () => {
-        expect(authorList.authorListBibliography()).toBe("One, Author. ");
+        expect(authorList.authorsBibliography()).toBe("One, Author. ");
     });
 
     test("should create bibliography citation with no authors", () => {
-        expect(emptyAuthorList.authorListBibliography()).toBe("");
+        expect(emptyAuthorList.authorsBibliography()).toBe("");
     });
 
     test("should create bibliography citation with two authors", () => {
-        expect(twoAuthorList.authorListBibliography()).toBe("One, Author, and Author Two. ");
+        expect(twoAuthorList.authorsBibliography()).toBe("One, Author, and Author Two. ");
     });
 
     test("should create bibliography citation with three authors", () => {
-        expect(threeAuthorList.authorListBibliography()).toBe("One, Author, Author Two, and Author Three. ");
+        expect(threeAuthorList.authorsBibliography()).toBe("One, Author, Author Two, and Author Three. ");
     });
 
     test("should create bibliography citation with more than authors", () => {
-        expect(multiAuthorList.authorListBibliography()).toBe("One, Author, Author Two, Author Three, and Author Four. ");
+        expect(multiAuthorList.authorsBibliography()).toBe("One, Author, Author Two, Author Three, and Author Four. ");
     });
 });

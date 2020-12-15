@@ -8,17 +8,11 @@ export class Author {
     }
 
     noteString() {
-        if (this.isEmpty()) {
-            return "";
-        }
-        return (this.first + " " + this.last + ", ");
+        return (this.isEmpty()) ? "" : (this.first + " " + this.last + ", ");
     }
 
     bibliographyString() {
-        if (this.isEmpty()) {
-            return "";
-        }
-        return (this.last + ", " + this.first + ". ");
+        return this.isEmpty() ? "" : (this.last + ", " + this.first + ". ");
     }
 
     isEmpty() {

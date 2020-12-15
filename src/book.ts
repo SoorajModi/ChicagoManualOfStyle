@@ -1,28 +1,24 @@
 import {CitationInterface} from "./citationInterface";
 import {AuthorList} from "./authorList";
+import {PublishingInfo} from "./publishingInfo";
 
 export class Book {
     title: string;
     authorList: AuthorList;
-    publisher: string;
-    placeOfPublication: string;
-    yearOfPublication: string;
+    publishingInfo: PublishingInfo;
 
     constructor(citation: CitationInterface) {
         this.title = citation.title;
-        this.publisher = citation.publisher || "";
-        this.placeOfPublication = citation.placeOfPublication || "";
-        this.yearOfPublication = citation.yearOfPublication || "";
+        this.publishingInfo = new PublishingInfo({publisher: citation.publisher,
+            placeOfPublication: citation.placeOfPublication, yearOfPublication: citation.yearOfPublication});
         this.authorList = new AuthorList(citation.authorList || []);
     }
 
     note(page: string) {
-        return (this.authorList.authorListNote() + this.title + " (" + this.placeOfPublication + ": " +
-            this.publisher + ", " + this.yearOfPublication + "), " + page + ".");
+        return (this.authorList.authorsNote() + this.title + " " + this.publishingInfo.bookNote() + ", " + page + ".");
     }
 
     bibliography() {
-        return (this.authorList.authorListBibliography() + this.title + ". " + this.placeOfPublication + ": "
-            + this.publisher + ", " + this.yearOfPublication + ".");
+        return (this.authorList.authorsBibliography() + this.title + ". " + this.publishingInfo.bookBibliography());
     }
 }
