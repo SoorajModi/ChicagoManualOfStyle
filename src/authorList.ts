@@ -17,12 +17,11 @@ export class AuthorList {
         } else if (len == 1) {
             return this.authors[0].noteString();
         } else if (len == 2) {
-            return this.authors[0].noteString().trim().replace(/.$/, " and ") + this.authors[1].noteString();
+            return twoAuthorNote(this.authors);
         } else if (len == 3) {
-            return this.authors[0].noteString() + this.authors[1].noteString().trim().replace(/.$/, " and ") +
-                this.authors[2].noteString();
+            return threeAuthorNote(this.authors);
         } else if (len > 3) {
-            return this.authors[0].noteString().trim().replace(/.$/, " et al., ");
+            return threePlusAuthorNote(this.authors);
         }
     }
 
@@ -34,18 +33,33 @@ export class AuthorList {
         } else if (len == 1) {
             return this.authors[0].bibliographyString();
         } else if (len > 1) {
-            return twoPlusAuthors(this.authors);
+            return twoPlusAuthors(this.authors, len);
         }
     }
 }
 
-function twoPlusAuthors(authorList: Array<Author>) {
-    let len: number = authorList.length;
-    let str = authorList[0].bibliographyString().trim().replace(/.$/, ", ");
+function twoAuthorNote(authors: Array<Author>) {
+    return trimAndReplaceLastElement(authors[0].noteString(), " and ") + authors[1].noteString();
+}
+
+function threeAuthorNote(authors: Array<Author>) {
+    return authors[0].noteString() + authors[1].noteString() + "and " + authors[2].noteString();
+}
+
+function threePlusAuthorNote(authors: Array<Author>) {
+    return trimAndReplaceLastElement(authors[0].noteString()," et al., ");
+}
+
+function twoPlusAuthors(authors: Array<Author>, len: number) {
+    let str = trimAndReplaceLastElement(authors[0].bibliographyString(), ", ");
 
     for (let i = 1; i < (len - 1); i++) {
-        str += authorList[i].noteString().trim().replace(/.$/, ", ");
+        str += trimAndReplaceLastElement(authors[i].noteString(), ", ");
     }
 
-    return str + "and " + authorList[len - 1].noteString().trim().replace(/.$/, ". ");
+    return str + "and " + trimAndReplaceLastElement(authors[len-1].noteString(), ". ");
+}
+
+function trimAndReplaceLastElement(str: string, replaceValue: string) {
+    return str.trim().replace(/.$/, replaceValue);
 }

@@ -48,7 +48,7 @@ describe("authorList.note() testing", () => {
     });
 
     test("should create note citation with three authors", () => {
-        expect(threeAuthorList.authorsNote()).toBe("Author One, Author Two and Author Three, ");
+        expect(threeAuthorList.authorsNote()).toBe("Author One, Author Two, and Author Three, ");
     });
 
     test("should create note citation with greater than three authors", () => {

@@ -91,7 +91,7 @@ describe("Book.note() testing", () => {
     });
 
     test("should create note citation with three authors", () => {
-        expect(threeAuthBook.note("1")).toBe("F. Scott Fitzgerald, Author Two and Author Three, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(threeAuthBook.note("1")).toBe("F. Scott Fitzgerald, Author Two, and Author Three, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 
     test("should create note citation with four+ authors", () => {
