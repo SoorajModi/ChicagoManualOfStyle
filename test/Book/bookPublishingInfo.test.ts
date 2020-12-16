@@ -1,4 +1,4 @@
-import {BookPublishingInfo} from "../src/bookPublishingInfo";
+import {BookPublishingInfo} from "../../src/Book/bookPublishingInfo";
 
 let publishingInfo = new BookPublishingInfo({publisher: "Publisher", placeOfPublication: "Place", yearOfPublication: "Year"});
 let emptyPublishingInfo = new BookPublishingInfo({});

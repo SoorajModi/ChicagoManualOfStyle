@@ -1,6 +1,6 @@
-import {AuthorList} from "./authorList";
+import {AuthorList} from "../Author/authorList";
 import {JournalPublishingInfo} from "./journalPublishingInfo";
-import {CitationInterface} from "./citationInterface";
+import {CitationInterface} from "../citationInterface";
 
 export class Journal {
     title: string;

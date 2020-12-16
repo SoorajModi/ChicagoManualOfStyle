@@ -1,4 +1,4 @@
-import {JournalPublishingInfo} from "../src/journalPublishingInfo";
+import {JournalPublishingInfo} from "../../src/Journal/journalPublishingInfo";
 import exp = require("constants");
 
 let publishingInfo = new JournalPublishingInfo({

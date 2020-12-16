@@ -1,6 +1,6 @@
-import {Journal} from "../src/journal";
-import {AuthorList} from "../src/authorList";
-import {JournalPublishingInfo} from "../src/journalPublishingInfo";
+import {Journal} from "../../src/Journal/journal";
+import {AuthorList} from "../../src/Author/authorList";
+import {JournalPublishingInfo} from "../../src/Journal/journalPublishingInfo";
 
 let journal = new Journal({
     title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",

@@ -1,5 +1,5 @@
-import {CitationInterface} from "./citationInterface";
-import {AuthorList} from "./authorList";
+import {CitationInterface} from "../citationInterface";
+import {AuthorList} from "../Author/authorList";
 import {BookPublishingInfo} from "./bookPublishingInfo";
 
 export class Book {

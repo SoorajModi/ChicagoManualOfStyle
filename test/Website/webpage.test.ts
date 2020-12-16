@@ -1,5 +1,5 @@
-import {Webpage} from "../src/webpage";
-import {AuthorList} from "../src/authorList";
+import {Webpage} from "../../src/Website/webpage";
+import {AuthorList} from "../../src/Author/authorList";
 
 let webpage = new Webpage({
     title: "Title of Webpage",

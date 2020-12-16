@@ -1,4 +1,4 @@
-import {Author} from "../src/author";
+import {Author} from "../../src/Author/author";
 
 describe("Author.ts testing", () => {
 

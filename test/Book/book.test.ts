@@ -1,7 +1,7 @@
-import {Book} from "../src/book"
-import {Author} from "../src/author";
-import {AuthorList} from "../src/authorList";
-import {BookPublishingInfo} from "../src/bookPublishingInfo";
+import {Book} from "../../src/Book/book"
+import {Author} from "../../src/Author/author";
+import {AuthorList} from "../../src/Author/authorList";
+import {BookPublishingInfo} from "../../src/Book/bookPublishingInfo";
 
 let book = new Book({
     title: "The Great Gatsby",

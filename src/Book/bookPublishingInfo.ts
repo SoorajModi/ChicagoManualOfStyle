@@ -1,4 +1,4 @@
-import {PublishingInfoInterface} from "./publishingInfoInterface";
+import {PublishingInfoInterface} from "../Journal/publishingInfoInterface";
 
 export class BookPublishingInfo {
     publisher: string;

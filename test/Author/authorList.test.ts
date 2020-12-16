@@ -1,4 +1,4 @@
-import {AuthorList} from "../src/authorList";
+import {AuthorList} from "../../src/Author/authorList";
 
 let authorList = new AuthorList([{first: "Author", last: "One"}]);
 let emptyAuthorList = new AuthorList([]);

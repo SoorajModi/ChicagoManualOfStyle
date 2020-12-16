@@ -1,6 +1,6 @@
-import {Author} from "./author";
-import {CitationInterface} from "./citationInterface";
-import {AuthorList} from "./authorList";
+import {Author} from "../Author/author";
+import {CitationInterface} from "../citationInterface";
+import {AuthorList} from "../Author/authorList";
 
 export class Webpage {
     title: string;
