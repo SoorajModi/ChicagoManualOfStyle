@@ -1,7 +1,7 @@
 import {Periodical} from "./periodical";
 import {CitationInterface} from "./citationInterface";
 
-export class Journal extends Periodical {
+export class Journal2 extends Periodical {
     volume: string;
     issue: string;
     startPage: string;

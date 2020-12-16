@@ -1,22 +1,22 @@
 import {Author} from "../src/author";
-import {Journal} from "../src/journal";
+import {Journal2} from "../src/journal2";
 
 let author = new Author("Jay", "Gatsby");
 
-let journal = new Journal({
+let journal = new Journal2({
     title: "Periodical 123",
     author: author,
     publisher: "Oxford",
     yearOfPublication: "2000"
 }, "42", "7", "1", "10");
 
-let noAuthorJournal = new Journal({
+let noAuthorJournal = new Journal2({
     title: "Periodical 123",
     publisher: "Oxford",
     yearOfPublication: "2000"
 }, "42", "7", "1", "10");
 
-describe("journal.ts member variable testing", () => {
+describe("journal2.ts member variable testing", () => {
     test("should inherit member variables from periodical", () => {
         expect(journal.title).toBe("Periodical 123");
         expect(journal.author).toBe(author);
@@ -41,7 +41,7 @@ describe("journal.ts member variable testing", () => {
     });
 });
 
-describe("journal.ts note() testing", () => {
+describe("journal2.ts note() testing", () => {
     test("should generate note citation with all elements", () => {
         expect(journal.note("1")).toBe("Jay Gatsby, \"Periodical 123,\" Oxford 42, no. 7 (2000): 1.");
     });
@@ -51,7 +51,7 @@ describe("journal.ts note() testing", () => {
     });
 });
 
-describe("journal.ts bibliography() testing", () => {
+describe("journal2.ts bibliography() testing", () => {
     test("should generate bibliography citation with all elements", () => {
         expect(journal.bibliography()).toBe("Gatsby, Jay. \"Periodical 123.\" Oxford 42, no. 7 (2000): 1-10.");
     });

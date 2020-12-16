@@ -1,7 +1,7 @@
-import {Journal} from "./journal";
+import {Journal2} from "./journal2";
 import {CitationInterface} from "./citationInterface";
 
-export class ElectronicJournal extends Journal {
+export class ElectronicJournal extends Journal2 {
     url: string;
 
     constructor(citation: CitationInterface, vol: string, iss: string, start: string, end: string, url: string) {

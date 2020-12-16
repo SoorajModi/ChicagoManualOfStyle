@@ -1,5 +1,5 @@
 import {Author} from "../src/author";
-import {Journal} from "../src/journal";
+import {Journal2} from "../src/journal2";
 import {ElectronicJournal} from "../src/electronicJournal";
 
 let author = new Author("Jay", "Gatsby");
