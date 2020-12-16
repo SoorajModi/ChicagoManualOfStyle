@@ -11,8 +11,10 @@ export class Journal {
     constructor(citation: CitationInterface) {
         this.title = citation.title;
         this.authorList = new AuthorList(citation.authorList || []);
-        this.publishingInfo = new JournalPublishingInfo({publisher: citation.publisher,
-           yearOfPublication: citation.yearOfPublication, volume: citation.volume, issue: citation.issue});
+        this.publishingInfo = new JournalPublishingInfo({
+            publisher: citation.publisher,
+            yearOfPublication: citation.yearOfPublication, volume: citation.volume, issue: citation.issue
+        });
         this.pageRange = citation.pageRange || "";
     }
 
@@ -22,5 +24,13 @@ export class Journal {
 
     bibliography() {
         return this.authorList.authorsBibliography() + "\"" + this.title + ".\" " + this.publishingInfo.citation() + " " + this.pageRange + ".";
+    }
+
+    eNote(page: string, url: string) {
+        return ((this.note(page)).replace(/.$/, ", ") + url + ".");
+    }
+
+    eBibliography(url: string) {
+        return (this.bibliography() + " " + url + ".");
     }
 }
