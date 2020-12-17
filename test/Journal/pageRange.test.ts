@@ -1,7 +1,7 @@
 import {PageRange} from "../../src/Journal/pageRange";
 
-let pageRange = new PageRange("1", "10");
-let startOnly = new PageRange("1");
+let pageRange = new PageRange({start: "1", end: "10"});
+let startOnly = new PageRange({start: "1"});
 
 describe("pageRange.ts testing", () => {
    test("should set start variable", () => {
@@ -48,7 +48,10 @@ describe("pageRange.isInRange() testing", () => {
     });
 
     describe("should return true in invalid start range", () => {
-       let p = new PageRange("text");
-       expect(p.isInRange("1")).toBeTruthy();
+        expect(new PageRange({start: "text"}).isInRange("1")).toBeTruthy();
+    });
+
+    describe("should return true if invalid end range", () => {
+       expect(new PageRange({start: "1", end: "Ten"}).isInRange(('11'))).toBeTruthy();
     });
 });

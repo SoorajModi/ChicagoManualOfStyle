@@ -6,6 +6,6 @@ export interface CitationInterface {
     yearOfPublication?: string;
     volume?: string;
     issue?: string;
-    pageRange?: string;
+    pageRange?: { start: string, end?: string };
     url?: string;
 }

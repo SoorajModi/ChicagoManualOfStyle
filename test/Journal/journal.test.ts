@@ -1,14 +1,15 @@
 import {Journal} from "../../src/Journal/journal";
 import {AuthorList} from "../../src/Author/authorList";
 import {JournalPublishingInfo} from "../../src/Journal/journalPublishingInfo";
+import {PageRange} from "../../src/Journal/pageRange";
 
 let journal = new Journal({
     title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
-    yearOfPublication: "Year", volume: "vol", issue: "iss", pageRange: "1-10"
+    yearOfPublication: "Year", volume: "vol", issue: "iss", pageRange: {start: "1", end: "10"}
 });
 let noAuthor = new Journal({
     title: "Title", publisher: "Publisher", yearOfPublication: "Year", volume: "vol",
-    issue: "iss", pageRange: "1-10"
+    issue: "iss", pageRange: {start: "1", end: "10"}
 });
 let twoAuth = new Journal({
     title: "Title",
@@ -17,7 +18,7 @@ let twoAuth = new Journal({
     yearOfPublication: "Year",
     volume: "vol",
     issue: "iss",
-    pageRange: "1-10"
+    pageRange: {start: "1", end: "10"}
 });
 let threeAuth = new Journal({
     title: "Title",
@@ -26,7 +27,7 @@ let threeAuth = new Journal({
     yearOfPublication: "Year",
     volume: "vol",
     issue: "iss",
-    pageRange: "1-10"
+    pageRange: {start: "1", end: "10"}
 });
 
 describe("journal.ts testing", () => {
@@ -55,8 +56,8 @@ describe("journal.ts testing", () => {
     });
 
     test("should set page range member variable", () => {
-        expect(journal.pageRange).toBe("1-10");
-        expect(noAuthor.pageRange).toBe("1-10");
+        expect(journal.pageRange).toStrictEqual(new PageRange({start: "1", end: "10"}));
+        expect(noAuthor.pageRange).toStrictEqual(new PageRange({start: "1", end: "10"}));
     });
 });
 
