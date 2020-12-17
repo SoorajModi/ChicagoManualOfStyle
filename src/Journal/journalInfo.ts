@@ -13,31 +13,31 @@ export class JournalInfo {
         this.date = pubInfo.yearOfPublication || "";
     }
 
-    citation() {
+    citation(): string {
         return (noPublishingInfo(this)) ? "" : createJournalCitation(this.journal, this.volume, this.issue, this.date);
     }
 }
 
-function noPublishingInfo(info: JournalInfo) {
+function noPublishingInfo(info: JournalInfo): boolean {
     return (info.journal == "" && info.volume == "" && info.issue == "" && info.date == "");
 }
 
-function createJournalCitation(title: string, vol: string, iss: string, date: string) {
+function createJournalCitation(title: string, vol: string, iss: string, date: string): string {
     return titleCitation(title, vol) + volumeCitation(vol, iss, date) + issueCitation(iss) + dateCitation(date) + ":";
 }
 
-function titleCitation(title: string, vol: string) {
+function titleCitation(title: string, vol: string): string {
     return (title != "" && vol != "") ? title + " " : title;
 }
 
-function volumeCitation(vol: string, iss: string, date: string) {
+function volumeCitation(vol: string, iss: string, date: string): string {
     return (iss != "" || date != "") ? vol + "," : vol;
 }
 
-function issueCitation(iss: string) {
+function issueCitation(iss: string): string {
     return (iss != "") ? " no. " + iss : iss;
 }
 
-function dateCitation(date: string) {
+function dateCitation(date: string): string {
     return (date != "") ? " (" + date + ")" : date;
 }

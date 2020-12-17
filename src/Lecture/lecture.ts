@@ -13,11 +13,11 @@ export class Lecture {
         this.info = new LectureInfo(citation.university || "", citation.city || "", citation.province || "", citation.date || "");
     }
 
-    note() {
+    note(): string {
         return this.professor.authorsNote() + "\"" + this.courseTitle + "\" " + this.info.note() + ".";
     }
 
-    bibliography() {
+    bibliography(): string {
         return this.professor.authorsBibliography() + "\"" + this.courseTitle + ".\" " + this.info.bibliography() + ".";
     }
 }

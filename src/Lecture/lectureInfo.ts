@@ -11,28 +11,28 @@ export class LectureInfo {
         this.date = date;
     }
 
-    note() {
+    note(): string {
         return (isLectureInfoEmpty(this)) ? "(lecture)" : createNoteCitation(this);
     }
 
-    bibliography() {
+    bibliography(): string {
         return (isLectureInfoEmpty(this)) ? "Lecture" : createBibliographyCitation(this);
     }
 }
 
-function createNoteCitation(info: LectureInfo) {
+function createNoteCitation(info: LectureInfo): string {
     return "(" + citationStart(info, "lecture") + universityCitation(info) + cityCitation(info) + provinceCitation(info) + info.date + ")";
 }
 
-function createBibliographyCitation(info: LectureInfo) {
+function createBibliographyCitation(info: LectureInfo): string {
     return citationStart(info, "Lecture") + universityCitation(info) + cityCitation(info) + provinceCitation(info) + info.date;
 }
 
-function isLectureInfoEmpty(info: LectureInfo) {
+function isLectureInfoEmpty(info: LectureInfo): boolean {
     return (info.university == "" && info.city == "" && info.province == "" && info.date == "");
 }
 
-function citationStart(info: LectureInfo, toPrepend: string) {
+function citationStart(info: LectureInfo, toPrepend: string): string {
     return toPrepend + appendCitationStart(info);
 }
 
@@ -40,26 +40,26 @@ function appendCitationStart(info: LectureInfo) {
     if (!isLectureInfoEmpty(info)) return ", ";
 }
 
-function universityCitation(info: LectureInfo) {
+function universityCitation(info: LectureInfo): string {
     return (info.university == "") ? "" : info.university + appendUniCitation(info);
 }
 
-function appendUniCitation(info: LectureInfo) {
+function appendUniCitation(info: LectureInfo): string {
     return (info.city == "" && info.province == "" && info.date == "") ? "" : ", ";
 }
 
-function cityCitation(info: LectureInfo) {
+function cityCitation(info: LectureInfo): string {
     return (info.city == "") ? "" : info.city + appendCityCitation(info);
 }
 
-function appendCityCitation(info: LectureInfo) {
+function appendCityCitation(info: LectureInfo): string {
     return (info.province == "" && info.date == "") ? "" : ", ";
 }
 
-function provinceCitation(info: LectureInfo) {
+function provinceCitation(info: LectureInfo): string {
     return (info.province == "") ? "" : info.province + appendProvinceCitation(info);
 }
 
-function appendProvinceCitation(info: LectureInfo) {
+function appendProvinceCitation(info: LectureInfo): string {
     return (info.date == "") ? "" : ", ";
 }

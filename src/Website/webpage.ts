@@ -1,4 +1,3 @@
-import {Author} from "../Author/author";
 import {CitationInterface} from "../citationInterface";
 import {AuthorList} from "../Author/authorList";
 
@@ -19,12 +18,12 @@ export class Webpage {
         this.url = url;
     }
 
-    note() {
+    note(): string {
         return (this.authorList.authorsNote() + "\"" + this.title + ",\" " + this.nameOfSite + ", " + this.publisher + ", " +
             this.date + ", " + this.url + ".");
     }
 
-    bibliography() {
+    bibliography(): string {
         return (this.authorList.authorsBibliography() + "\"" + this.title + ".\" " + this.nameOfSite + ". " + this.publisher + ", " +
             this.date + ". " + this.url + ".");
     }

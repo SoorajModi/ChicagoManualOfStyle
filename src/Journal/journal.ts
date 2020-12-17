@@ -21,19 +21,19 @@ export class Journal {
         this.pageRange = new PageRange(citation.startRange || "", citation.endRange);
     }
 
-    note(page: string) {
+    note(page: string): string {
         return this.authorList.authorsNote() + "\"" + this.title + ",\" " + this.publishingInfo.citation() + " " + page + ".";
     }
 
-    bibliography() {
+    bibliography(): string {
         return this.authorList.authorsBibliography() + "\"" + this.title + ".\" " + this.publishingInfo.citation() + " " + this.pageRange.getRange() + ".";
     }
 
-    eNote(page: string, url: string) {
+    eNote(page: string, url: string): string {
         return ((this.note(page)).replace(/.$/, ", ") + url + ".");
     }
 
-    eBibliography(url: string) {
+    eBibliography(url: string): string {
         return (this.bibliography() + " " + url + ".");
     }
 }

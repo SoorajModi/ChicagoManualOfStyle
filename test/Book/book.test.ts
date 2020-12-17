@@ -1,5 +1,4 @@
 import {Book} from "../../src/Book/book"
-import {Author} from "../../src/Author/author";
 import {AuthorList} from "../../src/Author/authorList";
 import {BookInfo} from "../../src/Book/bookInfo";
 

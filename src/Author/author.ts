@@ -7,15 +7,15 @@ export class Author {
         this.last = last || "";
     }
 
-    noteString() {
+    noteString(): string {
         return (this.isEmpty()) ? "" : (this.first + " " + this.last + ", ");
     }
 
-    bibliographyString() {
+    bibliographyString(): string {
         return this.isEmpty() ? "" : (this.last + ", " + this.first + ". ");
     }
 
-    isEmpty() {
+    isEmpty(): boolean {
         return (this.first === "" && this.last === "");
     }
 }
