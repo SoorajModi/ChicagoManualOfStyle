@@ -4,27 +4,40 @@ import {AuthorList} from "../../src/Author/authorList";
 let webpage = new Webpage({
     title: "Title of Webpage",
     authorList: [{first: "First", last: "Last"}],
-    publisher: "testPublisher"
-}, "testWebsite", "2000", "wwww.testwebsite.com");
+    publisher: "testPublisher",
+    nameOfSite: "testWebsite",
+    date: "2000",
+    url: "wwww.testwebsite.com"
+});
 let noAuth = new Webpage({
     title: "Title of Webpage",
-    publisher: "testPublisher"
-}, "testWebsite", "2000", "wwww.testwebsite.com");
+    publisher: "testPublisher",
+    nameOfSite: "testWebsite",
+    date: "2000",
+    url: "wwww.testwebsite.com"
+});
 let noPub = new Webpage({
     title: "Title of Webpage",
     authorList: [{first: "First", last: "Last"}],
-}, "testWebsite", "2000", "wwww.testwebsite.com");
+    nameOfSite: "testWebsite",
+    date: "2000",
+    url: "wwww.testwebsite.com"
+});
+let noDate = new Webpage({
+    title: "Title of Webpage",
+    authorList: [{first: "First", last: "Last"}],
+    publisher: "testPublisher",
+    nameOfSite: "testWebsite",
+    url: "wwww.testwebsite.com"
+});
 
 describe("Webpage.ts member variable testing", () => {
     test("should have title member variable", () => {
         expect(webpage.title).toBe("Title of Webpage");
-        expect(noAuth.title).toBe("Title of Webpage");
-        expect(noPub.title).toBe("Title of Webpage");
     });
 
     test("should set author list member variable", () => {
         expect(webpage.authorList).toStrictEqual(new AuthorList([{first: "First", last: "Last"}]));
-        expect(noPub.authorList).toStrictEqual(new AuthorList([{first: "First", last: "Last"}]));
     });
 
     test("should default author list member variable", () => {
@@ -33,7 +46,6 @@ describe("Webpage.ts member variable testing", () => {
 
     test("should have publisher member variable", () => {
         expect(webpage.publisher).toBe("testPublisher");
-        expect(noAuth.publisher).toBe("testPublisher");
     });
 
     test("should default publisher member variable", () => {
@@ -42,20 +54,18 @@ describe("Webpage.ts member variable testing", () => {
 
     test("should have website name member variable", () => {
         expect(webpage.nameOfSite).toBe("testWebsite");
-        expect(noAuth.nameOfSite).toBe("testWebsite");
-        expect(noPub.nameOfSite).toBe("testWebsite");
     });
 
     test("should have date member variable", () => {
         expect(webpage.date).toBe("2000");
-        expect(noAuth.date).toBe("2000");
-        expect(noPub.date).toBe("2000");
+    });
+
+    test("should default date member variable", () => {
+       expect(noDate.date).toBe(new Date().toDateString());
     });
 
     test("should have url member variable", () => {
         expect(webpage.url).toBe("wwww.testwebsite.com");
-        expect(noAuth.url).toBe("wwww.testwebsite.com");
-        expect(noPub.url).toBe("wwww.testwebsite.com");
     });
 });
 

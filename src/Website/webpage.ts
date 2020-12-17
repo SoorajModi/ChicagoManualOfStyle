@@ -9,13 +9,13 @@ export class Webpage {
     date: string;
     url: string;
 
-    constructor(webpage: WebpageInterface, website: string, date: string, url: string) {
+    constructor(webpage: WebpageInterface) {
         this.title = webpage.title;
         this.authorList = new AuthorList(webpage.authorList || []);
         this.publisher = webpage.publisher || "";
-        this.nameOfSite = website;
-        this.date = date;
-        this.url = url;
+        this.nameOfSite = webpage.nameOfSite;
+        this.date = webpage.date || new Date().toDateString();
+        this.url = webpage.url;
     }
 
     note(): string {
