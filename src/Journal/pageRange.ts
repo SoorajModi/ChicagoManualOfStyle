@@ -2,9 +2,9 @@ export class PageRange {
     start: string;
     end: string;
 
-    constructor(range: {start: string, end?: string}) {
-        this.start = range.start;
-        this.end = range.end || range.start;
+    constructor(start: string, end?: string) {
+        this.start = start;
+        this.end = end || start;
     }
 
     getRange() {

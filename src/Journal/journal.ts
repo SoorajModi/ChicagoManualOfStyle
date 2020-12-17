@@ -18,7 +18,7 @@ export class Journal {
             volume: citation.volume,
             issue: citation.issue
         });
-        this.pageRange = new PageRange(citation.pageRange || {start: ""});
+        this.pageRange = new PageRange(citation.startRange || "", citation.endRange);
     }
 
     note(page: string) {
