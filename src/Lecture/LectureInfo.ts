@@ -12,41 +12,54 @@ export class LectureInfo {
     }
 
     note() {
-        let str = "(lecture";
-
-        if (this.university != "" || this.city != "" || this.province != "" || this.date != "") {
-            str += ", "
-        }
-
-        if (this.university != "") {
-            str += this.university;
-            if (this.city != "" || this.province != "" || this.date != "") {
-                str += ", "
-            }
-        }
-
-        if (this.city != "") {
-            str += this.city;
-            if (this.province != "" || this.date != "") {
-                str += ", "
-            }
-        }
-
-        if (this.province != "") {
-            str += this.province;
-            if (this.province != "" && this.date != "") {
-                str += ", "
-            }
-        }
-
-        if (this.date != "") {
-            str += this.date;
-        }
-
-        return str + ")";
+        return (isLectureInfoEmpty(this)) ? "(lecture)" : createNoteCitation(this);
     }
 
     bibliography() {
-        return "Lecture, " + this.university + ", " + this.city + ", " + this.province + ", " + this.date;
+        return (isLectureInfoEmpty(this)) ? "Lecture" : createBibliographyCitation(this);
     }
+}
+
+function createNoteCitation(info: LectureInfo) {
+    return "(" + citationStart(info, "lecture") + universityCitation(info) + cityCitation(info) + provinceCitation(info) + info.date + ")";
+}
+
+function createBibliographyCitation(info: LectureInfo) {
+    return citationStart(info, "Lecture") + universityCitation(info) + cityCitation(info) + provinceCitation(info) + info.date;
+}
+
+function isLectureInfoEmpty(info: LectureInfo) {
+    return (info.university == "" && info.city == "" && info.province == "" && info.date == "");
+}
+
+function citationStart(info: LectureInfo, toPrepend: string) {
+    return toPrepend + appendCitationStart(info);
+}
+
+function appendCitationStart(info: LectureInfo) {
+    if (!isLectureInfoEmpty(info)) return ", ";
+}
+
+function universityCitation(info: LectureInfo) {
+    return (info.university == "") ? "" : info.university + appendUniCitation(info);
+}
+
+function appendUniCitation(info: LectureInfo) {
+    return (info.city == "" && info.province == "" && info.date == "") ? "" : ", ";
+}
+
+function cityCitation(info: LectureInfo) {
+    return (info.city == "") ? "" : info.city + appendCityCitation(info);
+}
+
+function appendCityCitation(info: LectureInfo) {
+    return (info.province == "" && info.date == "") ? "" : ", ";
+}
+
+function provinceCitation(info: LectureInfo) {
+    return (info.province == "") ? "" : info.province + appendProvinceCitation(info);
+}
+
+function appendProvinceCitation(info: LectureInfo) {
+    return (info.date == "") ? "" : ", ";
 }
