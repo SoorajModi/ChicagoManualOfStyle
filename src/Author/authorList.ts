@@ -32,8 +32,10 @@ export class AuthorList {
             return "";
         } else if (len == 1) {
             return this.authors[0].bibliographyString();
-        } else if (len > 1) {
+        } else if (len > 1 && len <= 10) {
             return twoPlusAuthors(this.authors, len);
+        } else if (len > 10) {
+            return tenPlusAuthors(this.authors);
         }
     }
 }
@@ -58,6 +60,16 @@ function twoPlusAuthors(authors: Array<Author>, len: number) {
     }
 
     return str + "and " + trimAndReplaceLastElement(authors[len-1].noteString(), ". ");
+}
+
+function tenPlusAuthors(authors: Array<Author>) {
+    let str = trimAndReplaceLastElement(authors[0].bibliographyString(), ", ");
+
+    for (let i = 1; i < 7; i++) {
+        str += trimAndReplaceLastElement(authors[i].noteString(), ", ");
+    }
+
+    return str + "et al.";
 }
 
 function trimAndReplaceLastElement(str: string, replaceValue: string) {

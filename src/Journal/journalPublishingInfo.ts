@@ -14,9 +14,13 @@ export class JournalPublishingInfo {
     }
 
     citation() {
-        if (this.journal == "" && this.volume == "" && this.issue == "" && this.date == "") return "";
+        if (noPublishingInfo(this)) return "";
         return createJournalCitation(this.journal, this.volume, this.issue, this.date);
     }
+}
+
+function noPublishingInfo(info: JournalPublishingInfo) {
+    return (info.journal == "" && info.volume == "" && info.issue == "" && info.date == "");
 }
 
 function createJournalCitation(title: string, vol: string, iss: string, date: string) {
@@ -37,5 +41,5 @@ function journalIssueCitation(iss: string) {
 }
 
 function journalDateCitation(date: string) {
-    return (date != "") ? " (" + date + ")": date;
+    return (date != "") ? " (" + date + ")" : date;
 }

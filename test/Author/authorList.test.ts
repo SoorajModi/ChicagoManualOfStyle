@@ -8,11 +8,24 @@ let threeAuthorList = new AuthorList([
     {first: "Author", last: "Two"},
     {first: "Author", last: "Three"}
 ]);
-let multiAuthorList = new AuthorList([
+let fourAuthorList = new AuthorList([
     {first: "Author", last: "One"},
     {first: "Author", last: "Two"},
     {first: "Author", last: "Three"},
     {first: "Author", last: "Four"}
+]);
+let elevenAuthorList = new AuthorList([
+    {first: "Author", last: "One"},
+    {first: "Author", last: "Two"},
+    {first: "Author", last: "Three"},
+    {first: "Author", last: "Four"},
+    {first: "Author", last: "Five"},
+    {first: "Author", last: "Six"},
+    {first: "Author", last: "Seven"},
+    {first: "Author", last: "Eight"},
+    {first: "Author", last: "Nine"},
+    {first: "Author", last: "Ten"},
+    {first: "Author", last: "Eleven"}
 ]);
 
 describe("authorList testing", () => {
@@ -25,7 +38,7 @@ describe("authorList testing", () => {
             {first: "Author", last: "Two"},
             {first: "Author", last: "Three"}
         ]);
-        expect(multiAuthorList.authors).toEqual([
+        expect(fourAuthorList.authors).toEqual([
             {first: "Author", last: "One"},
             {first: "Author", last: "Two"},
             {first: "Author", last: "Three"},
@@ -52,7 +65,7 @@ describe("authorList.note() testing", () => {
     });
 
     test("should create note citation with greater than three authors", () => {
-        expect(multiAuthorList.authorsNote()).toBe("Author One et al., ");
+        expect(fourAuthorList.authorsNote()).toBe("Author One et al., ");
     });
 });
 
@@ -73,7 +86,11 @@ describe("authorList.bibliography() testing", () => {
         expect(threeAuthorList.authorsBibliography()).toBe("One, Author, Author Two, and Author Three. ");
     });
 
-    test("should create bibliography citation with more than authors", () => {
-        expect(multiAuthorList.authorsBibliography()).toBe("One, Author, Author Two, Author Three, and Author Four. ");
+    test("should create bibliography citation with between three to ten authors", () => {
+        expect(fourAuthorList.authorsBibliography()).toBe("One, Author, Author Two, Author Three, and Author Four. ");
     });
+
+    test("should create bibliography citation with more than ten authors", () => {
+        expect(elevenAuthorList.authorsBibliography()).toBe("One, Author, Author Two, Author Three, Author Four, Author Five, Author Six, Author Seven, et al.");
+    })
 });
