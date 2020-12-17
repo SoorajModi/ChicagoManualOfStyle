@@ -73,6 +73,10 @@ describe("Webpage.note() testing", () => {
     test("should create note citation with all fields filled", () => {
         expect(webpage.note()).toBe("First Last, \"Title of Webpage,\" testWebsite, testPublisher, 2000, wwww.testwebsite.com.");
     });
+
+    test("should create note citation with missing publisher field", () => {
+       expect(noPub.note()).toBe("First Last, \"Title of Webpage,\" testWebsite, 2000, wwww.testwebsite.com.");
+    });
 });
 
 describe("Webpage.bibliography() testing", () => {
