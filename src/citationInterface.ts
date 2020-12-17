@@ -8,6 +8,5 @@ export interface CitationInterface {
     issue?: string;
     startRange?: string,
     endRange?: string,
-    // pageRange?: { start: string, end?: string };
     url?: string;
 }
