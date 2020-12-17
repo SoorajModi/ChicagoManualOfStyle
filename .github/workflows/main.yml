@@ -23,7 +23,7 @@ jobs:
         run: npm run lint
 
       - name: Compile Typecript
-        run: tsc
+        run: npm run build
         
       - name: Run tests
         run: npm t

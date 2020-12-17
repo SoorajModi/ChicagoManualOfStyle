@@ -1,8 +1,7 @@
-export interface CitationInterface {
+export interface JournalInterface {
     title: string;
     authorList?: { first: string, last: string }[];
     publisher?: string;
-    placeOfPublication?: string;
     yearOfPublication?: string;
     volume?: string;
     issue?: string;

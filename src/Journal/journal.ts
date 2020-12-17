@@ -1,7 +1,7 @@
 import {AuthorList} from "../Author/authorList";
 import {JournalInfo} from "./journalInfo";
-import {CitationInterface} from "../citationInterface";
 import {PageRange} from "./pageRange";
+import {JournalInterface} from "./journalInterface";
 
 export class Journal {
     title: string;
@@ -9,16 +9,16 @@ export class Journal {
     publishingInfo: JournalInfo;
     pageRange: PageRange;
 
-    constructor(citation: CitationInterface) {
-        this.title = citation.title;
-        this.authorList = new AuthorList(citation.authorList || []);
+    constructor(journal: JournalInterface) {
+        this.title = journal.title;
+        this.authorList = new AuthorList(journal.authorList || []);
         this.publishingInfo = new JournalInfo({
-            publisher: citation.publisher,
-            yearOfPublication: citation.yearOfPublication,
-            volume: citation.volume,
-            issue: citation.issue
+            publisher: journal.publisher,
+            yearOfPublication: journal.yearOfPublication,
+            volume: journal.volume,
+            issue: journal.issue
         });
-        this.pageRange = new PageRange(citation.startRange || "", citation.endRange);
+        this.pageRange = new PageRange(journal.startRange || "", journal.endRange);
     }
 
     note(page: string): string {

@@ -1,5 +1,5 @@
-import {CitationInterface} from "../citationInterface";
 import {AuthorList} from "../Author/authorList";
+import {WebpageInterface} from "./webpageInterface";
 
 export class Webpage {
     title: string;
@@ -9,10 +9,10 @@ export class Webpage {
     date: string;
     url: string;
 
-    constructor(citation: CitationInterface, website: string, date: string, url: string) {
-        this.title = citation.title;
-        this.authorList = new AuthorList(citation.authorList || []);
-        this.publisher = citation.publisher || "";
+    constructor(webpage: WebpageInterface, website: string, date: string, url: string) {
+        this.title = webpage.title;
+        this.authorList = new AuthorList(webpage.authorList || []);
+        this.publisher = webpage.publisher || "";
         this.nameOfSite = website;
         this.date = date;
         this.url = url;
