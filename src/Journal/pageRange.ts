@@ -17,5 +17,9 @@ export class PageRange {
 }
 
 function checkRange(start: number, end: number, num: number) {
-    return (isNaN(num) || isNaN(start) || isNaN(end)) ? true : (num >= start && num <= end);
+    return (isNotANumber(start, end, num)) ? true : (num >= start && num <= end);
+}
+
+function isNotANumber(start: number, end: number, num: number) {
+    return (isNaN(num) || isNaN(start) || isNaN(end))
 }

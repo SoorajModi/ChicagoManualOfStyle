@@ -1,6 +1,6 @@
 import {Journal} from "../../src/Journal/journal";
 import {AuthorList} from "../../src/Author/authorList";
-import {JournalPublishingInfo} from "../../src/Journal/journalPublishingInfo";
+import {JournalInfo} from "../../src/Journal/journalInfo";
 import {PageRange} from "../../src/Journal/pageRange";
 
 let journal = new Journal({
@@ -47,11 +47,11 @@ describe("journal.ts testing", () => {
     });
 
     test("should set publishing information member variable", () => {
-        expect(journal.publishingInfo).toStrictEqual(new JournalPublishingInfo({
+        expect(journal.publishingInfo).toStrictEqual(new JournalInfo({
             publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss"
         }));
-        expect(noAuthor.publishingInfo).toStrictEqual(new JournalPublishingInfo({
+        expect(noAuthor.publishingInfo).toStrictEqual(new JournalInfo({
             publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss"
         }));

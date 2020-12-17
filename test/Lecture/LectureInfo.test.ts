@@ -1,4 +1,4 @@
-import {LectureInfo} from "../../src/Lecture/LectureInfo";
+import {LectureInfo} from "../../src/Lecture/lectureInfo";
 
 let info = new LectureInfo("University", "City", "Province", "Date");
 let missingUni = new LectureInfo("", "City", "Province", "Date");
@@ -8,7 +8,7 @@ let missingDate = new LectureInfo("University", "City", "Province", "");
 let missingLocation = new LectureInfo("", "", "", "Date");
 let emptyInfo = new LectureInfo("", "", "", "");
 
-describe("LectureInfo.ts testing", () => {
+describe("lectureInfo.ts testing", () => {
    test("should set university member variable", () => {
        expect(info.university).toBe("University");
    });

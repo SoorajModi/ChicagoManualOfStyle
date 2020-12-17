@@ -1,6 +1,6 @@
 import {PublishingInfoInterface} from "../publishingInfoInterface";
 
-export class JournalPublishingInfo {
+export class JournalInfo {
     journal: string;
     volume: string;
     issue: string;
@@ -14,32 +14,30 @@ export class JournalPublishingInfo {
     }
 
     citation() {
-        if (noPublishingInfo(this)) return "";
-        return createJournalCitation(this.journal, this.volume, this.issue, this.date);
+        return (noPublishingInfo(this)) ? "" : createJournalCitation(this.journal, this.volume, this.issue, this.date);
     }
 }
 
-function noPublishingInfo(info: JournalPublishingInfo) {
+function noPublishingInfo(info: JournalInfo) {
     return (info.journal == "" && info.volume == "" && info.issue == "" && info.date == "");
 }
 
 function createJournalCitation(title: string, vol: string, iss: string, date: string) {
-    return journalTitleCitation(title, vol) + journalVolumeCitation(vol, iss, date) + journalIssueCitation(iss) +
-        journalDateCitation(date) + ":";
+    return titleCitation(title, vol) + volumeCitation(vol, iss, date) + issueCitation(iss) + dateCitation(date) + ":";
 }
 
-function journalTitleCitation(title: string, vol: string) {
+function titleCitation(title: string, vol: string) {
     return (title != "" && vol != "") ? title + " " : title;
 }
 
-function journalVolumeCitation(vol: string, iss: string, date: string) {
+function volumeCitation(vol: string, iss: string, date: string) {
     return (iss != "" || date != "") ? vol + "," : vol;
 }
 
-function journalIssueCitation(iss: string) {
+function issueCitation(iss: string) {
     return (iss != "") ? " no. " + iss : iss;
 }
 
-function journalDateCitation(date: string) {
+function dateCitation(date: string) {
     return (date != "") ? " (" + date + ")" : date;
 }

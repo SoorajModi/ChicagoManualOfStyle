@@ -1,6 +1,6 @@
 import {AuthorList} from "../Author/authorList";
 import {LectureInterface} from "./lectureInterface";
-import {LectureInfo} from "./LectureInfo";
+import {LectureInfo} from "./lectureInfo";
 
 export class Lecture {
     professor: AuthorList;

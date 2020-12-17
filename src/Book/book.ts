@@ -1,15 +1,15 @@
 import {CitationInterface} from "../citationInterface";
 import {AuthorList} from "../Author/authorList";
-import {BookPublishingInfo} from "./bookPublishingInfo";
+import {BookInfo} from "./bookInfo";
 
 export class Book {
     title: string;
     authorList: AuthorList;
-    publishingInfo: BookPublishingInfo;
+    publishingInfo: BookInfo;
 
     constructor(citation: CitationInterface) {
         this.title = citation.title;
-        this.publishingInfo = new BookPublishingInfo({publisher: citation.publisher,
+        this.publishingInfo = new BookInfo({publisher: citation.publisher,
             placeOfPublication: citation.placeOfPublication, yearOfPublication: citation.yearOfPublication});
         this.authorList = new AuthorList(citation.authorList || []);
     }
