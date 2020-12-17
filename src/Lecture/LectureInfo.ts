@@ -12,7 +12,38 @@ export class LectureInfo {
     }
 
     note() {
-        return "(lecture, " + this.university + ", " + this.city + ", " + this.province + ", " + this.date + ")";
+        let str = "(lecture";
+
+        if (this.university != "" || this.city != "" || this.province != "" || this.date != "") {
+            str += ", "
+        }
+
+        if (this.university != "") {
+            str += this.university;
+            if (this.city != "" || this.province != "" || this.date != "") {
+                str += ", "
+            }
+        }
+
+        if (this.city != "") {
+            str += this.city;
+            if (this.province != "" || this.date != "") {
+                str += ", "
+            }
+        }
+
+        if (this.province != "") {
+            str += this.province;
+            if (this.province != "" && this.date != "") {
+                str += ", "
+            }
+        }
+
+        if (this.date != "") {
+            str += this.date;
+        }
+
+        return str + ")";
     }
 
     bibliography() {
