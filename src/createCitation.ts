@@ -3,9 +3,10 @@ import {Book} from "./Book/book";
 import {JournalInterface} from "./Journal/journalInterface";
 import {Journal} from "./Journal/journal";
 import {WebpageInterface} from "./Website/webpageInterface";
-import {Webpage} from "./Website/webpage";
 import {LectureInterface} from "./Lecture/lectureInterface";
 import {Lecture} from "./Lecture/lecture";
+
+const {webpageNote, webpageBibliography} = require("./Website/webpage");
 
 function createBookCitation(info: BookInterface, pages: string[]) {
     let citation: Book = new Book(info);
@@ -58,8 +59,9 @@ function createEJournalCitation(info: JournalInterface, pages: string[]) {
 }
 
 function createWebpageCitation(info: WebpageInterface) {
-    let citation: Webpage = new Webpage(info);
-    return {bibliography: citation.bibliography(), note: [citation.note()]};
+    let note: string = webpageNote(info);
+    let bib: string = webpageBibliography(info);
+    return {bibliography: bib, note: [note]};
 }
 
 function createLectureCitation(info: LectureInterface) {
