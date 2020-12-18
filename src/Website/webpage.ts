@@ -19,22 +19,14 @@ export class Webpage {
     }
 
     note(): string {
-        let str: string = this.authorList.authorsNote() + "\"" + this.title + ",\" " + this.nameOfSite + ", " + this.publisher;
-
-        if (this.publisher != "") {
-            str += ", ";
-        }
-
-        return (str + this.date + ", " + this.url + ".");
+        return this.authorList.note() + "\"" + this.title + ",\" " + this.nameOfSite + ", " + publisherCitation(this.publisher) + this.date + ", " + this.url + ".";
     }
 
     bibliography(): string {
-        let str: string = this.authorList.authorsBibliography() + "\"" + this.title + ".\" " + this.nameOfSite + ". " + this.publisher;
-
-        if (this.publisher != "") {
-            str += ", ";
-        }
-
-        return (str + this.date + ". " + this.url + ".");
+        return this.authorList.bibliography() + "\"" + this.title + ".\" " + this.nameOfSite + ". " + publisherCitation(this.publisher) + this.date + ". " + this.url + ".";
     }
+}
+
+function publisherCitation(publisher: string): string {
+    return (publisher == "") ? publisher : publisher + ", ";
 }

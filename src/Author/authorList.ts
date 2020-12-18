@@ -9,7 +9,7 @@ export class AuthorList {
         });
     }
 
-    authorsNote(): string {
+    note(): string {
         let len: number = this.authors.length;
 
         if (len == 1) {
@@ -25,7 +25,7 @@ export class AuthorList {
         return "";
     }
 
-    authorsBibliography(): string {
+    bibliography(): string {
         let len: number = this.authors.length;
 
         if (len == 1) {

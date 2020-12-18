@@ -22,11 +22,11 @@ export class Journal {
     }
 
     note(page: string): string {
-        return this.authorList.authorsNote() + "\"" + this.title + ",\" " + this.publishingInfo.citation() + " " + page + ".";
+        return this.authorList.note() + "\"" + this.title + ",\" " + this.publishingInfo.citation() + " " + page + ".";
     }
 
     bibliography(): string {
-        return this.authorList.authorsBibliography() + "\"" + this.title + ".\" " + this.publishingInfo.citation() + " " + this.pageRange.getRange() + ".";
+        return this.authorList.bibliography() + "\"" + this.title + ".\" " + this.publishingInfo.citation() + " " + this.pageRange.getRange() + ".";
     }
 
     eNote(page: string, url: string): string {

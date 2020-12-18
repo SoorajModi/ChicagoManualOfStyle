@@ -15,11 +15,11 @@ export class Book {
     }
 
     note(page: string): string {
-        return (this.authorList.authorsNote() + this.title + " " + this.publishingInfo.note() + ", " + page + ".");
+        return (this.authorList.note() + this.title + " " + this.publishingInfo.note() + ", " + page + ".");
     }
 
     bibliography(): string {
-        return (this.authorList.authorsBibliography() + this.title + ". " + this.publishingInfo.bibliography());
+        return (this.authorList.bibliography() + this.title + ". " + this.publishingInfo.bibliography());
     }
 
     eNote(page: string, url: string): string {

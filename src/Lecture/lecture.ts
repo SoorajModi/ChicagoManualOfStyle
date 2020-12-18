@@ -14,10 +14,10 @@ export class Lecture {
     }
 
     note(): string {
-        return this.professor.authorsNote() + "\"" + this.courseTitle + "\" " + this.info.note() + ".";
+        return this.professor.note() + "\"" + this.courseTitle + "\" " + this.info.note() + ".";
     }
 
     bibliography(): string {
-        return this.professor.authorsBibliography() + "\"" + this.courseTitle + ".\" " + this.info.bibliography() + ".";
+        return this.professor.bibliography() + "\"" + this.courseTitle + ".\" " + this.info.bibliography() + ".";
     }
 }
