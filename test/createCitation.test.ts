@@ -72,7 +72,7 @@ describe("createEJournalCitation() testing", () => {
 
     test("should throw error if missing url field", () => {
         try {
-            createEJournalCitation({title: "The Great Gatsby",}, [1]);
+            createEJournalCitation({title: "The Great Gatsby"}, [1]);
             expect(true).toBe(false);   // Will trigger if no error thrown
         } catch (e) {
             expect(e.message).toBe("URL not specified");

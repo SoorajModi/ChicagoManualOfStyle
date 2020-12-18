@@ -1,57 +1,39 @@
-import {PageRange} from "../../src/Journal/pageRange";
-
-let pageRange = new PageRange("1", "10");
-let startOnly = new PageRange("1");
-
-describe("pageRange.ts testing", () => {
-   test("should set start variable", () => {
-       expect(pageRange.start).toBe("1");
-       expect(startOnly.start).toBe("1");
-   });
-
-   test("should set end variable", () => {
-      expect(pageRange.end).toBe("10");
-   });
-
-   test("should end variable to start variable if not specified", () => {
-      expect(startOnly.end).toBe(startOnly.start);
-   });
-});
+const {getRange, isInRange} = require("../../src/Journal/pageRange");
 
 describe("pageRange.getRange() testing", () => {
     test("should generate page range", () => {
-       expect(pageRange.getRange()).toBe("1-10");
+       expect(getRange("1", "10")).toBe("1-10");
     });
 
     test("should generate page range with range the same", () => {
-       expect(startOnly.getRange()).toBe("1");
+       expect(getRange("1", "1")).toBe("1");
     });
 });
 
 describe("pageRange.isInRange() testing", () => {
    test("should return true if within range", () => {
-      expect(pageRange.isInRange("5")).toBeTruthy();
-      expect(pageRange.isInRange("1")).toBeTruthy();
-      expect(pageRange.isInRange("10")).toBeTruthy();
+      expect(isInRange("5", "1", "10")).toBeTruthy();
+      expect(isInRange("1", "1", "10")).toBeTruthy();
+      expect(isInRange("10", "1", "10")).toBeTruthy();
    });
 
    describe("should return false if greater than end", () => {
-      expect(pageRange.isInRange("11")).toBeFalsy();
+      expect(isInRange("11", "1", "10")).toBeFalsy();
    });
 
     describe("should return false is less than start", () => {
-        expect(pageRange.isInRange("-1")).toBeFalsy();
+        expect(isInRange("-1", "1", "10")).toBeFalsy();
     });
 
     describe("should return true if invalid input", () => {
-        expect(pageRange.isInRange("text")).toBeTruthy();
+        expect(isInRange("text", "1", "10")).toBeTruthy();
     });
 
     describe("should return true in invalid start range", () => {
-        expect(new PageRange("text").isInRange("1")).toBeTruthy();
+        expect(isInRange("1", "text")).toBeTruthy();
     });
 
     describe("should return true if invalid end range", () => {
-       expect(new PageRange( "1", "Ten").isInRange(('11'))).toBeTruthy();
+       expect(isInRange("11", "1", "text")).toBeTruthy();
     });
 });

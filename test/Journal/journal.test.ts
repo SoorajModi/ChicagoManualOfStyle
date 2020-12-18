@@ -1,17 +1,14 @@
-import {Journal} from "../../src/Journal/journal";
-import {AuthorList} from "../../src/Author/authorList";
-import {JournalInfo} from "../../src/Journal/journalInfo";
-import {PageRange} from "../../src/Journal/pageRange";
+const {journalNote, journalBibliography, eJournalNote, eJournalBibliography} = require("../../src/Journal/journal");
 
-let journal = new Journal({
+let journal = {
     title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
     yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10"
-});
-let noAuthor = new Journal({
+};
+let noAuthor = {
     title: "Title", publisher: "Publisher", yearOfPublication: "Year", volume: "vol",
     issue: "iss", startRange: "1", endRange: "10"
-});
-let twoAuth = new Journal({
+};
+let twoAuth = {
     title: "Title",
     authorList: [{first: "Author", last: "One"}, {first: "Author", last: "Two"}],
     publisher: "Publisher",
@@ -20,8 +17,8 @@ let twoAuth = new Journal({
     issue: "iss",
     startRange: "1",
     endRange: "10"
-});
-let threeAuth = new Journal({
+};
+let threeAuth = {
     title: "Title",
     authorList: [{first: "Author", last: "One"}, {first: "Author", last: "Two"}, {first: "Author", last: "Three"}],
     publisher: "Publisher",
@@ -30,81 +27,52 @@ let threeAuth = new Journal({
     issue: "iss",
     startRange: "1",
     endRange: "10"
-});
+};
 
-describe("journal.ts testing", () => {
-    test("should set title member variable", () => {
-        expect(journal.title).toBe("Title");
-        expect(noAuthor.title).toBe("Title");
-    });
-
-    test("should set author list member variable", () => {
-        expect(journal.authorList).toStrictEqual(new AuthorList([{first: "First", last: "Last"}]));
-    });
-
-    test("should default author list variable", () => {
-        expect(noAuthor.authorList).toStrictEqual(new AuthorList([]));
-    });
-
-    test("should set publishing information member variable", () => {
-        expect(journal.publishingInfo).toStrictEqual(new JournalInfo({
-            journal: "Publisher", date: "Year", volume: "vol", issue: "iss"
-        }));
-        expect(noAuthor.publishingInfo).toStrictEqual(new JournalInfo({
-            journal: "Publisher", date: "Year", volume: "vol", issue: "iss"
-        }));
-    });
-
-    test("should set page range member variable", () => {
-        expect(journal.pageRange).toStrictEqual(new PageRange("1", "10"));
-        expect(noAuthor.pageRange).toStrictEqual(new PageRange("1", "10"));
-    });
-});
-
-describe("journal.note() testing", () => {
+describe("journalNote() testing", () => {
     test("should create note citation with one author", () => {
-        expect(journal.note("1")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(journal, "1")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 
     test("should create note citation with two authors", () => {
-        expect(twoAuth.note("1")).toBe("Author One and Author Two, \"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(twoAuth, "1")).toBe("Author One and Author Two, \"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 
     test("should create note citation with three authors", () => {
-        expect(threeAuth.note("1")).toBe("Author One, Author Two, and Author Three, \"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(threeAuth, "1")).toBe("Author One, Author Two, and Author Three, \"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 
     test("should create note citation with no authors", () => {
-        expect(noAuthor.note("1")).toBe("\"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(noAuthor, "1")).toBe("\"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 });
 
-describe("journal.bibliography() testing", () => {
+describe("journalBibliography() testing", () => {
     test("should create bibliography citation with one author", () => {
-        expect(journal.bibliography()).toBe("Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10.");
+        expect(journalBibliography(journal)).toBe("Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10.");
     });
 
-    test("should create bibliography citation with twi author", () => {
-        expect(twoAuth.bibliography()).toBe("One, Author, and Author Two. \"Title.\" Publisher vol, no. iss (Year): 1-10.");
+    test("should create bibliography citation with two author", () => {
+        expect(journalBibliography(twoAuth)).toBe("One, Author, and Author Two. \"Title.\" Publisher vol, no. iss (Year): 1-10.");
     });
 
     test("should create bibliography citation with three authors", () => {
-        expect(threeAuth.bibliography()).toBe("One, Author, Author Two, and Author Three. \"Title.\" Publisher vol, no. iss (Year): 1-10.");
+        expect(journalBibliography(threeAuth)).toBe("One, Author, Author Two, and Author Three. \"Title.\" Publisher vol, no. iss (Year): 1-10.");
     });
 
     test("should create bibliography citation with no authors", () => {
-        expect(noAuthor.bibliography()).toBe("\"Title.\" Publisher vol, no. iss (Year): 1-10.");
+        expect(journalBibliography(noAuthor)).toBe("\"Title.\" Publisher vol, no. iss (Year): 1-10.");
     });
 });
 
 describe("journal.eNote() testing", () => {
     test("should create bibliography citation for electronic journal", () => {
-        expect(journal.eNote("1", "www.test.com")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1, www.test.com.");
+        expect(eJournalNote(journal, "1", "www.test.com")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1, www.test.com.");
     });
 });
 
 describe("journal.eBibliography() testing", () => {
     test("should create bibliography citation for electronic journal", () => {
-        expect(journal.eBibliography("www.test.com")).toBe("Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10. www.test.com.");
+        expect(eJournalBibliography(journal, "www.test.com")).toBe("Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10. www.test.com.");
     });
 });

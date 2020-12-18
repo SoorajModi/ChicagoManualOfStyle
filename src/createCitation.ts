@@ -1,12 +1,12 @@
 import {BookInterface} from "./Book/bookInterface";
 import {Book} from "./Book/book";
 import {JournalInterface} from "./Journal/journalInterface";
-import {Journal} from "./Journal/journal";
 import {WebpageInterface} from "./Website/webpageInterface";
 import {LectureInterface} from "./Lecture/lectureInterface";
 
 const {webpageNote, webpageBibliography} = require("./Website/webpage");
 const {lectureNote, lectureBibliography} = require("./Lecture/lecture");
+const {journalNote, journalBibliography, eJournalNote, eJournalBibliography} = require("./Journal/journal");
 
 function createBookCitation(info: BookInterface, pages: string[]) {
     let citation: Book = new Book(info);
@@ -34,28 +34,28 @@ function createEBookCitation(info: BookInterface, pages: string[]) {
 }
 
 function createJournalCitation(info: JournalInterface, pages: string[]) {
-    let citation: Journal = new Journal(info);
+    let bib = journalBibliography(info);
 
     let notes: string[] = [];
 
     for (let page of pages) {
-        notes.push(citation.note(page));
+        notes.push(journalNote(info, page));
     }
 
-    return {bibliography: citation.bibliography(), notes: notes};
+    return {bibliography: bib, notes: notes};
 }
 
 function createEJournalCitation(info: JournalInterface, pages: string[]) {
     if (!info.url) throw new Error("URL not specified");
-    let citation: Journal = new Journal(info);
+
+    let bib = eJournalBibliography(info, info.url);
 
     let notes: string[] = [];
-
     for (let page of pages) {
-        notes.push(citation.eNote(page, info.url));
+        notes.push(eJournalNote(info, page, info.url));
     }
 
-    return {bibliography: citation.eBibliography(info.url), notes: notes};
+    return {bibliography: bib, notes: notes};
 }
 
 function createWebpageCitation(info: WebpageInterface) {

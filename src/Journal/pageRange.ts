@@ -1,19 +1,11 @@
-export class PageRange {
-    start: string;
-    end: string;
+export {};
 
-    constructor(start: string, end?: string) {
-        this.start = start;
-        this.end = end || start;
-    }
+function getRange(start: string, end?: string): string {
+    return (start == end) ? start : (start + "-" + end);
+}
 
-    getRange(): string {
-        return (this.start == this.end) ? this.start : (this.start + "-" + this.end);
-    }
-
-    isInRange(numStr: string): boolean {
-        return checkRange(Number(this.start), Number(this.end), Number(numStr));
-    }
+function isInRange(numStr: string, start: string, end?: string): boolean {
+    return checkRange(Number(start), Number(end), Number(numStr));
 }
 
 function checkRange(start: number, end: number, num: number): boolean {
@@ -23,3 +15,8 @@ function checkRange(start: number, end: number, num: number): boolean {
 function isNotANumber(start: number, end: number, num: number): boolean {
     return (isNaN(num) || isNaN(start) || isNaN(end))
 }
+
+module.exports = {
+    getRange: getRange,
+    isInRange: isInRange
+};

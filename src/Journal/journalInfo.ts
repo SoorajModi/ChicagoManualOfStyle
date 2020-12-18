@@ -1,24 +1,13 @@
 import {JournalInfoInterface} from "./journalInfoInterface";
 
-export class JournalInfo {
-    journal: string;
-    volume: string;
-    issue: string;
-    date: string;
+const {createJournalInfo} = require("./journalInfoInterface");
 
-    constructor(pubInfo: JournalInfoInterface) {
-        this.journal = pubInfo.journal || "";
-        this.volume = pubInfo.volume || "";
-        this.issue = pubInfo.issue || "";
-        this.date = pubInfo.date || "";
-    }
-
-    citation(): string {
-        return (noPublishingInfo(this)) ? "" : createJournalCitation(this.journal, this.volume, this.issue, this.date);
-    }
+function journalInfoCitation(info: JournalInfoInterface): string {
+    let citation = createJournalInfo(info);
+    return (noPublishingInfo(citation)) ? "" : createJournalCitation(citation.journal, citation.volume, citation.issue, citation.date);
 }
 
-function noPublishingInfo(info: JournalInfo): boolean {
+function noPublishingInfo(info: JournalInfoInterface): boolean {
     return (info.journal == "" && info.volume == "" && info.issue == "" && info.date == "");
 }
 
@@ -41,3 +30,7 @@ function issueCitation(iss: string): string {
 function dateCitation(date: string): string {
     return (date != "") ? " (" + date + ")" : date;
 }
+
+module.exports = {
+    journalInfoCitation: journalInfoCitation
+};
