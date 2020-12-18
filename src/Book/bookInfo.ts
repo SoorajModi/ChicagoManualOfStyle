@@ -1,26 +1,38 @@
 import {BookInfoInterface} from "./bookInfoInterface";
 
-export class BookInfo {
-    publisher: string;
-    placeOfPublication: string;
-    yearOfPublication: string;
+const {createBookInfo} = require("./bookInfoInterface");
 
-    constructor(info: BookInfoInterface) {
-        this.publisher = info.publisher || "";
-        this.placeOfPublication = info.placeOfPublication || "";
-        this.yearOfPublication = info.yearOfPublication || "";
-    }
+// export class BookInfo {
+//     publisher: string;
+//     placeOfPublication: string;
+//     yearOfPublication: string;
+//
+//     constructor(info: BookInfoInterface) {
+//         this.publisher = info.publisher || "";
+//         this.placeOfPublication = info.placeOfPublication || "";
+//         this.yearOfPublication = info.yearOfPublication || "";
+//     }
+//
+//     note(): string {
+//         return (isBookInfoEmpty(this)) ? "" : "(" + createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ")";
+//     }
+//
+//     bibliography(): string {
+//         return (isBookInfoEmpty(this)) ? "" : createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ".";
+//     }
+// }
 
-    note(): string {
-        return (isBookInfoEmpty(this)) ? "" : "(" + createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ")";
-    }
-
-    bibliography(): string {
-        return (isBookInfoEmpty(this)) ? "" : createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ".";
-    }
+function bookInfoNote(info: BookInfoInterface) {
+    let citation = createBookInfo(info);
+    return (isBookInfoEmpty(citation)) ? "" : "(" + createBookCitation(citation.publisher, citation.placeOfPublication, citation.yearOfPublication) + ")";
 }
 
-function isBookInfoEmpty(info: BookInfo): boolean {
+function bookInfoBibliography(info: BookInfoInterface) {
+    let citation = createBookInfo(info);
+    return (isBookInfoEmpty(citation)) ? "" : createBookCitation(citation.publisher, citation.placeOfPublication, citation.yearOfPublication) + ".";
+}
+
+function isBookInfoEmpty(info: BookInfoInterface): boolean {
     return (info.publisher == "" && info.placeOfPublication == "" && info.yearOfPublication == "");
 }
 
@@ -37,3 +49,8 @@ function pubBookCitation(pub: string, year: string): string {
     if (pub == "") return pub;
     return (year != "") ? (pub + ", ") : pub;
 }
+
+module.exports = {
+    bookInfoNote: bookInfoNote,
+    bookInfoBibliography: bookInfoBibliography
+};
