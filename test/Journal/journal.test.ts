@@ -48,10 +48,10 @@ describe("journal.ts testing", () => {
 
     test("should set publishing information member variable", () => {
         expect(journal.publishingInfo).toStrictEqual(new JournalInfo({
-            publisher: "Publisher", yearOfPublication: "Year", volume: "vol", issue: "iss"
+            journal: "Publisher", date: "Year", volume: "vol", issue: "iss"
         }));
         expect(noAuthor.publishingInfo).toStrictEqual(new JournalInfo({
-            publisher: "Publisher", yearOfPublication: "Year", volume: "vol", issue: "iss"
+            journal: "Publisher", date: "Year", volume: "vol", issue: "iss"
         }));
     });
 

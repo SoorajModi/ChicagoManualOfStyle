@@ -1,17 +1,17 @@
 import {JournalInfo} from "../../src/Journal/journalInfo";
 
 let info = new JournalInfo({
-    publisher: "Journal",
+    journal: "Journal",
     volume: "vol",
     issue: "iss",
-    yearOfPublication: "date"
+    date: "date"
 });
-let noJournalTitle = new JournalInfo({volume: "vol", issue: "iss", yearOfPublication: "date"});
-let noVol = new JournalInfo({publisher: "Journal", issue: "iss", yearOfPublication: "date"});
-let noIss = new JournalInfo({publisher: "Journal", volume: "vol", yearOfPublication: "date"});
-let noDate = new JournalInfo({publisher: "Journal", volume: "vol", issue: "iss"});
-let noVolIss = new JournalInfo({publisher: "Journal", yearOfPublication: "date"});
-let onlyTitle = new JournalInfo({publisher: "Journal"});
+let noJournalTitle = new JournalInfo({volume: "vol", issue: "iss", date: "date"});
+let noVol = new JournalInfo({journal: "Journal", issue: "iss", date: "date"});
+let noIss = new JournalInfo({journal: "Journal", volume: "vol", date: "date"});
+let noDate = new JournalInfo({journal: "Journal", volume: "vol", issue: "iss"});
+let noVolIss = new JournalInfo({journal: "Journal", date: "date"});
+let onlyTitle = new JournalInfo({journal: "Journal"});
 let emptyPublishingInfo = new JournalInfo({});
 
 describe("journalInfo.ts testing", () => {

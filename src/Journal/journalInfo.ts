@@ -1,4 +1,4 @@
-import {PublishingInfoInterface} from "../publishingInfoInterface";
+import {JournalInfoInterface} from "./journalInfoInterface";
 
 export class JournalInfo {
     journal: string;
@@ -6,11 +6,11 @@ export class JournalInfo {
     issue: string;
     date: string;
 
-    constructor(pubInfo: PublishingInfoInterface) {
-        this.journal = pubInfo.publisher || "";
+    constructor(pubInfo: JournalInfoInterface) {
+        this.journal = pubInfo.journal || "";
         this.volume = pubInfo.volume || "";
         this.issue = pubInfo.issue || "";
-        this.date = pubInfo.yearOfPublication || "";
+        this.date = pubInfo.date || "";
     }
 
     citation(): string {

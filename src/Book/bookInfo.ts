@@ -1,14 +1,14 @@
-import {PublishingInfoInterface} from "../publishingInfoInterface";
+import {BookInfoInterface} from "./bookInfoInterface";
 
 export class BookInfo {
     publisher: string;
     placeOfPublication: string;
     yearOfPublication: string;
 
-    constructor(publishingInfo: PublishingInfoInterface) {
-        this.publisher = publishingInfo.publisher || "";
-        this.placeOfPublication = publishingInfo.placeOfPublication || "";
-        this.yearOfPublication = publishingInfo.yearOfPublication || "";
+    constructor(info: BookInfoInterface) {
+        this.publisher = info.publisher || "";
+        this.placeOfPublication = info.placeOfPublication || "";
+        this.yearOfPublication = info.yearOfPublication || "";
     }
 
     note(): string {

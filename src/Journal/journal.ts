@@ -13,8 +13,8 @@ export class Journal {
         this.title = journal.title;
         this.authorList = new AuthorList(journal.authorList || []);
         this.publishingInfo = new JournalInfo({
-            publisher: journal.publisher,
-            yearOfPublication: journal.yearOfPublication,
+            journal: journal.publisher,
+            date: journal.yearOfPublication,
             volume: journal.volume,
             issue: journal.issue
         });
