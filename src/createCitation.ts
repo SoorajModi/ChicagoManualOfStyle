@@ -4,9 +4,9 @@ import {JournalInterface} from "./Journal/journalInterface";
 import {Journal} from "./Journal/journal";
 import {WebpageInterface} from "./Website/webpageInterface";
 import {LectureInterface} from "./Lecture/lectureInterface";
-import {Lecture} from "./Lecture/lecture";
 
 const {webpageNote, webpageBibliography} = require("./Website/webpage");
+const {lectureNote, lectureBibliography} = require("./Lecture/lecture");
 
 function createBookCitation(info: BookInterface, pages: string[]) {
     let citation: Book = new Book(info);
@@ -65,8 +65,9 @@ function createWebpageCitation(info: WebpageInterface) {
 }
 
 function createLectureCitation(info: LectureInterface) {
-    let citation: Lecture = new Lecture(info);
-    return {bibliography: citation.bibliography(), note: [citation.note()]};
+    let note: string = lectureNote(info);
+    let bib: string = lectureBibliography(info);
+    return {bibliography: bib, note: [note]};
 }
 
 module.exports = {

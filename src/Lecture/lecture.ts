@@ -1,23 +1,17 @@
-import {AuthorList} from "../Author/authorList";
 import {LectureInterface} from "./lectureInterface";
-import {LectureInfo} from "./lectureInfo";
+const {createLecture} = require("./lectureInterface");
 
-export class Lecture {
-    professor: AuthorList;
-    courseTitle: string;
-    info: LectureInfo;
-
-    constructor(citation: LectureInterface) {
-        this.professor = new AuthorList(citation.professor || []);
-        this.courseTitle = citation.title;
-        this.info = new LectureInfo(citation.university || "", citation.city || "", citation.province || "", citation.date || "");
-    }
-
-    note(): string {
-        return this.professor.note() + "\"" + this.courseTitle + "\" " + this.info.note() + ".";
-    }
-
-    bibliography(): string {
-        return this.professor.bibliography() + "\"" + this.courseTitle + ".\" " + this.info.bibliography() + ".";
-    }
+function lectureNote(info: LectureInterface): string {
+    let citation = createLecture(info);
+    return citation.professor.note() + "\"" + citation.courseTitle + "\" " + citation.info.note() + ".";
 }
+
+function lectureBibliography(info: LectureInterface): string {
+    let citation = createLecture(info);
+    return citation.professor.bibliography() + "\"" + citation.courseTitle + ".\" " + citation.info.bibliography() + ".";
+}
+
+module.exports = {
+    lectureNote: lectureNote,
+    lectureBibliography: lectureBibliography
+};
