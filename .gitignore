@@ -44,6 +44,7 @@ jspm_packages/
 # Custom directories
 build
 .idea/
+.cc_token
 
 # TypeScript v1 declaration files
 typings/

@@ -27,3 +27,9 @@ jobs:
         
       - name: Run tests
         run: npm t
+
+      - name: Run code coverage
+        run: npm run coverage
+
+      - name: Send coverage to codecov
+        run: bash <(curl -s https://codecov.io/bash) -e ENV
