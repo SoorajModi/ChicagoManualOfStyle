@@ -1,33 +1,11 @@
-import {BookInfoInterface} from "./bookInfoInterface";
+import {BookInfoInterface, createBookInfo} from "./bookInfoInterface";
 
-const {createBookInfo} = require("./bookInfoInterface");
-
-// export class BookInfo {
-//     publisher: string;
-//     placeOfPublication: string;
-//     yearOfPublication: string;
-//
-//     constructor(info: BookInfoInterface) {
-//         this.publisher = info.publisher || "";
-//         this.placeOfPublication = info.placeOfPublication || "";
-//         this.yearOfPublication = info.yearOfPublication || "";
-//     }
-//
-//     note(): string {
-//         return (isBookInfoEmpty(this)) ? "" : "(" + createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ")";
-//     }
-//
-//     bibliography(): string {
-//         return (isBookInfoEmpty(this)) ? "" : createBookCitation(this.publisher, this.placeOfPublication, this.yearOfPublication) + ".";
-//     }
-// }
-
-function bookInfoNote(info: BookInfoInterface) {
+function bookInfoNote(info: BookInfoInterface): string {
     let citation = createBookInfo(info);
     return (isBookInfoEmpty(citation)) ? "" : "(" + createBookCitation(citation.publisher, citation.placeOfPublication, citation.yearOfPublication) + ")";
 }
 
-function bookInfoBibliography(info: BookInfoInterface) {
+function bookInfoBibliography(info: BookInfoInterface): string {
     let citation = createBookInfo(info);
     return (isBookInfoEmpty(citation)) ? "" : createBookCitation(citation.publisher, citation.placeOfPublication, citation.yearOfPublication) + ".";
 }
@@ -50,7 +28,4 @@ function pubBookCitation(pub: string, year: string): string {
     return (year != "") ? (pub + ", ") : pub;
 }
 
-module.exports = {
-    bookInfoNote: bookInfoNote,
-    bookInfoBibliography: bookInfoBibliography
-};
+export {bookInfoNote, bookInfoBibliography};

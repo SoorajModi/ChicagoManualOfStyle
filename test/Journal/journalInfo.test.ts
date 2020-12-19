@@ -1,4 +1,4 @@
-const {journalInfoCitation} = require("../../src/Journal/journalInfo");
+import {journalInfoCitation} from "../../src/Journal/journalInfo";
 
 let info = {
     journal: "Journal",
@@ -16,34 +16,34 @@ let emptyPublishingInfo = {};
 
 describe("journalInfoCitation() testing", () => {
     test("should create citation for journal with all fields specified", () => {
-       expect(journalInfoCitation(info)).toBe("Journal vol, no. iss (date):");
+        expect(journalInfoCitation(info)).toBe("Journal vol, no. iss (date):");
     });
 
     test("should create citation for journal with missing journal title", () => {
-       expect(journalInfoCitation(noJournalTitle)).toBe("vol, no. iss (date):");
+        expect(journalInfoCitation(noJournalTitle)).toBe("vol, no. iss (date):");
     });
 
     test("should create citation for journal with missing volume information", () => {
-       expect(journalInfoCitation(noVol)).toBe("Journal, no. iss (date):");
+        expect(journalInfoCitation(noVol)).toBe("Journal, no. iss (date):");
     });
 
     test("should create citation for journal with missing issue information", () => {
-       expect(journalInfoCitation(noIss)).toBe("Journal vol, (date):");
+        expect(journalInfoCitation(noIss)).toBe("Journal vol, (date):");
     });
 
     test("should create citation for journal with missing date information", () => {
-       expect(journalInfoCitation(noDate)).toBe("Journal vol, no. iss:");
+        expect(journalInfoCitation(noDate)).toBe("Journal vol, no. iss:");
     });
 
-    test("should create citation with no volume or issue specified", () =>  {
+    test("should create citation with no volume or issue specified", () => {
         expect(journalInfoCitation(noVolIss)).toBe("Journal, (date):");
     });
 
     test("should create citation with only title specified", () => {
-       expect(journalInfoCitation(onlyTitle)).toBe("Journal:");
+        expect(journalInfoCitation(onlyTitle)).toBe("Journal:");
     });
 
     test("should create citation for journal with no fields specified", () => {
-       expect(journalInfoCitation(emptyPublishingInfo)).toBe("");
+        expect(journalInfoCitation(emptyPublishingInfo)).toBe("");
     });
 });

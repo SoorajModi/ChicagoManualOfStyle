@@ -1,4 +1,5 @@
 import {AuthorList} from "../Author/authorList";
+import {BookInfoInterface} from "./bookInfoInterface";
 
 export interface BookInterface {
     title: string;
@@ -9,7 +10,7 @@ export interface BookInterface {
     url?: string;
 }
 
-function createBook(info: BookInterface) {
+function createBook(info: BookInterface): {title: string, authorList: AuthorList, info: BookInfoInterface} {
     return {
         title: info.title,
         authorList: new AuthorList(info.authorList || []),
@@ -21,6 +22,4 @@ function createBook(info: BookInterface) {
     }
 }
 
-module.exports = {
-    createBook: createBook
-};
+export {createBook};

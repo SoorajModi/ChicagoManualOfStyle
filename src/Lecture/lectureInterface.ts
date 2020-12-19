@@ -10,7 +10,7 @@ export interface LectureInterface {
     date?: string;
 }
 
-function createLecture(info: LectureInterface) {
+function createLecture(info: LectureInterface): {courseTitle: string, professor: AuthorList, info: LectureInfo} {
     return {
         courseTitle: info.title,
         professor: new AuthorList(info.professor || []),
@@ -18,6 +18,4 @@ function createLecture(info: LectureInterface) {
     }
 }
 
-module.exports = {
-    createLecture: createLecture
-};
+export {createLecture};

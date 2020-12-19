@@ -1,4 +1,5 @@
 import {AuthorList} from "../Author/authorList";
+import {JournalInfoInterface} from "./journalInfoInterface";
 
 export interface JournalInterface {
     title: string;
@@ -12,7 +13,7 @@ export interface JournalInterface {
     url?: string;
 }
 
-function createJournal(info: JournalInterface) {
+function createJournal(info: JournalInterface): {title: string, authorList: AuthorList, info: JournalInfoInterface, startRange: string, endRange: string, url: string} {
     return {
         title: info.title,
         authorList: new AuthorList(info.authorList || []),
@@ -28,6 +29,4 @@ function createJournal(info: JournalInterface) {
     }
 }
 
-module.exports = {
-    createJournal: createJournal
-};
+export {createJournal};

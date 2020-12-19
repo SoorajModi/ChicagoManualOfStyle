@@ -9,7 +9,7 @@ export interface WebpageInterface {
     date?: string;
 }
 
-function createWebpage(info: WebpageInterface): any {
+function createWebpage(info: WebpageInterface): {title: string, nameOfSite: string, url: string, authorList: AuthorList, publisher: string, date: string} {
     return {
         title: info.title,
         nameOfSite: info.nameOfSite,
@@ -20,6 +20,4 @@ function createWebpage(info: WebpageInterface): any {
     }
 }
 
-module.exports = {
-  createWebpage: createWebpage
-};
+export {createWebpage};

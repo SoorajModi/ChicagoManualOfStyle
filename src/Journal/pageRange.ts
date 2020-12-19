@@ -16,7 +16,4 @@ function isNotANumber(start: number, end: number, num: number): boolean {
     return (isNaN(num) || isNaN(start) || isNaN(end))
 }
 
-module.exports = {
-    getRange: getRange,
-    isInRange: isInRange
-};
+export {getRange, isInRange};

@@ -1,4 +1,4 @@
-const {webpageNote, webpageBibliography} = require("../../src/Website/webpage");
+import {webpageNote, webpageBibliography}  from "../../src/Website/webpage";
 
 let webpage = {
     title: "Title of Webpage",

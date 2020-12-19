@@ -1,6 +1,4 @@
-import {JournalInfoInterface} from "./journalInfoInterface";
-
-const {createJournalInfo} = require("./journalInfoInterface");
+import {JournalInfoInterface, createJournalInfo} from "./journalInfoInterface";
 
 function journalInfoCitation(info: JournalInfoInterface): string {
     let citation = createJournalInfo(info);
@@ -31,6 +29,4 @@ function dateCitation(date: string): string {
     return (date != "") ? " (" + date + ")" : date;
 }
 
-module.exports = {
-    journalInfoCitation: journalInfoCitation
-};
+export {journalInfoCitation};

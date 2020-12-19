@@ -1,4 +1,4 @@
-const {lectureNote, lectureBibliography} = require("../../src/Lecture/lecture");
+import {lectureNote, lectureBibliography} from "../../src/Lecture/lecture";
 
 let lecture = {title: "Course", professor: [{first: "First", last: "Last"}], university: "University", province: "Province", city: "City", date: "Date"};
 

@@ -1,4 +1,4 @@
-const {bookNote, bookBibliography, eBookNote, eBookBibliography} = require("../../src/Book/book");
+import {bookNote, bookBibliography, eBookNote, eBookBibliography} from "../../src/Book/book";
 
 let book = {
     title: "The Great Gatsby",
@@ -117,7 +117,7 @@ describe("Book.eNote() testing", () => {
 });
 
 describe("Book.eBibliography() testing", () => {
-   test("should create book bibliography citation with URL", () => {
-      expect(eBookBibliography(book, "www.thegreatgatsby.com")).toBe("Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.");
-   });
+    test("should create book bibliography citation with URL", () => {
+        expect(eBookBibliography(book, "www.thegreatgatsby.com")).toBe("Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.");
+    });
 });

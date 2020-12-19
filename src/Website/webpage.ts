@@ -1,5 +1,5 @@
 import {WebpageInterface} from "./webpageInterface";
-const {createWebpage} = require("./webpageInterface");
+import {createWebpage} from "./webpageInterface";
 
 function webpageNote(info: WebpageInterface): string {
     let webpage = createWebpage(info);
@@ -15,7 +15,4 @@ function publisherCitation(publisher: string): string {
     return (publisher == "") ? publisher : publisher + ", ";
 }
 
-module.exports = {
-  webpageNote: webpageNote,
-  webpageBibliography: webpageBibliography
-};
+export {webpageNote, webpageBibliography};

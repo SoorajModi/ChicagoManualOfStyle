@@ -5,7 +5,7 @@ export interface JournalInfoInterface {
     issue?: string;
 }
 
-function createJournalInfo(info: JournalInfoInterface) {
+function createJournalInfo(info: JournalInfoInterface): JournalInfoInterface {
     return {
         journal: info.journal || "",
         date: info.date || "",
@@ -14,6 +14,4 @@ function createJournalInfo(info: JournalInfoInterface) {
     }
 }
 
-module.exports = {
-    createJournalInfo: createJournalInfo
-};
+export {createJournalInfo};

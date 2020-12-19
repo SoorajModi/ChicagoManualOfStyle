@@ -4,7 +4,7 @@ export interface BookInfoInterface {
     yearOfPublication?: string;
 }
 
-function createBookInfo(info: BookInfoInterface) {
+function createBookInfo(info: BookInfoInterface): {publisher: string, placeOfPublication: string, yearOfPublication: string} {
     return {
         publisher: info.publisher || "",
         placeOfPublication: info.placeOfPublication || "",
@@ -12,6 +12,4 @@ function createBookInfo(info: BookInfoInterface) {
     }
 }
 
-module.exports = {
-    createBookInfo: createBookInfo
-};
+export {createBookInfo};

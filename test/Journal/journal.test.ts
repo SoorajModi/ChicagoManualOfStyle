@@ -1,4 +1,4 @@
-const {journalNote, journalBibliography, eJournalNote, eJournalBibliography} = require("../../src/Journal/journal");
+import {journalNote, journalBibliography, eJournalNote, eJournalBibliography} from "../../src/Journal/journal";
 
 let journal = {
     title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
