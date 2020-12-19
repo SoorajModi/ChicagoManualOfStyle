@@ -58,3 +58,7 @@ To test: `npm t` or `npm run test`
 To run tests with coverage: `npm run coverage`
 
 To run linter: `npm run lint`
+
+## License
+
+MIT
