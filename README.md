@@ -24,9 +24,28 @@ npm i chicagomanualofstyle
 ## Usage
 
 ```bash
-import * as CMOS from ("ChicagoManualOfStyle");
+let CMoS = require('chicagomanualofstyle');
 
-console.log(CMoS.creteBookCitation({title: "Your Book Title"}, ["1"]));
+let str = CMOS.createBookCitation({
+    title: "The Great Gatsby",
+    authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+    publisher: "Charles Scribner's Sons",
+    placeOfPublication: "New York",
+    yearOfPublication: "2000"
+}, ["1"]);
+
+console.log(str);
+```
+
+This will return:
+
+```bash
+{
+  bibliography: "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000.",
+  notes: [
+    "F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1."
+  ]
+}
 ```
 
 ## How to Run Locally
