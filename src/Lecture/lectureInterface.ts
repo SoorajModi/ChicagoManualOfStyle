@@ -1,5 +1,5 @@
 import {AuthorList} from "../Author/authorList";
-import {LectureInfo} from "./lectureInfo";
+import {LectureInfoInterface} from "./lectureInfoInterface";
 
 export interface LectureInterface {
     title: string;
@@ -10,11 +10,11 @@ export interface LectureInterface {
     date?: string;
 }
 
-function createLecture(info: LectureInterface): {courseTitle: string, professor: AuthorList, info: LectureInfo} {
+function createLecture(info: LectureInterface): {courseTitle: string, professor: AuthorList, info: LectureInfoInterface} {
     return {
         courseTitle: info.title,
         professor: new AuthorList(info.professor || []),
-        info: new LectureInfo(info.university || "", info.city || "", info.province || "", info.date || "")
+        info: {university: info.university || "", city: info.city || "", province: info.province || "", date: info.date || ""}
     }
 }
 

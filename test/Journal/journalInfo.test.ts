@@ -6,13 +6,13 @@ let info = {
     issue: "iss",
     date: "date"
 };
-let noJournalTitle = {volume: "vol", issue: "iss", date: "date"};
-let noVol = {journal: "Journal", issue: "iss", date: "date"};
-let noIss = {journal: "Journal", volume: "vol", date: "date"};
-let noDate = {journal: "Journal", volume: "vol", issue: "iss"};
-let noVolIss = {journal: "Journal", date: "date"};
-let onlyTitle = {journal: "Journal"};
-let emptyPublishingInfo = {};
+let noJournalTitle = {journal: "", volume: "vol", issue: "iss", date: "date"};
+let noVol = {journal: "Journal", volume: "", issue: "iss", date: "date"};
+let noIss = {journal: "Journal", volume: "vol", issue: "", date: "date"};
+let noDate = {journal: "Journal", volume: "vol", issue: "iss", date: ""};
+let noVolIss = {journal: "Journal", volume: "", issue: "", date: "date"};
+let onlyTitle = {journal: "Journal", volume: "", issue: "", date: ""};
+let emptyPublishingInfo = {journal: "", volume: "", issue: "", date: ""};
 
 describe("journalInfoCitation() testing", () => {
     test("should create citation for journal with all fields specified", () => {
