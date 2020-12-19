@@ -5,7 +5,7 @@ export interface JournalInfoInterface {
     issue?: string;
 }
 
-function createJournalInfo(info: JournalInfoInterface): JournalInfoInterface {
+function createJournalInfo(info: JournalInfoInterface): {journal: string, date: string, volume: string, issue: string} {
     return {
         journal: info.journal || "",
         date: info.date || "",
