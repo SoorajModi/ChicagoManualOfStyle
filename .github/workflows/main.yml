@@ -32,4 +32,4 @@ jobs:
         run: npm run coverage
 
       - name: Send coverage to codecov
-        run: bash <(curl -s https://codecov.io/bash) -e ENV
+        run: bash <(curl -s https://codecov.io/bash) -e CODECOV_TOKEN
