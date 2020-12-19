@@ -1,8 +1,8 @@
 {
   "name": "chicagomanualofstyle",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
-  "main": "build/src/createCitation.js",
+  "main": "dist/src/createCitation.js",
   "scripts": {
     "test": "jest --config jest.config.js",
     "coverage": "jest --coverage",
