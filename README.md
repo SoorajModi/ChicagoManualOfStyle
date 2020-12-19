@@ -14,8 +14,22 @@ This is an application to create citations in Chicago Manual of Style (CMoS) 17t
     - Journal / Electronic Journals
     - Lectures
     - Webpages
+    
+## Installation
 
-## How to Run
+```bash
+npm i chicagomanualofstyle
+```
+
+## Usage
+
+```bash
+import * as CMOS from ("ChicagoManualOfStyle");
+
+console.log(CMoS.creteBookCitation({title: "Your Book Title"}, ["1"]));
+```
+
+## How to Run Locally
 
 Install node packages: `npm install`
 

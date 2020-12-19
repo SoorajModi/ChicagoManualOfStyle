@@ -7,7 +7,7 @@ import {webpageNote, webpageBibliography} from "./Website/webpage";
 import {lectureNote, lectureBibliography} from "./Lecture/lecture";
 import {journalNote, journalBibliography, eJournalNote, eJournalBibliography} from "./Journal/journal";
 
-function createBookCitation(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
+export function createBookCitation(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
     let bib = bookBibliography(info);
 
     let notes: string[] = [];
@@ -19,7 +19,7 @@ function createBookCitation(info: BookInterface, pages: string[]): {bibliography
     return {bibliography: bib, notes: notes};
 }
 
-function createEBookCitation(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]}  {
+export function createEBookCitation(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]}  {
     if (!info.url) throw new Error("URL not specified");
     let bib = eBookBibliography(info, info.url);
 
@@ -32,7 +32,7 @@ function createEBookCitation(info: BookInterface, pages: string[]): {bibliograph
     return {bibliography: bib, notes: notes};
 }
 
-function createJournalCitation(info: JournalInterface, pages: string[]): {bibliography: string, notes: string[]}  {
+export function createJournalCitation(info: JournalInterface, pages: string[]): {bibliography: string, notes: string[]}  {
     let bib = journalBibliography(info);
 
     let notes: string[] = [];
@@ -44,7 +44,7 @@ function createJournalCitation(info: JournalInterface, pages: string[]): {biblio
     return {bibliography: bib, notes: notes};
 }
 
-function createEJournalCitation(info: JournalInterface, pages: string[]): {bibliography: string, notes: string[]}  {
+export function createEJournalCitation(info: JournalInterface, pages: string[]): {bibliography: string, notes: string[]}  {
     if (!info.url) throw new Error("URL not specified");
 
     let bib = eJournalBibliography(info, info.url);
@@ -57,23 +57,14 @@ function createEJournalCitation(info: JournalInterface, pages: string[]): {bibli
     return {bibliography: bib, notes: notes};
 }
 
-function createWebpageCitation(info: WebpageInterface): {bibliography: string, notes: string[]}  {
+export function createWebpageCitation(info: WebpageInterface): {bibliography: string, notes: string[]}  {
     let note: string = webpageNote(info);
     let bib: string = webpageBibliography(info);
     return {bibliography: bib, notes: [note]};
 }
 
-function createLectureCitation(info: LectureInterface): {bibliography: string, notes: string[]}  {
+export function createLectureCitation(info: LectureInterface): {bibliography: string, notes: string[]}  {
     let note: string = lectureNote(info);
     let bib: string = lectureBibliography(info);
     return {bibliography: bib, notes: [note]};
-}
-
-export {
-    createBookCitation,
-    createEBookCitation,
-    createJournalCitation,
-    createEJournalCitation,
-    createLectureCitation,
-    createWebpageCitation
 }
