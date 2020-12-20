@@ -1,4 +1,4 @@
-import {journalInfoCitation} from "../../src/Journal/journalInfo";
+import journalInfoCitation from "../../src/Journal/journalInfo";
 
 let info = {
     journal: "Journal",

@@ -1,5 +1,5 @@
-import {AuthorList} from "../Author/authorList";
-import {BookInfoInterface} from "./bookInfoInterface";
+import AuthorList from '../Author/authorList';
+import { BookInfoInterface } from './bookInfoInterface';
 
 export interface BookInterface {
     title: string;
@@ -10,16 +10,14 @@ export interface BookInterface {
     url?: string;
 }
 
-function createBook(info: BookInterface): {title: string, authorList: AuthorList, info: BookInfoInterface} {
-    return {
-        title: info.title,
-        authorList: new AuthorList(info.authorList || []),
-        info: {
-            publisher: info.publisher || "",
-            placeOfPublication: info.placeOfPublication || "",
-            yearOfPublication: info.yearOfPublication || ""
-        }
-    }
+export function createBook(info: BookInterface): {title: string, authorList: AuthorList, info: BookInfoInterface} {
+  return {
+    title: info.title,
+    authorList: new AuthorList(info.authorList || []),
+    info: {
+      publisher: info.publisher || '',
+      placeOfPublication: info.placeOfPublication || '',
+      yearOfPublication: info.yearOfPublication || '',
+    },
+  };
 }
-
-export {createBook};
