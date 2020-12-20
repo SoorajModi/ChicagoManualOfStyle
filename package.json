@@ -1,7 +1,7 @@
 {
   "name": "chicagomanualofstyle",
   "version": "1.1.1",
-  "description": "",
+  "description": "An NPM module to create citations in Chicago Manual of Style 17th Edition (Notes-Bibliography).",
   "main": "dist/src/cmosCitation.js",
   "scripts": {
     "test": "jest --config jest.config.js",

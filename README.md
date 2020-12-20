@@ -59,13 +59,13 @@ This will return:
 
 ```
 let citation = CMOS.eBook({
-        title: "The Great Gatsby",
-        authorList: [{first: "F. Scott", last: "Fitzgerald"}],
-        publisher: "Charles Scribner's Sons",
-        placeOfPublication: "New York",
-        yearOfPublication: "2000",
-        url: "www.thegreatgatsby.com"
-    }, ["1"]);
+    title: "The Great Gatsby",                              // Required
+    authorList: [{first: "F. Scott", last: "Fitzgerald"}],  // Optional
+    publisher: "Charles Scribner's Sons",                   // Optional
+    placeOfPublication: "New York",                         // Optional
+    yearOfPublication: "2000",                              // Optional
+    url: "www.thegreatgatsby.com"                           // Required
+}, ["1"]);
 
 console.log(citation);
 ```
@@ -85,13 +85,14 @@ This will return:
 
 ```
 let citation = CMOS.journal({
-            title: "Title", 
-            authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
-            yearOfPublication: "Year", 
-            volume: "vol", 
-            issue: "iss", 
-            startRange: "1", 
-            endRange: "10"
+    title: "Title",                                 // Required
+    authorList: [{first: "First", last: "Last"}],   // Optional
+    publisher: "Publisher",                         // Optional
+    yearOfPublication: "Year",                      // Optional             
+    volume: "vol",                                  // Optional
+    issue: "iss",                                   // Optional
+    startRange: "1",                                // Optional
+    endRange: "10"                                  // Optional
 }, ["1"]);
 
 console.log(citation);
@@ -110,14 +111,15 @@ returns
 
 ```
 let citation = eJournal({
-    title: "Title", 
-    authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
-    yearOfPublication: "Year", 
-    volume: "vol", 
-    issue: "iss", 
-    startRange: "1",
-    endRange: "10",
-    url: "www.test.com"
+    title: "Title",                                 // Required
+    authorList: [{first: "First", last: "Last"}],   // Optional
+    publisher: "Publisher",                         // Optional
+    yearOfPublication: "Year",                      // Optional
+    volume: "vol",                                  // Optional
+    issue: "iss",                                   // Optional
+    startRange: "1",                                // Optional
+    endRange: "10",                                 // Optional
+    url: "www.test.com"                             // Required
 }, ["1"]);
 
 console.log(citation);
@@ -136,12 +138,12 @@ Returns:
 
 ```
 let citation = CMOS.webpage({
-    title: "Title of Webpage",
-    authorList: [{first: "First", last: "Last"}],
-    publisher: "testPublisher",
-    nameOfSite: "testWebsite",
-    date: "2000",
-    url: "wwww.testwebsite.com"
+    title: "Title of Webpage",                      // Required
+    authorList: [{first: "First", last: "Last"}],   // Optional
+    publisher: "testPublisher",                     // Optional
+    nameOfSite: "testWebsite",                      // Required
+    date: "2000",                                   // Optional
+    url: "wwww.testwebsite.com"                     // Required
 });
 
 console.log
@@ -162,13 +164,13 @@ Returns:
 
 ```
 let citation = CMOS.lecture({
-    title: "Course",
-    professor: [{first: "First", last: "Last"}],
-    university: "University",
-    province: "Province",
-    city: "City",
-    date: "Date"
-});
+    title: "Course",                                // Required
+    professor: [{first: "First", last: "Last"}],    // Optional
+    university: "University",                       // Optional
+    province: "Province",                           // Optional
+    city: "City",                                   // Optional
+    date: "Date"                                    // Optional
+}); 
 
 console.log(citation);
 ```
