@@ -12,8 +12,28 @@ export function journalBibliography(info: JournalInterface): string {
   return `${citation.authorList.bibliography()}"${citation.title}." ${journalInfoCitation(citation.info)} ${getRange(citation.startRange, citation.endRange)}.`;
 }
 
+export function journalNoteList(info: JournalInterface, pages: string[]): string[] {
+  let notes: string[] = [];
+
+  for (let page of pages) {
+    notes.push(journalNote(info, page));
+  }
+
+  return notes;
+}
+
 export function eJournalNote(info: JournalInterface, page: string, url: string): string {
   return (`${(journalNote(info, page)).replace(/.$/, ', ') + url}.`);
+}
+
+export function eJournalNoteList(info: JournalInterface, pages: string[], url: string): string[] {
+  let notes: string[] = [];
+
+  for (let page of pages) {
+    notes.push(eJournalNote(info, page, url));
+  }
+
+  return notes;
 }
 
 export function eJournalBibliography(info: JournalInterface, url: string): string {

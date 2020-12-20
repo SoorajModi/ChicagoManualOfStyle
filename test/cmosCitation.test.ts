@@ -1,15 +1,15 @@
 import {
-    createBookCitation,
-    createEBookCitation,
-    createJournalCitation,
-    createEJournalCitation,
-    createWebpageCitation,
-    createLectureCitation
-} from "../src/createCitation";
+    bookCitation,
+    eBookCitation,
+    journalCitation,
+    eJournalCitation,
+    webpageCitation,
+    lectureCitation
+} from "../src/cmosCitation";
 
 describe("createBookCitation() testing", () => {
     test("should create book citation", () => {
-        let citation = createBookCitation({
+        let citation = bookCitation({
             title: "The Great Gatsby",
             authorList: [{first: "F. Scott", last: "Fitzgerald"}],
             publisher: "Charles Scribner's Sons",
@@ -24,7 +24,7 @@ describe("createBookCitation() testing", () => {
 });
 
 describe("createEBookCitation() testing", () => {
-    let citation = createEBookCitation({
+    let citation = eBookCitation({
         title: "The Great Gatsby",
         authorList: [{first: "F. Scott", last: "Fitzgerald"}],
         publisher: "Charles Scribner's Sons",
@@ -42,7 +42,7 @@ describe("createEBookCitation() testing", () => {
 
     test("should throw error if missing url field", () => {
         try {
-            createEBookCitation({title: "The Great Gatsby",}, ["1"]);
+            eBookCitation({title: "The Great Gatsby",}, ["1"]);
             expect(true).toBe(false);   // Will trigger if no error thrown
         } catch (e) {
             expect(e.message).toBe("URL not specified");
@@ -52,7 +52,7 @@ describe("createEBookCitation() testing", () => {
 
 describe("createJournalCitation() testing", () => {
     test("should create journal citation", () => {
-        let citation = createJournalCitation({
+        let citation = journalCitation({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10"
         }, ["1"]);
@@ -65,7 +65,7 @@ describe("createJournalCitation() testing", () => {
 
 describe("createEJournalCitation() testing", () => {
     test("should create eJournal citation", () => {
-        let citation = createEJournalCitation({
+        let citation = eJournalCitation({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10",
             url: "www.test.com"
@@ -78,7 +78,7 @@ describe("createEJournalCitation() testing", () => {
 
     test("should throw error if missing url field", () => {
         try {
-            createEJournalCitation({title: "The Great Gatsby"}, ["1"]);
+            eJournalCitation({title: "The Great Gatsby"}, ["1"]);
             expect(true).toBe(false);   // Will trigger if no error thrown
         } catch (e) {
             expect(e.message).toBe("URL not specified");
@@ -88,7 +88,7 @@ describe("createEJournalCitation() testing", () => {
 
 describe("createWebpageCitation() testing", () => {
     test("should create webpage citation", () => {
-        let citation = createWebpageCitation({
+        let citation = webpageCitation({
             title: "Title of Webpage",
             authorList: [{first: "First", last: "Last"}],
             publisher: "testPublisher",
@@ -105,7 +105,7 @@ describe("createWebpageCitation() testing", () => {
 
 describe("createLectureCitation() testing", () => {
     test("should create lecture citation", () => {
-        let citation = createLectureCitation({
+        let citation = lectureCitation({
             title: "Course",
             professor: [{first: "First", last: "Last"}],
             university: "University",

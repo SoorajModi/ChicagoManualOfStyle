@@ -11,8 +11,28 @@ export function bookBibliography(info: BookInterface): string {
   return (`${citation.authorList.bibliography() + citation.title}. ${bookInfoBibliography(citation.info)}`);
 }
 
+export function bookNoteList(info: BookInterface, pages: string[]): string[] {
+  let notes: string[] = [];
+
+  for (let page of pages) {
+    notes.push(bookNote(info, page));
+  }
+
+  return notes;
+}
+
 export function eBookNote(info: BookInterface, page: string, url: string): string {
   return (`${(bookNote(info, page)).replace(/.$/, ', ') + url}.`);
+}
+
+export function eBookNoteList(info: BookInterface, pages: string[], url: string): string[] {
+  let notes: string[] = [];
+
+  for (let page of pages) {
+    notes.push(eBookNote(info, page, url));
+  }
+
+  return notes;
 }
 
 export function eBookBibliography(info: BookInterface, url: string): string {

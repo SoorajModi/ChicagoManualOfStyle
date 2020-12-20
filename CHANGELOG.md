@@ -9,8 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade to airbnb style guidelines
 - Add CD to NPM to pipeline
 
+## Changed
+- Refactor code
+- Rename createCitation -> cmosCitation and core function names
+
 ## [1.0.1-4]
-### Added
+### Fixed
 - Bug fixes
 
 ## [1.0.0] - Initial Release
