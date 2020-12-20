@@ -3,7 +3,7 @@
 ![npm_version](https://img.shields.io/npm/v/chicagomanualofstyle)
 ![code_cov](https://img.shields.io/codecov/c/github/SoorajModi/ChicagoManualOfStyle)
 ![build](https://img.shields.io/github/workflow/status/SoorajModi/ChicagoManualOfStyle/Main)
-![license](https://img.shields.io/badge/license-GNU_V2-brightgreen)
+![license](https://img.shields.io/badge/license-MIT-brightgreen)
 
 This is an application to create citations in Chicago Manual of Style (CMoS) 17th ed. in Note-Bibliography style: www.chicagomanualofstyle.org.
 
