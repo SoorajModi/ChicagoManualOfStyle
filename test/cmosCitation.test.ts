@@ -143,6 +143,18 @@ describe("createWebpageCitation() testing", () => {
             "notes": ["First Last, \"Title of Webpage,\" testWebsite, testPublisher, 2000, wwww.testwebsite.com."]
         });
     });
+
+    test("should create webpage citation with only title and url", () => {
+        let citation = webpage({
+            title: "Title of Webpage",
+            nameOfSite: "testWebsite",
+            url: "wwww.testwebsite.com"
+        });
+        expect(citation).toStrictEqual({
+            "bibliography": "\"Title of Webpage.\" testWebsite. wwww.testwebsite.com.",
+            "notes": ["\"Title of Webpage,\" testWebsite, wwww.testwebsite.com."]
+        });
+    });
 });
 
 describe("createLectureCitation() testing", () => {
@@ -158,6 +170,17 @@ describe("createLectureCitation() testing", () => {
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Course.\" Lecture, University, City, Province, Date.",
             "notes": ["First Last, \"Course\" (lecture, University, City, Province, Date)."]
-        })
+        });
+    });
+
+    test("should create lecture with only title and prof", () => {
+        let citation = lecture({
+            title: "Course",
+            professor: [{first: "First", last: "Last"}]
+        });
+        expect(citation).toStrictEqual({
+            "bibliography": "Last, First. \"Course.\" Lecture.",
+            "notes": ["First Last, \"Course\" (lecture)."]
+        });
     });
 });
