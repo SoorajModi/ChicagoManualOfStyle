@@ -1,6 +1,6 @@
-import {bookInfoNote, bookInfoBibliography, isBookInfoEmpty} from './bookInfo';
+import { bookInfoNote, bookInfoBibliography, isBookInfoEmpty } from './bookInfo';
 import { BookInterface, createBook } from './bookInterface';
-import {BookInfoInterface} from "./bookInfoInterface";
+import { BookInfoInterface } from './bookInfoInterface';
 
 export function bookNote(info: BookInterface, page: string): string {
   let citation = createBook(info);
@@ -8,7 +8,7 @@ export function bookNote(info: BookInterface, page: string): string {
 }
 
 export function bookShortNote(info: BookInterface, page: string): string {
-  return getShortNotePrefix(info) + page + ".";
+  return `${getShortNotePrefix(info) + page}.`;
 }
 
 export function bookBibliography(info: BookInterface): string {
@@ -45,10 +45,10 @@ export function eBookBibliography(info: BookInterface, url: string): string {
 }
 
 function addSpaceIfInfoPresent(info: BookInfoInterface): string {
-  return isBookInfoEmpty(info) ? "" : " ";
+  return isBookInfoEmpty(info) ? '' : ' ';
 }
 
 function getShortNotePrefix(info: BookInterface): string {
   let citation = createBook(info);
-  return (citation.authorList.authors.length === 0) ? ("\"" + citation.title + ",\" ") : (citation.authorList.authors[0].last + ", ");
+  return (citation.authorList.authors.length === 0) ? (`"${citation.title}," `) : (`${citation.authorList.authors[0].last}, `);
 }

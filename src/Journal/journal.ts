@@ -1,8 +1,8 @@
 import { JournalInterface, createJournal } from './journalInterface';
-import journalInfoCitation, {noPublishingInfo} from './journalInfo';
+import journalInfoCitation, { noPublishingInfo } from './journalInfo';
 import { getRange } from './pageRange';
-import {JournalInfoInterface} from "./journalInfoInterface";
-import {BookInterface, createBook} from "../Book/bookInterface";
+import { JournalInfoInterface } from './journalInfoInterface';
+import { BookInterface } from '../Book/bookInterface';
 
 export function journalNote(info: JournalInterface, page: string): string {
   let citation = createJournal(info);
@@ -10,7 +10,7 @@ export function journalNote(info: JournalInterface, page: string): string {
 }
 
 export function journalShortNote(info: JournalInterface, page: string): string {
-  return getShortNotePrefix(info) + page + ".";
+  return `${getShortNotePrefix(info) + page}.`;
 }
 
 export function journalBibliography(info: JournalInterface): string {
@@ -47,14 +47,14 @@ export function eJournalBibliography(info: JournalInterface, url: string): strin
 }
 
 function isSpaceRequired(info: JournalInfoInterface): string {
-  return (noPublishingInfo(info)) ? "" : " ";
+  return (noPublishingInfo(info)) ? '' : ' ';
 }
 
 function isPeriodRequired(info: JournalInfoInterface, start: string): string {
-  return (noPublishingInfo(info) && start === "") ? "" : ".";
+  return (noPublishingInfo(info) && start === '') ? '' : '.';
 }
 
 function getShortNotePrefix(info: BookInterface): string {
   let citation = createJournal(info);
-  return (citation.authorList.authors.length === 0) ? ("\"" + citation.title + ",\" ") : (citation.authorList.authors[0].last + ", ");
+  return (citation.authorList.authors.length === 0) ? (`"${citation.title}," `) : (`${citation.authorList.authors[0].last}, `);
 }

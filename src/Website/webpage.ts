@@ -15,9 +15,9 @@ function publisherCitation(publisher: string): string {
 }
 
 function isCommaRequired(pub: string, date: string): string {
-  return (pub === "" && date === "") ? "" : ", ";
+  return (pub === '' && date === '') ? '' : ', ';
 }
 
 function isPeriodRequired(pub: string, date: string): string {
-  return (pub === "" && date === "") ? "" : ". ";
+  return (pub === '' && date === '') ? '' : '. ';
 }
