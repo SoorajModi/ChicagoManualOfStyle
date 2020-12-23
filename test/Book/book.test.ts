@@ -1,4 +1,4 @@
-import {bookNote, bookBibliography, eBookNote, eBookBibliography} from "../../src/Book/book";
+import {bookNote, bookBibliography, eBookNote, eBookBibliography, bookShortNote} from "../../src/Book/book";
 
 let book = {
     title: "The Great Gatsby",
@@ -66,6 +66,16 @@ describe("Book.note() testing", () => {
 
     test("should create note citation with four+ authors", () => {
         expect(bookNote(fourAuthBook, "1")).toBe("F. Scott Fitzgerald et al., The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+    });
+});
+
+describe("Book.shortNote() testing", () => {
+    test("should create short note", () => {
+        expect(bookShortNote(book, "1")).toBe("Fitzgerald, 1.");
+    });
+
+    test("should create short note with no author", () => {
+        expect(bookShortNote(noAuthorBook, "1")).toBe("\"The Great Gatsby,\" 1.");
     });
 });
 
