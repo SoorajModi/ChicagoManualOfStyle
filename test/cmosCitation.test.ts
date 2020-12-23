@@ -16,34 +16,52 @@ describe("createBookCitation() testing", () => {
             placeOfPublication: "New York",
             yearOfPublication: "2000"
         }, ["1"]);
+
         expect(citation).toStrictEqual({
             "bibliography": "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000.",
             "notes": ["F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1."]
         })
     });
+
+    test("should create book citation with only title", () => {
+       let citation = book({
+           title: "The Great Gatsby"
+       }, ["1"]);
+
+       expect(citation).toStrictEqual({"bibliography": "The Great Gatsby.", "notes": ["The Great Gatsby, 1."]});
+    });
 });
 
 describe("createEBookCitation() testing", () => {
-    let citation = eBook({
-        title: "The Great Gatsby",
-        authorList: [{first: "F. Scott", last: "Fitzgerald"}],
-        publisher: "Charles Scribner's Sons",
-        placeOfPublication: "New York",
-        yearOfPublication: "2000",
-        url: "www.thegreatgatsby.com"
-    }, ["1"]);
-
     test("should create eBook citation", () => {
+        let citation = eBook({
+            title: "The Great Gatsby",
+            authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+            publisher: "Charles Scribner's Sons",
+            placeOfPublication: "New York",
+            yearOfPublication: "2000",
+            url: "www.thegreatgatsby.com"
+        }, ["1"]);
+
         expect(citation).toStrictEqual({
             "bibliography": "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.",
             "notes": ["F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com."]
         });
     });
 
+    test("should create eBook citation with only title and url", () => {
+        let citation = eBook({
+            title: "The Great Gatsby",
+            url: "www.thegreatgatsby.com"
+        }, ["1"]);
+
+        expect(citation).toStrictEqual({"bibliography": "The Great Gatsby. www.thegreatgatsby.com.", "notes": ["The Great Gatsby, 1, www.thegreatgatsby.com."]});
+    });
+
     test("should throw error if missing url field", () => {
         try {
-            eBook({title: "The Great Gatsby",}, ["1"]);
-            expect(true).toBe(false);   // Will trigger if no error thrown
+            eBook({title: "The Great Gatsby"}, ["1"]);
+            fail("No error thrown with missing URL field");
         } catch (e) {
             expect(e.message).toBe("URL not specified");
         }
@@ -59,7 +77,19 @@ describe("createJournalCitation() testing", () => {
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10.",
             "notes": ["First Last, \"Title,\" Publisher vol, no. iss (Year): 1."]
-        })
+        });
+    });
+
+    test("should create journal citation with only title", () => {
+        let citation = journal({
+            title: "Title"
+        }, ["1"]);
+
+        expect(citation).toStrictEqual({
+           "bibliography": "\"Title.\"",
+           "notes": ["" +
+           "\"Title,\" 1."]
+        });
     });
 });
 
@@ -73,7 +103,19 @@ describe("createEJournalCitation() testing", () => {
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10. www.test.com.",
             "notes": ["First Last, \"Title,\" Publisher vol, no. iss (Year): 1, www.test.com."]
-        })
+        });
+    });
+
+    test("should create eJournal citation with only title and url", () => {
+        let citation = eJournal({
+            title: "Title",
+            url: "www.test.com"
+        }, ["1"]);
+
+        expect(citation).toStrictEqual({
+            "bibliography": "\"Title.\" www.test.com.",
+            "notes": ["\"Title,\" 1, www.test.com."]
+        });
     });
 
     test("should throw error if missing url field", () => {

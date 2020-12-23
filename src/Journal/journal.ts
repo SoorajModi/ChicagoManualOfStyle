@@ -1,15 +1,16 @@
 import { JournalInterface, createJournal } from './journalInterface';
-import journalInfoCitation from './journalInfo';
+import journalInfoCitation, {noPublishingInfo} from './journalInfo';
 import { getRange } from './pageRange';
+import {JournalInfoInterface} from "./journalInfoInterface";
 
 export function journalNote(info: JournalInterface, page: string): string {
   let citation = createJournal(info);
-  return `${citation.authorList.note()}"${citation.title}," ${journalInfoCitation(citation.info)} ${page}.`;
+  return `${citation.authorList.note()}"${citation.title}," ${journalInfoCitation(citation.info)}${isSpaceRequired(citation.info)}${page}.`;
 }
 
 export function journalBibliography(info: JournalInterface): string {
   let citation = createJournal(info);
-  return `${citation.authorList.bibliography()}"${citation.title}." ${journalInfoCitation(citation.info)} ${getRange(citation.startRange, citation.endRange)}.`;
+  return `${citation.authorList.bibliography()}"${citation.title}." ${journalInfoCitation(citation.info)} ${getRange(citation.startRange, citation.endRange)}${isPeriodRequired(citation.info, citation.startRange)}`.trim();
 }
 
 export function journalNoteList(info: JournalInterface, pages: string[]): string[] {
@@ -38,4 +39,12 @@ export function eJournalNoteList(info: JournalInterface, pages: string[], url: s
 
 export function eJournalBibliography(info: JournalInterface, url: string): string {
   return (`${journalBibliography(info)} ${url}.`);
+}
+
+function isSpaceRequired(info: JournalInfoInterface): string {
+  return (noPublishingInfo(info)) ? "" : " ";
+}
+
+function isPeriodRequired(info: JournalInfoInterface, start: string): string {
+  return (noPublishingInfo(info) && start === "") ? "" : ".";
 }

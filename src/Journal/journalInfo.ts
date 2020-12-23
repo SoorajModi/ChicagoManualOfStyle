@@ -5,7 +5,7 @@ export default function journalInfoCitation(info: JournalInfoInterface): string 
   return (noPublishingInfo(citation)) ? '' : createJournalCitation(citation.journal, citation.volume, citation.issue, citation.date);
 }
 
-function noPublishingInfo(info: JournalInfoInterface): boolean {
+export function noPublishingInfo(info: JournalInfoInterface): boolean {
   return (info.journal === '' && info.volume === '' && info.issue === '' && info.date === '');
 }
 

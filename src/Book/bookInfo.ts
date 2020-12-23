@@ -10,7 +10,7 @@ export function bookInfoBibliography(info: BookInfoInterface): string {
   return (isBookInfoEmpty(citation)) ? '' : `${createBookCitation(citation.publisher, citation.placeOfPublication, citation.yearOfPublication)}.`;
 }
 
-function isBookInfoEmpty(info: BookInfoInterface): boolean {
+export function isBookInfoEmpty(info: BookInfoInterface): boolean {
   return (info.publisher === '' && info.placeOfPublication === '' && info.yearOfPublication === '');
 }
 
