@@ -2,10 +2,15 @@ import { JournalInterface, createJournal } from './journalInterface';
 import journalInfoCitation, {noPublishingInfo} from './journalInfo';
 import { getRange } from './pageRange';
 import {JournalInfoInterface} from "./journalInfoInterface";
+import {BookInterface, createBook} from "../Book/bookInterface";
 
 export function journalNote(info: JournalInterface, page: string): string {
   let citation = createJournal(info);
   return `${citation.authorList.note()}"${citation.title}," ${journalInfoCitation(citation.info)}${isSpaceRequired(citation.info)}${page}.`;
+}
+
+export function journalShortNote(info: JournalInterface, page: string): string {
+  return getShortNotePrefix(info) + page + ".";
 }
 
 export function journalBibliography(info: JournalInterface): string {
@@ -47,4 +52,9 @@ function isSpaceRequired(info: JournalInfoInterface): string {
 
 function isPeriodRequired(info: JournalInfoInterface, start: string): string {
   return (noPublishingInfo(info) && start === "") ? "" : ".";
+}
+
+function getShortNotePrefix(info: BookInterface): string {
+  let citation = createJournal(info);
+  return (citation.authorList.authors.length === 0) ? ("\"" + citation.title + ",\" ") : (citation.authorList.authors[0].last + ", ");
 }

@@ -1,4 +1,10 @@
-import {journalNote, journalBibliography, eJournalNote, eJournalBibliography} from "../../src/Journal/journal";
+import {
+    journalNote,
+    journalBibliography,
+    eJournalNote,
+    eJournalBibliography,
+    journalShortNote
+} from "../../src/Journal/journal";
 
 let journal = {
     title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
@@ -44,6 +50,16 @@ describe("journalNote() testing", () => {
 
     test("should create note citation with no authors", () => {
         expect(journalNote(noAuthor, "1")).toBe("\"Title,\" Publisher vol, no. iss (Year): 1.")
+    });
+});
+
+describe("journalShortNote() testing",() => {
+   test("should create short note citation", () => {
+       expect(journalShortNote(journal, "1")).toBe("Last, 1.");
+   });
+
+    test("should create short note citation with no author", () => {
+        expect(journalShortNote(noAuthor, "1")).toBe("\"Title,\" 1.");
     });
 });
 
