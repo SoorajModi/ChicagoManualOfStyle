@@ -75,7 +75,7 @@ describe("Book.shortNote() testing", () => {
     });
 
     test("should create short note with no author", () => {
-        expect(bookShortNote(noAuthorBook, "1")).toBe("\"The Great Gatsby,\" 1.");
+        expect(bookShortNote(noAuthorBook, "1")).toBe("The Great Gatsby, 1.");
     });
 });
 

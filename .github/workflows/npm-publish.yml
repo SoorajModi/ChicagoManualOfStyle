@@ -18,6 +18,9 @@ jobs:
       - name: Compile Typecript
         run: npm run build
 
+      - name: Run tests
+        run: npm t
+
       - name: Publish if version has been updated
         uses: pascalgn/npm-publish-action@1.3.6
         with:
