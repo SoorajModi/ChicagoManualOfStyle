@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+# 1.2.0
+### Added
+- Support for short note citations for Books and Journal
+
+### Changed
+- Bug fixes
+
 # 1.1.1
 ### Changed
 - Bug fixes

@@ -3,7 +3,6 @@ import journalInfoCitation, { noPublishingInfo } from './journalInfo';
 import { getRange } from './pageRange';
 import { JournalInfoInterface } from './journalInfoInterface';
 import { BookInterface } from '../Book/bookInterface';
-import {bookNote, bookShortNote} from "../Book/book";
 
 export function journalNote(info: JournalInterface, page: string): string {
   let citation = createJournal(info);
@@ -23,7 +22,7 @@ export function journalNoteList(info: JournalInterface, pages: string[]): string
   let notes: string[] = [];
   if (pages.length > 0) {
     notes.push(journalNote(info, pages[0]));
-    for (let i: number = 1; i < pages.length; i++) {
+    for (let i = 1; i < pages.length; i++) {
       notes.push(journalShortNote(info, pages[i]));
     }
   }
