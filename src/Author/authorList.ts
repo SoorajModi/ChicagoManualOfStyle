@@ -13,33 +13,41 @@ export default class AuthorList {
       let authorList = validateAuthorList(this.authors);
       let len: number = authorList.length;
 
-      if (len === 1) {
-        return authorList[0].noteString();
-      } if (len === 2) {
-        return twoAuthorNote(authorList);
-      } if (len === 3) {
-        return threeAuthorNote(authorList);
-      } if (len > 3) {
-        return threePlusAuthorNote(authorList);
-      }
-
-      return '';
+      return generateNote(authorList, len);
     }
 
     bibliography(): string {
       let authorList = validateAuthorList(this.authors);
       let len: number = authorList.length;
 
-      if (len === 1) {
-        return authorList[0].bibliographyString();
-      } if (len > 1 && len <= 10) {
-        return twoPlusAuthors(authorList, len);
-      } if (len > 10) {
-        return tenPlusAuthors(authorList);
-      }
-
-      return '';
+      return generateBibliography(authorList, len);
     }
+}
+
+function generateNote(authorList: Array<Author>, len: number) {
+  if (len === 1) {
+    return authorList[0].noteString();
+  } else if (len === 2) {
+    return twoAuthorNote(authorList);
+  } else if (len === 3) {
+    return threeAuthorNote(authorList);
+  } else if (len > 3) {
+    return threePlusAuthorNote(authorList);
+  } else {
+    return '';
+  }
+}
+
+function generateBibliography(authorList: Array<Author>, len: number) {
+  if (len === 1) {
+    return authorList[0].bibliographyString();
+  } else if (len > 1 && len <= 10) {
+    return twoPlusAuthors(authorList, len);
+  } else if (len > 10) {
+    return tenPlusAuthors(authorList);
+  } else {
+    return '';
+  }
 }
 
 function twoAuthorNote(authors: Array<Author>): string {
@@ -82,9 +90,7 @@ function validateAuthorList(authors: Array<Author>): Array<Author> {
   let newAuthorList: Array<Author> = [];
 
   authors.forEach((author) => {
-    if (author.first !== '' && author.last !== '') {
-      newAuthorList.push(author);
-    }
+    if (author.isValid()) newAuthorList.push(author);
   });
 
   return newAuthorList;

@@ -18,12 +18,15 @@ export function bookBibliography(info: BookInterface): string {
 
 export function bookNoteList(info: BookInterface, pages: string[]): string[] {
   let notes: string[] = [];
+
   if (pages.length > 0) {
     notes.push(bookNote(info, pages[0]));
+
     for (let i = 1; i < pages.length; i++) {
       notes.push(bookShortNote(info, pages[i]));
     }
   }
+
   return notes;
 }
 

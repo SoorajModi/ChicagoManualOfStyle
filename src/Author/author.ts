@@ -19,4 +19,8 @@ export default class Author {
     isEmpty(): boolean {
       return (this.first === '' && this.last === '');
     }
+
+    isValid(): boolean {
+        return (this.first !== '' && this.last !== '');
+    }
 }
