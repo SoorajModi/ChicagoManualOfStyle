@@ -27,6 +27,12 @@ let elevenAuthorList = new AuthorList([
     {first: "Author", last: "Ten"},
     {first: "Author", last: "Eleven"}
 ]);
+let invalidAuthorList = new AuthorList([
+    {first: "", last: ""},
+    {first: "Author", last: ""},
+    {first: "", last: "Three"},
+    {first: "Author", last: "Four"},
+]);
 
 describe("authorList testing", () => {
     test("should set authors member variable", () => {
@@ -67,6 +73,10 @@ describe("authorList.note() testing", () => {
     test("should create note citation with greater than three authors", () => {
         expect(fourAuthorList.note()).toBe("Author One et al., ");
     });
+
+    test("should create note citation with invalid author list", () => {
+       expect(invalidAuthorList.note()).toBe("Author Four, ");
+    });
 });
 
 describe("authorList.bibliography() testing", () => {
@@ -92,5 +102,9 @@ describe("authorList.bibliography() testing", () => {
 
     test("should create bibliography citation with more than ten authors", () => {
         expect(elevenAuthorList.bibliography()).toBe("One, Author, Author Two, Author Three, Author Four, Author Five, Author Six, Author Seven, et al.");
-    })
+    });
+
+    test("should create bibliography citation with invalid author list", () => {
+        expect(invalidAuthorList.bibliography()).toBe("Four, Author. ");
+    });
 });

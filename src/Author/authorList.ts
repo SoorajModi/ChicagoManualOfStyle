@@ -10,30 +10,32 @@ export default class AuthorList {
     }
 
     note(): string {
-      let len: number = this.authors.length;
+      let authorList = validateAuthorList(this.authors);
+      let len: number = authorList.length;
 
       if (len === 1) {
-        return this.authors[0].noteString();
+        return authorList[0].noteString();
       } if (len === 2) {
-        return twoAuthorNote(this.authors);
+        return twoAuthorNote(authorList);
       } if (len === 3) {
-        return threeAuthorNote(this.authors);
+        return threeAuthorNote(authorList);
       } if (len > 3) {
-        return threePlusAuthorNote(this.authors);
+        return threePlusAuthorNote(authorList);
       }
 
       return '';
     }
 
     bibliography(): string {
-      let len: number = this.authors.length;
+      let authorList = validateAuthorList(this.authors);
+      let len: number = authorList.length;
 
       if (len === 1) {
-        return this.authors[0].bibliographyString();
+        return authorList[0].bibliographyString();
       } if (len > 1 && len <= 10) {
-        return twoPlusAuthors(this.authors, len);
+        return twoPlusAuthors(authorList, len);
       } if (len > 10) {
-        return tenPlusAuthors(this.authors);
+        return tenPlusAuthors(authorList);
       }
 
       return '';
@@ -74,4 +76,16 @@ function tenPlusAuthors(authors: Array<Author>): string {
 
 function trimAndReplaceLastElement(str: string, replaceValue: string): string {
   return str.trim().replace(/.$/, replaceValue);
+}
+
+function validateAuthorList(authors: Array<Author>): Array<Author> {
+  let newAuthorList: Array<Author> = [];
+
+  authors.forEach((author) => {
+    if (author.first !== '' && author.last !== '') {
+      newAuthorList.push(author);
+    }
+  });
+
+  return newAuthorList;
 }
