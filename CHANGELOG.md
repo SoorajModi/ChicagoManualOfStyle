@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Validate author list. Will not generate citation if first, last, or both are empty.
+- Validate pages. Will note generate note citation if page is empty.
+
+### Changed
+- Improve code for authorList and author.
+- Change array structure for pages from string to `{ page: string }`
 
 # 1.2.0
 ### Added

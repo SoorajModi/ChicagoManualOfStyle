@@ -49,33 +49,33 @@ let fourAuthBook = {
 
 describe("Book.note() testing", () => {
     test("should create note citation with no author", () => {
-        expect(bookNote(noAuthorBook, "1")).toBe("The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(bookNote(noAuthorBook, {page: "1"})).toBe("The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 
     test("should create note with one author", () => {
-        expect(bookNote(book, "1")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(bookNote(book, {page: "1"})).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 
     test("should create note citation with two authors", () => {
-        expect(bookNote(twoAuthBook, "1")).toBe("F. Scott Fitzgerald and Author Two, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(bookNote(twoAuthBook, {page: "1"})).toBe("F. Scott Fitzgerald and Author Two, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 
     test("should create note citation with three authors", () => {
-        expect(bookNote(threeAuthBook, "1")).toBe("F. Scott Fitzgerald, Author Two, and Author Three, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(bookNote(threeAuthBook, {page: "1"})).toBe("F. Scott Fitzgerald, Author Two, and Author Three, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 
     test("should create note citation with four+ authors", () => {
-        expect(bookNote(fourAuthBook, "1")).toBe("F. Scott Fitzgerald et al., The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
+        expect(bookNote(fourAuthBook, {page: "1"})).toBe("F. Scott Fitzgerald et al., The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 });
 
 describe("Book.shortNote() testing", () => {
     test("should create short note", () => {
-        expect(bookShortNote(book, "1")).toBe("Fitzgerald, 1.");
+        expect(bookShortNote(book, {page: "1"})).toBe("Fitzgerald, 1.");
     });
 
     test("should create short note with no author", () => {
-        expect(bookShortNote(noAuthorBook, "1")).toBe("The Great Gatsby, 1.");
+        expect(bookShortNote(noAuthorBook, {page: "1"})).toBe("The Great Gatsby, 1.");
     });
 });
 
@@ -122,7 +122,7 @@ describe("Book.bibliography() testing", () => {
 
 describe("Book.eNote() testing", () => {
     test("should create book note citation with URL", () => {
-        expect(eBookNote(book, "1", "www.thegreatgatsby.com")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.");
+        expect(eBookNote(book, {page: "1"}, "www.thegreatgatsby.com")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.");
     });
 });
 

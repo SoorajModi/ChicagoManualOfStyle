@@ -27,27 +27,25 @@ export default class AuthorList {
 function generateNote(authorList: Array<Author>, len: number) {
   if (len === 1) {
     return authorList[0].noteString();
-  } else if (len === 2) {
+  } if (len === 2) {
     return twoAuthorNote(authorList);
-  } else if (len === 3) {
+  } if (len === 3) {
     return threeAuthorNote(authorList);
-  } else if (len > 3) {
+  } if (len > 3) {
     return threePlusAuthorNote(authorList);
-  } else {
-    return '';
   }
+  return '';
 }
 
 function generateBibliography(authorList: Array<Author>, len: number) {
   if (len === 1) {
     return authorList[0].bibliographyString();
-  } else if (len > 1 && len <= 10) {
+  } if (len > 1 && len <= 10) {
     return twoPlusAuthors(authorList, len);
-  } else if (len > 10) {
+  } if (len > 10) {
     return tenPlusAuthors(authorList);
-  } else {
-    return '';
   }
+  return '';
 }
 
 function twoAuthorNote(authors: Array<Author>): string {

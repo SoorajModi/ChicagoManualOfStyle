@@ -21,6 +21,6 @@ export default class Author {
     }
 
     isValid(): boolean {
-        return (this.first !== '' && this.last !== '');
+      return (this.first !== '' && this.last !== '');
     }
 }

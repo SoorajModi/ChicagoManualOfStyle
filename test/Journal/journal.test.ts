@@ -37,29 +37,29 @@ let threeAuth = {
 
 describe("journalNote() testing", () => {
     test("should create note citation with one author", () => {
-        expect(journalNote(journal, "1")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(journal, {page: "1"})).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 
     test("should create note citation with two authors", () => {
-        expect(journalNote(twoAuth, "1")).toBe("Author One and Author Two, \"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(twoAuth, {page: "1"})).toBe("Author One and Author Two, \"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 
     test("should create note citation with three authors", () => {
-        expect(journalNote(threeAuth, "1")).toBe("Author One, Author Two, and Author Three, \"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(threeAuth, {page: "1"})).toBe("Author One, Author Two, and Author Three, \"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 
     test("should create note citation with no authors", () => {
-        expect(journalNote(noAuthor, "1")).toBe("\"Title,\" Publisher vol, no. iss (Year): 1.")
+        expect(journalNote(noAuthor, {page: "1"})).toBe("\"Title,\" Publisher vol, no. iss (Year): 1.")
     });
 });
 
 describe("journalShortNote() testing",() => {
    test("should create short note citation", () => {
-       expect(journalShortNote(journal, "1")).toBe("Last, 1.");
+       expect(journalShortNote(journal, {page: "1"})).toBe("Last, 1.");
    });
 
     test("should create short note citation with no author", () => {
-        expect(journalShortNote(noAuthor, "1")).toBe("\"Title,\" 1.");
+        expect(journalShortNote(noAuthor, {page: "1"})).toBe("\"Title,\" 1.");
     });
 });
 
@@ -83,7 +83,7 @@ describe("journalBibliography() testing", () => {
 
 describe("journal.eNote() testing", () => {
     test("should create bibliography citation for electronic journal", () => {
-        expect(eJournalNote(journal, "1", "www.test.com")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1, www.test.com.");
+        expect(eJournalNote(journal, {page: "1"}, "www.test.com")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1, www.test.com.");
     });
 });
 
