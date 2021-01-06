@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+# 1.3.2
+## Changed
+- Fix type error resulting in invalid returned note citation.
+
 # 1.3.1
+## Changed
 - Update README.
 - Fix type error with author.isValid is not a function. 
 

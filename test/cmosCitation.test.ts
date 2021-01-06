@@ -45,7 +45,7 @@ describe("createBookCitation() testing", () => {
             authorList: [{first: "F. Scott", last: "Fitzgerald"}],
             publisher: "Charles Scribner's Sons",
             placeOfPublication: "New York",
-            yearOfPublication: "2000"
+            yearOfPublication: "2000",
         }, [{page: "1"}, {page: ""}, {page: "2"}]);
 
         expect(citation).toStrictEqual({

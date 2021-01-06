@@ -17,7 +17,7 @@ export function bookBibliography(info: BookInterface): string {
   return (`${citation.authorList.bibliography() + citation.title}. ${bookInfoBibliography(citation.info)}`).trim();
 }
 
-export function bookNoteList(info: BookInterface, pages: Array<{page: string}>): string[] {
+export function bookNoteList(info: BookInterface, pages: {page: string}[]): string[] {
   const validPages: Array<{page: string}> = validatePages(pages);
   let notes: string[] = [];
 
@@ -36,7 +36,7 @@ export function eBookNote(info: BookInterface, page: {page: string}, url: string
   return (`${(bookNote(info, page)).replace(/.$/, ', ') + url}.`);
 }
 
-export function eBookNoteList(info: BookInterface, pages: Array<{page: string}>, url: string): string[] {
+export function eBookNoteList(info: BookInterface, pages: {page: string}[], url: string): string[] {
   const validPages: Array<{page: string}> = validatePages(pages);
   let notes: string[] = [];
 

@@ -19,7 +19,7 @@ export function journalBibliography(info: JournalInterface): string {
   return `${citation.authorList.bibliography()}"${citation.title}." ${journalInfoCitation(citation.info)} ${getRange(citation.startRange, citation.endRange)}${isPeriodRequired(citation.info, citation.startRange)}`.trim();
 }
 
-export function journalNoteList(info: JournalInterface, pages: Array<{page: string}>): string[] {
+export function journalNoteList(info: JournalInterface, pages: {page: string}[]): string[] {
   const validPages: Array<{page: string}> = validatePages(pages);
   let notes: string[] = [];
 
@@ -38,7 +38,7 @@ export function eJournalNote(info: JournalInterface, page: {page: string}, url: 
   return (`${(journalNote(info, page)).replace(/.$/, ', ') + url}.`);
 }
 
-export function eJournalNoteList(info: JournalInterface, pages: Array<{page: string}>, url: string): string[] {
+export function eJournalNoteList(info: JournalInterface, pages: {page: string}[], url: string): string[] {
   const validPages: Array<{page: string}> = validatePages(pages);
   let notes: string[] = [];
 

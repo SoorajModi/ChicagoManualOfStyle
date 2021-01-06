@@ -88,7 +88,7 @@ function validateAuthorList(authors: Array<Author>): Array<Author> {
   let newAuthorList: Array<Author> = [];
 
   authors.forEach((author) => {
-    if (author.first !== '' && author.last !== '') newAuthorList.push(author);
+    if (author.isValid()) newAuthorList.push(author);
   });
 
   return newAuthorList;
