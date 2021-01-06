@@ -1,7 +1,7 @@
 import { bookInfoNote, bookInfoBibliography, isBookInfoEmpty } from './bookInfo';
 import { BookInterface, createBook } from './bookInterface';
 import { BookInfoInterface } from './bookInfoInterface';
-import {validatePages} from "../noteUtility";
+import validatePages from '../noteUtility';
 
 export function bookNote(info: BookInterface, page: {page: string}): string {
   let citation = createBook(info);

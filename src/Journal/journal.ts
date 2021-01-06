@@ -3,7 +3,7 @@ import journalInfoCitation, { noPublishingInfo } from './journalInfo';
 import { getRange } from './pageRange';
 import { JournalInfoInterface } from './journalInfoInterface';
 import { BookInterface } from '../Book/bookInterface';
-import {validatePages} from "../noteUtility";
+import validatePages from '../noteUtility';
 
 export function journalNote(info: JournalInterface, page: {page: string}): string {
   let citation = createJournal(info);
