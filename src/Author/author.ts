@@ -1,6 +1,5 @@
 export default class Author {
     first: string;
-
     last: string;
 
     constructor(first?: string, last?: string) {

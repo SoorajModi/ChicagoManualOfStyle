@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+# 1.3.1
+- Update README.
+- Fix type error with author.isValid is not a function. 
+
 # 1.3.0
 ### Added
 - Validate author list. Will not generate citation if first, last, or both are empty.
@@ -13,30 +17,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Improve code for authorList and author.
-- Change array structure for pages from string to `{ page: string }`
+- Change array structure for pages from string to `{ page: string }`.
 
 # 1.2.0
 ### Added
-- Support for short note citations for Books and Journal
+- Support for short note citations for Books and Journal.
 
 ### Changed
-- Bug fixes
+- Bug fixes.
 
 # 1.1.1
 ### Changed
-- Bug fixes
+- Bug fixes.
 
 # 1.1.0
 ### Added
-- Upgrade to airbnb style guidelines
-- Add CD to NPM to pipeline
+- Upgrade to airbnb style guidelines.
+- Add CD to NPM to pipeline.
 
 ## Changed
-- Refactor code
-- Rename createCitation -> cmosCitation and core function names
+- Refactor code.
+- Rename createCitation -> cmosCitation and core function names.
 
 ## [1.0.1-4]
 ### Fixed
-- Bug fixes
+- Bug fixes.
 
 ## [1.0.0] - Initial Release

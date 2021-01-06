@@ -39,7 +39,7 @@ let citation = CMOS.book({
     publisher: "Charles Scribner's Sons",                   // Optional
     placeOfPublication: "New York",                         // Optional
     yearOfPublication: "2000"                               // Optional
-}, ["1"]);                                                  // List of pages to be cited in notes
+}, [{page: "1"}, {page: ""}, {page: "2"}]);                 // Optional list of pages to be cited in notes
 
 console.log(citation);
 ```
@@ -65,7 +65,7 @@ let citation = CMOS.eBook({
     placeOfPublication: "New York",                         // Optional
     yearOfPublication: "2000",                              // Optional
     url: "www.thegreatgatsby.com"                           // Required
-}, ["1"]);
+}, [{page: "1"}]);
 
 console.log(citation);
 ```
@@ -93,7 +93,7 @@ let citation = CMOS.journal({
     issue: "iss",                                   // Optional
     startRange: "1",                                // Optional
     endRange: "10"                                  // Optional
-}, ["1"]);
+}, [{page: "1"}]);
 
 console.log(citation);
 ```
@@ -120,7 +120,7 @@ let citation = eJournal({
     startRange: "1",                                // Optional
     endRange: "10",                                 // Optional
     url: "www.test.com"                             // Required
-}, ["1"]);
+}, [{page: "1"}]);
 
 console.log(citation);
 ```

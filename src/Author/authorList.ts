@@ -10,14 +10,14 @@ export default class AuthorList {
     }
 
     note(): string {
-      let authorList = validateAuthorList(this.authors);
+      let authorList: Array<Author> = validateAuthorList(this.authors);
       let len: number = authorList.length;
 
       return generateNote(authorList, len);
     }
 
     bibliography(): string {
-      let authorList = validateAuthorList(this.authors);
+      let authorList: Array<Author> = validateAuthorList(this.authors);
       let len: number = authorList.length;
 
       return generateBibliography(authorList, len);
@@ -88,7 +88,7 @@ function validateAuthorList(authors: Array<Author>): Array<Author> {
   let newAuthorList: Array<Author> = [];
 
   authors.forEach((author) => {
-    if (author.isValid()) newAuthorList.push(author);
+    if (author.first !== '' && author.last !== '') newAuthorList.push(author);
   });
 
   return newAuthorList;
