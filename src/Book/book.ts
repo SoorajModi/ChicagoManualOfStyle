@@ -3,13 +3,13 @@ import { BookInterface, createBook } from './bookInterface';
 import { BookInfoInterface } from './bookInfoInterface';
 import validatePages from '../noteUtility';
 
-export function bookNote(info: BookInterface, page: {page: string}): string {
+export function bookNote(info: BookInterface, page: string): string {
   let citation = createBook(info);
-  return (`${citation.authorList.note() + citation.title + addSpaceIfInfoPresent(citation.info) + bookInfoNote(citation.info)}, ${page.page}.`);
+  return (`${citation.authorList.note() + citation.title + addSpaceIfInfoPresent(citation.info) + bookInfoNote(citation.info)}, ${page}.`);
 }
 
-export function bookShortNote(info: BookInterface, page: {page: string}): string {
-  return `${getShortNotePrefix(info) + page.page}.`;
+export function bookShortNote(info: BookInterface, page: string): string {
+  return `${getShortNotePrefix(info) + page}.`;
 }
 
 export function bookBibliography(info: BookInterface): string {
@@ -22,17 +22,17 @@ export function bookNoteList(info: BookInterface, pages: {page: string}[]): stri
   let notes: string[] = [];
 
   if (validPages.length > 0) {
-    notes.push(bookNote(info, validPages[0]));
+    notes.push(bookNote(info, validPages[0].page));
 
     for (let i = 1; i < validPages.length; i++) {
-      notes.push(bookShortNote(info, validPages[i]));
+      notes.push(bookShortNote(info, validPages[i].page));
     }
   }
 
   return notes;
 }
 
-export function eBookNote(info: BookInterface, page: {page: string}, url: string): string {
+export function eBookNote(info: BookInterface, page: string, url: string): string {
   return (`${(bookNote(info, page)).replace(/.$/, ', ') + url}.`);
 }
 
@@ -41,7 +41,7 @@ export function eBookNoteList(info: BookInterface, pages: {page: string}[], url:
   let notes: string[] = [];
 
   for (let page of validPages) {
-    notes.push(eBookNote(info, page, url));
+    notes.push(eBookNote(info, page.page, url));
   }
 
   return notes;
