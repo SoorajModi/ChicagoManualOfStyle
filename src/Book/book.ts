@@ -1,7 +1,6 @@
 import { bookInfoNote, bookInfoBibliography, isBookInfoEmpty } from './bookInfo';
 import { BookInterface, createBook } from './bookInterface';
 import { BookInfoInterface } from './bookInfoInterface';
-import validatePages from '../noteUtility';
 
 export function bookNote(info: BookInterface, page: string): string {
   let citation = createBook(info);
@@ -17,15 +16,14 @@ export function bookBibliography(info: BookInterface): string {
   return (`${citation.authorList.bibliography() + citation.title}. ${bookInfoBibliography(citation.info)}`).trim();
 }
 
-export function bookNoteList(info: BookInterface, pages: {page: string}[]): string[] {
-  const validPages: {page: string}[] = validatePages(pages);
+export function bookNoteList(info: BookInterface, pages: string[]): string[] {
   let notes: string[] = [];
 
-  if (validPages.length > 0) {
-    notes.push(bookNote(info, validPages[0].page));
+  if (pages.length > 0) {
+    notes.push(bookNote(info, pages[0]));
 
-    for (let i = 1; i < validPages.length; i++) {
-      notes.push(bookShortNote(info, validPages[i].page));
+    for (let i = 1; i < pages.length; i++) {
+      notes.push(bookShortNote(info, pages[i]));
     }
   }
 
@@ -36,12 +34,11 @@ export function eBookNote(info: BookInterface, page: string, url: string): strin
   return (`${(bookNote(info, page)).replace(/.$/, ', ') + url}.`);
 }
 
-export function eBookNoteList(info: BookInterface, pages: {page: string}[], url: string): string[] {
-  const validPages: {page: string}[] = validatePages(pages);
+export function eBookNoteList(info: BookInterface, pages: string[], url: string): string[] {
   let notes: string[] = [];
 
-  for (let page of validPages) {
-    notes.push(eBookNote(info, page.page, url));
+  for (let page of pages) {
+    notes.push(eBookNote(info, page, url));
   }
 
   return notes;

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+# 1.3.5
+## Changed
+- Revert Book/EBook pages back to string array from object.
+
 # 1.3.4
 ## Changed
 - Bug fixes with page validation for books and electronic books.

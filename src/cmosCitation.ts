@@ -11,11 +11,11 @@ import {
   eJournalBibliography, eJournalNoteList, journalBibliography, journalNoteList,
 } from './Journal/journal';
 
-export function book(info: BookInterface, pages: {page: string}[]): {bibliography: string, notes: string[]} {
+export function book(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
   return { bibliography: bookBibliography(info), notes: bookNoteList(info, pages) };
 }
 
-export function eBook(info: BookInterface, pages: {page: string}[]): {bibliography: string, notes: string[]} {
+export function eBook(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
   if (!info.url) throw new Error('URL not specified');
   return { bibliography: eBookBibliography(info, info.url), notes: eBookNoteList(info, pages, info.url) };
 }
