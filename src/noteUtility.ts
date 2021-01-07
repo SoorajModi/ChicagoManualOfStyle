@@ -1,5 +1,5 @@
-export default function validatePages(pages: Array<{page: string}>): Array<{page: string}> {
-  let arr: Array<{page: string}> = [];
+export default function validatePages(pages: {page: string}[]): {page: string}[] {
+  let arr: {page: string}[] = [];
 
   pages.forEach((page) => {
     if (page.page !== '') arr.push(page);

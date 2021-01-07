@@ -26,7 +26,7 @@ export function journalNoteList(info: JournalInterface, pages: {page: string}[])
   if (validPages.length > 0) {
     notes.push(journalNote(info, validPages[0]));
 
-    for (let i = 1; i < pages.length; i++) {
+    for (let i = 1; i < validPages.length; i++) {
       notes.push(journalShortNote(info, validPages[i]));
     }
   }

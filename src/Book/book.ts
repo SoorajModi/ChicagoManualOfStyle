@@ -18,7 +18,7 @@ export function bookBibliography(info: BookInterface): string {
 }
 
 export function bookNoteList(info: BookInterface, pages: {page: string}[]): string[] {
-  const validPages: Array<{page: string}> = validatePages(pages);
+  const validPages: {page: string}[] = validatePages(pages);
   let notes: string[] = [];
 
   if (validPages.length > 0) {
@@ -37,7 +37,7 @@ export function eBookNote(info: BookInterface, page: {page: string}, url: string
 }
 
 export function eBookNoteList(info: BookInterface, pages: {page: string}[], url: string): string[] {
-  const validPages: Array<{page: string}> = validatePages(pages);
+  const validPages: {page: string}[] = validatePages(pages);
   let notes: string[] = [];
 
   for (let page of validPages) {
