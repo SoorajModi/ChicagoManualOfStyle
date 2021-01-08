@@ -22,6 +22,10 @@ export default class AuthorList {
 
       return generateBibliography(authorList, len);
     }
+
+    length(): number {
+      return this.authors.length;
+    }
 }
 
 function generateNote(authorList: Array<Author>, len: number) {

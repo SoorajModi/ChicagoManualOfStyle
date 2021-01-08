@@ -60,8 +60,16 @@ let sixAuthBook = {
     placeOfPublication: "New York",
     yearOfPublication: "2000"
 };
-let editor = {
+let editorInsteadOFAuthors = {
     title: 'Title',
+    publisher: "Publisher",
+    placeOfPublication: "Place",
+    yearOfPublication: "Year",
+    editor: [{first: "First", last: "Last"}],
+};
+let editorAndAuthor = {
+    title: 'Title',
+    authorList: [{first: "First", last: "Last"}],
     publisher: "Publisher",
     placeOfPublication: "Place",
     yearOfPublication: "Year",
@@ -97,8 +105,12 @@ describe("Book.note() testing", () => {
         expect(bookNote(fourAuthBook, "1")).toBe("F. Scott Fitzgerald et al., The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
 
-    it("should generate note citation for book with editor field specified", () => {
-        expect(bookNote(editor, "Page")).toBe("First Last, ed., Title (Place: Publisher, Year), Page.");
+    it("should generate note citation for book with no author editor field specified", () => {
+        expect(bookNote(editorInsteadOFAuthors, "Page")).toBe("First Last, ed., Title (Place: Publisher, Year), Page.");
+    });
+
+    it("should generate note citation for book with authors and editor specified", () => {
+        expect(bookNote(editorAndAuthor, "Page")).toBe("First Last, Title, ed. First Last (Place: Publisher, Year), Page.");
     });
 
     it("should generate note citation for book with edition", () => {
@@ -116,7 +128,7 @@ describe("Book.shortNote() testing", () => {
     });
 
     it("should create short note with no author", () => {
-        expect(bookShortNote(editor, "1")).toBe("Last, 1.");
+        expect(bookShortNote(editorInsteadOFAuthors, "1")).toBe("Last, 1.");
     });
 });
 
@@ -147,7 +159,11 @@ describe("Book.bibliography() testing", () => {
     });
 
     it('should generate bibliography for book with editor field specified', () => {
-        expect(bookBibliography(editor)).toBe("Last, First, ed. Title. Place: Publisher, Year.");
+        expect(bookBibliography(editorInsteadOFAuthors)).toBe("Last, First, ed. Title. Place: Publisher, Year.");
+    });
+
+    it("should generate note citation for book with authors and editor specified", () => {
+        expect(bookBibliography(editorAndAuthor)).toBe("Last, First. Title. Edited by First Last. Place: Publisher, Year.");
     });
 
     it('should generate bibliography for book with edition', () => {

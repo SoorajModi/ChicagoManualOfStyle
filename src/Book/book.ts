@@ -1,12 +1,15 @@
 import { bookInfoNote, bookInfoBibliography } from './bookInfo';
 import { BookInterface, createBook } from './bookInterface';
-import AuthorList from '../Author/authorList';
 
 export function bookNote(info: BookInterface, page: string): string {
   let citation = createBook(info);
 
-  if (citation.authorList.authors.length === 0 && citation.editor.authors.length > 0) {
-    return (`${editorNameNote(citation.editor) + citation.title + bookInfoNote(citation.info)}, ${page}.`);
+  if (citation.editor.length() > 0) {
+    if (citation.authorList.length() === 0) {
+      return (`${citation.editor.noAuthorsNote() + citation.title + bookInfoNote(citation.info)}, ${page}.`);
+    } else {
+      return citation.authorList.note() + citation.title + citation.editor.editorNote() + bookInfoNote(citation.info) + ", " + page + ".";
+    }
   }
 
   return (`${citation.authorList.note() + citation.title + bookInfoNote(citation.info)}, ${page}.`);
@@ -19,8 +22,12 @@ export function bookShortNote(info: BookInterface, page: string): string {
 export function bookBibliography(info: BookInterface): string {
   let citation = createBook(info);
 
-  if (citation.authorList.authors.length === 0 && citation.editor.authors.length > 0) {
-    return (`${editorNameBibliography(citation.editor) + citation.title}.${bookInfoBibliography(citation.info)}`).trim();
+  if (citation.editor.length() > 0) {
+    if (citation.authorList.length() === 0) {
+      return (`${citation.editor.noAuthorBibliography() + citation.title}.${bookInfoBibliography(citation.info)}`).trim();
+    } else {
+      return (`${citation.authorList.bibliography() + citation.title}.${citation.editor.editorBibliography()}${bookInfoBibliography(citation.info)}`).trim();
+    }
   }
 
   return (`${citation.authorList.bibliography() + citation.title}.${bookInfoBibliography(citation.info)}`).trim();
@@ -52,14 +59,6 @@ export function eBookNoteList(info: BookInterface, pages: string[], url: string)
   }
 
   return notes;
-}
-
-function editorNameBibliography(editors: AuthorList): string {
-  return (editors.bibliography()).replace('.', ', ed.');
-}
-
-function editorNameNote(editors: AuthorList): string {
-  return (`${editors.note()}ed., `);
 }
 
 export function eBookBibliography(info: BookInterface, url: string): string {

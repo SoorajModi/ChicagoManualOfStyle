@@ -1,5 +1,6 @@
 import AuthorList from '../Author/authorList';
 import { BookInfoInterface } from './bookInfoInterface';
+import EditorList from "../Author/editorList";
 
 export interface BookInterface {
     authorList?: Array<{ first: string, last: string }>;
@@ -12,11 +13,11 @@ export interface BookInterface {
     url?: string;
 }
 
-export function createBook(info: BookInterface): {title: string, authorList: AuthorList, editor: AuthorList, info: BookInfoInterface} {
+export function createBook(info: BookInterface): {title: string, authorList: AuthorList, editor: EditorList, info: BookInfoInterface} {
   return {
     title: info.title,
     authorList: new AuthorList(info.authorList || []),
-    editor: new AuthorList(info.editor || []),
+    editor: new EditorList(info.editor || []),
     info: {
       edition: info.edition || '',
       publisher: info.publisher || '',
