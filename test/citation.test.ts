@@ -3,7 +3,7 @@ import {
     journal,
     webpage,
     lecture
-} from "../src/cmosCitation";
+} from "../src/citation";
 
 describe("createBookCitation() testing", () => {
     it("should create book citation", () => {
@@ -154,7 +154,8 @@ describe("createWebpageCitation() testing", () => {
         });
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Title of Webpage.\" testWebsite. testPublisher, 2000. wwww.testwebsite.com.",
-            "notes": ["First Last, \"Title of Webpage,\" testWebsite, testPublisher, 2000, wwww.testwebsite.com."]
+            "notes": ["First Last, \"Title of Webpage,\" testWebsite, testPublisher, 2000, wwww.testwebsite.com.",
+            "Last, \"Title of Webpage.\""]
         });
     });
 
@@ -166,7 +167,8 @@ describe("createWebpageCitation() testing", () => {
         });
         expect(citation).toStrictEqual({
             "bibliography": "\"Title of Webpage.\" testWebsite. wwww.testwebsite.com.",
-            "notes": ["\"Title of Webpage,\" testWebsite, wwww.testwebsite.com."]
+            "notes": ["\"Title of Webpage,\" testWebsite, wwww.testwebsite.com.",
+            "testWebsite, \"Title of Webpage.\""]
         });
     });
 });
@@ -183,7 +185,7 @@ describe("createLectureCitation() testing", () => {
         });
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Course.\" Lecture, University, City, Province, Date.",
-            "notes": ["First Last, \"Course\" (lecture, University, City, Province, Date)."]
+            "notes": ["First Last, \"Course\" (lecture, University, City, Province, Date).", "Last, \"Course.\""]
         });
     });
 
@@ -194,7 +196,7 @@ describe("createLectureCitation() testing", () => {
         });
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Course.\" Lecture.",
-            "notes": ["First Last, \"Course\" (lecture)."]
+            "notes": ["First Last, \"Course\" (lecture).", "Last, \"Course.\""]
         });
     });
 });

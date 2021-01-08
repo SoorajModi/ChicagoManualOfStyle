@@ -9,6 +9,15 @@ export interface WebpageInterface {
     date?: string;
 }
 
+export interface validWebpageInterface {
+    title: string;
+    nameOfSite: string;
+    url: string;
+    authorList: AuthorList;
+    publisher: string;
+    date: string;
+}
+
 export function createWebpage(info: WebpageInterface): {title: string, nameOfSite: string, url: string, authorList: AuthorList, publisher: string, date: string} {
   return {
     title: info.title,

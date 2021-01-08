@@ -3,11 +3,17 @@ import { LectureInfoInterface } from './lectureInfoInterface';
 
 export interface LectureInterface {
     title: string;
-    professor: { first: string, last: string }[];
+    professor?: Array<{ first: string, last: string }>;
     university?: string;
     city?: string;
     province?: string;
     date?: string;
+}
+
+export interface validLectureInterface {
+    courseTitle: string;
+    professor: AuthorList;
+    info: LectureInfoInterface;
 }
 
 export function createLecture(info: LectureInterface): {courseTitle: string, professor: AuthorList, info: LectureInfoInterface} {
