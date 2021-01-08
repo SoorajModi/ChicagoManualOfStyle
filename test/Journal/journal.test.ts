@@ -1,8 +1,6 @@
 import {
-    journalNote,
     journalBibliography,
-    eJournalNote,
-    eJournalBibliography,
+    journalNote,
     journalShortNote
 } from "../../src/Journal/journal";
 
@@ -34,6 +32,17 @@ let threeAuth = {
     startRange: "1",
     endRange: "10"
 };
+let urlJournal = {
+    title: "Title",
+    authorList: [{first: "First", last: "Last"}],
+    publisher: "Publisher",
+    yearOfPublication: "Year",
+    volume: "vol",
+    issue: "iss",
+    startRange: "1",
+    endRange: "10",
+    url: "URL"
+};
 
 describe("journalNote() testing", () => {
     test("should create note citation with one author", () => {
@@ -50,6 +59,10 @@ describe("journalNote() testing", () => {
 
     test("should create note citation with no authors", () => {
         expect(journalNote(noAuthor, {page: "1"})).toBe("\"Title,\" Publisher vol, no. iss (Year): 1.")
+    });
+
+    test("should create bibliography citation for journal with URL", () => {
+        expect(journalNote(urlJournal, {page: "1"})).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1, URL.");
     });
 });
 
@@ -79,16 +92,8 @@ describe("journalBibliography() testing", () => {
     test("should create bibliography citation with no authors", () => {
         expect(journalBibliography(noAuthor)).toBe("\"Title.\" Publisher vol, no. iss (Year): 1-10.");
     });
-});
 
-describe("journal.eNote() testing", () => {
-    test("should create bibliography citation for electronic journal", () => {
-        expect(eJournalNote(journal, {page: "1"}, "www.test.com")).toBe("First Last, \"Title,\" Publisher vol, no. iss (Year): 1, www.test.com.");
-    });
-});
-
-describe("journal.eBibliography() testing", () => {
-    test("should create bibliography citation for electronic journal", () => {
-        expect(eJournalBibliography(journal, "www.test.com")).toBe("Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10. www.test.com.");
+    test("should create bibliography citation for journal with URL", () => {
+        expect(journalBibliography(urlJournal)).toBe("Last, First. \"Title.\" Publisher vol, no. iss (Year): 1-10. URL.");
     });
 });

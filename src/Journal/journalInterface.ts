@@ -3,7 +3,7 @@ import { JournalInfoInterface } from './journalInfoInterface';
 
 export interface JournalInterface {
     title: string;
-    authorList?: { first: string, last: string }[];
+    authorList?: Array<{ first: string, last: string }>;
     publisher?: string;
     yearOfPublication?: string;
     volume?: string;
@@ -13,7 +13,16 @@ export interface JournalInterface {
     url?: string;
 }
 
-export function createJournal(info: JournalInterface): { title: string, authorList: AuthorList, info: JournalInfoInterface, startRange: string, endRange: string, url: string } {
+export interface validJournalInterface {
+    title: string;
+    authorList: AuthorList;
+    info: JournalInfoInterface;
+    startRange: string;
+    endRange: string;
+    url: string;
+}
+
+export function createJournal(info: JournalInterface): validJournalInterface {
   return {
     title: info.title,
     authorList: new AuthorList(info.authorList || []),

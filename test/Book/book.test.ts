@@ -1,4 +1,4 @@
-import {bookNote, bookBibliography, eBookNote, eBookBibliography, bookShortNote} from "../../src/Book/book";
+import {bookNote, bookBibliography, bookShortNote} from "../../src/Book/book";
 
 let book = {
     title: "The Great Gatsby",

@@ -1,7 +1,6 @@
 import {
     book,
     journal,
-    eJournal,
     webpage,
     lecture
 } from "../src/cmosCitation";
@@ -56,7 +55,7 @@ describe("createBookCitation() testing", () => {
 });
 
 describe("createEBookCitation() testing", () => {
-    it("should create eBook citation", () => {
+    it("should create book citation with url", () => {
         let citation = book({
             title: "The Great Gatsby",
             authorList: [{first: "F. Scott", last: "Fitzgerald"}],
@@ -72,7 +71,7 @@ describe("createEBookCitation() testing", () => {
         });
     });
 
-    it("should create eBook citation with only title and url", () => {
+    it("should create book citation with only title and url", () => {
         let citation = book({
             title: "The Great Gatsby",
             url: "www.thegreatgatsby.com"
@@ -118,8 +117,8 @@ describe("createJournalCitation() testing", () => {
 });
 
 describe("createEJournalCitation() testing", () => {
-    it("should create eJournal citation", () => {
-        let citation = eJournal({
+    it("should create journal citation of url", () => {
+        let citation = journal({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10",
             url: "www.test.com"
@@ -130,8 +129,8 @@ describe("createEJournalCitation() testing", () => {
         });
     });
 
-    it("should create eJournal citation with only title and url", () => {
-        let citation = eJournal({
+    it("should create journal citation with only title and url", () => {
+        let citation = journal({
             title: "Title",
             url: "www.test.com"
         }, [{page: "1"}]);
@@ -140,15 +139,6 @@ describe("createEJournalCitation() testing", () => {
             "bibliography": "\"Title.\" www.test.com.",
             "notes": ["\"Title,\" 1, www.test.com."]
         });
-    });
-
-    it("should throw error if missing url field", () => {
-        try {
-            eJournal({title: "The Great Gatsby"}, [{page: "1"}]);
-            expect(true).toBe(false);   // Will trigger if no error thrown
-        } catch (e) {
-            expect(e.message).toBe("URL not specified");
-        }
     });
 });
 

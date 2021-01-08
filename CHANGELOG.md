@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Changed
 - To generate citations for electronic books, caller must specify URL in book() function call instead of calling eBook().
+- To generate citation for electronic journal, caller must specify URL field in journal() function call instead of calling eJournal().
 
 ## Removed
 - eBook() citation
