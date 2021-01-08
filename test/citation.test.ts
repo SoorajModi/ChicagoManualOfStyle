@@ -2,10 +2,10 @@ import {
     book,
     journal,
     webpage,
-    lecture
+    lecture, newspaper
 } from "../src/citation";
 
-describe("createBookCitation() testing", () => {
+describe("book() testing", () => {
     it("should create book citation", () => {
         let citation = book({
             title: "The Great Gatsby",
@@ -52,9 +52,7 @@ describe("createBookCitation() testing", () => {
     //             "Fitzgerald, 2."]
     //     });
     // });
-});
 
-describe("createEBookCitation() testing", () => {
     it("should create book citation with url", () => {
         let citation = book({
             title: "The Great Gatsby",
@@ -84,7 +82,7 @@ describe("createEBookCitation() testing", () => {
     });
 });
 
-describe("createJournalCitation() testing", () => {
+describe("journal() testing", () => {
     it("should create journal citation", () => {
         let citation = journal({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
@@ -114,9 +112,7 @@ describe("createJournalCitation() testing", () => {
             ]
         });
     });
-});
 
-describe("createEJournalCitation() testing", () => {
     it("should create journal citation of url", () => {
         let citation = journal({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
@@ -142,7 +138,7 @@ describe("createEJournalCitation() testing", () => {
     });
 });
 
-describe("createWebpageCitation() testing", () => {
+describe("webpage() testing", () => {
     it("should create webpage citation", () => {
         let citation = webpage({
             title: "Title of Webpage",
@@ -173,7 +169,7 @@ describe("createWebpageCitation() testing", () => {
     });
 });
 
-describe("createLectureCitation() testing", () => {
+describe("lecture() testing", () => {
     it("should create lecture citation", () => {
         let citation = lecture({
             title: "Course",
@@ -198,5 +194,38 @@ describe("createLectureCitation() testing", () => {
             "bibliography": "Last, First. \"Course.\" Lecture.",
             "notes": ["First Last, \"Course\" (lecture).", "Last, \"Course.\""]
         });
+    });
+});
+
+describe("newspaper() testing", () => {
+    it("should create newspaper citation", () => {
+        let citation = newspaper({
+            articleTitle: "Article Title",
+            newspaperTitle: "Newspaper Title",
+            authorList: [{first: "First", last: "Last"}],
+            date: "Date",
+            edition: "Edition",
+        });
+
+        expect(citation).toStrictEqual({
+           "bibliography": "Last, First. \"Article Title.\" Newspaper Title, Edition, Date.",
+           "notes": ["First Last, \"Article Title,\" Newspaper Title, Date, Edition."]
+        });
+    });
+
+    it("should create newspaper citation with URL", () => {
+        let citation = newspaper({
+            articleTitle: "Article Title",
+            newspaperTitle: "Newspaper Title",
+            authorList: [{first: "First", last: "Last"}],
+            date: "Date",
+            edition: "Edition",
+            url: "URL",
+        });
+
+        expect(citation).toStrictEqual({
+            "bibliography": "Last, First. \"Article Title.\" Newspaper Title, Edition, Date. URL.",
+            "notes": ["First Last, \"Article Title,\" Newspaper Title, Date, Edition, URL."]
+        })
     });
 });

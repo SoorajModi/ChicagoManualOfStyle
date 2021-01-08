@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added citation generation for books with editors and/or editions beyond the first.
 - Added short note citation generation for lectures.
 - Added short note citation generation for webpages.
+- Add newspaper citation generation.
 
 ## Changed
 - To generate citations for electronic books, caller must specify URL in book() function call instead of calling eBook().

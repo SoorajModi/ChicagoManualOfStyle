@@ -1,4 +1,4 @@
-import {WebpageInterface, createWebpage, validWebpageInterface} from './webpageInterface';
+import { WebpageInterface, createWebpage, validWebpageInterface } from './webpageInterface';
 
 export function webpageNote(info: WebpageInterface): string {
   let webpage: validWebpageInterface = createWebpage(info);
@@ -12,7 +12,7 @@ export function webpageBibliography(info: WebpageInterface): string {
 
 export function webpageShortNote(info: WebpageInterface): string {
   let webpage: validWebpageInterface = createWebpage(info);
-  return shortNotePrepend(webpage) + "\"" + webpage.title + ".\"";
+  return `${shortNotePrepend(webpage)}"${webpage.title}."`;
 }
 
 function publisherCitation(publisher: string): string {
@@ -28,5 +28,5 @@ function isPeriodRequired(pub: string, date: string): string {
 }
 
 function shortNotePrepend(citation: validWebpageInterface): string {
-  return (citation.authorList.length() > 0) ? citation.authorList.authors[0].last + ", " : citation.nameOfSite + ", ";
+  return (citation.authorList.length() > 0) ? `${citation.authorList.authors[0].last}, ` : `${citation.nameOfSite}, `;
 }

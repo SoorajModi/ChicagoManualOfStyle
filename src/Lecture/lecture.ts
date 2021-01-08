@@ -1,4 +1,4 @@
-import {LectureInterface, createLecture, validLectureInterface} from './lectureInterface';
+import { LectureInterface, createLecture, validLectureInterface } from './lectureInterface';
 import { lectureInfoBibliography, lectureInfoNote } from './lectureInfo';
 
 export function lectureNote(info: LectureInterface): string {
@@ -13,9 +13,9 @@ export function lectureBibliography(info: LectureInterface): string {
 
 export function lectureShortNote(info: LectureInterface): string {
   let citation: validLectureInterface = createLecture(info);
-  return shortNotePrepend(citation) + "\"" + citation.courseTitle + ".\"";
+  return `${shortNotePrepend(citation)}"${citation.courseTitle}."`;
 }
 
 function shortNotePrepend(citation: validLectureInterface): string {
-  return (citation.professor.length() === 0) ? "" : citation.professor.authors[0].last + ", ";
+  return (citation.professor.length() === 0) ? '' : `${citation.professor.authors[0].last}, `;
 }
