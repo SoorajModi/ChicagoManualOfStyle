@@ -39,7 +39,7 @@ let citation = CMOS.book({
     publisher: "Charles Scribner's Sons",                   // Optional
     placeOfPublication: "New York",                         // Optional
     yearOfPublication: "2000"                               // Optional
-}, [{page: "1"}, {page: ""}, {page: "2"}]);                 // Optional list of pages to be cited in notes
+}, ["1", "2", "3"]);                 // Optional list of pages to be cited in notes
 
 console.log(citation);
 ```

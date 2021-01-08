@@ -46,6 +46,27 @@ let fourAuthBook = {
     placeOfPublication: "New York",
     yearOfPublication: "2000"
 };
+let sixAuthBook = {
+    title: "The Great Gatsby",
+    authorList: [
+        {first: "F. Scott", last: "Fitzgerald"},
+        {first: "Author", last: "Two"},
+        {first: "Author", last: "Three"},
+        {first: "Author", last: "Four"},
+        {first: "Author", last: "Five"},
+        {first: "Author", last: "Six"}
+    ],
+    publisher: "Charles Scribner's Sons",
+    placeOfPublication: "New York",
+    yearOfPublication: "2000"
+};
+let editor = {
+    title: 'Title',
+    publisher: "Publisher",
+    placeOfPublication: "Place",
+    yearOfPublication: "Year",
+    editor: [{first: "First", last: "Last"}],
+};
 
 describe("Book.note() testing", () => {
     test("should create note citation with no author", () => {
@@ -67,6 +88,10 @@ describe("Book.note() testing", () => {
     test("should create note citation with four+ authors", () => {
         expect(bookNote(fourAuthBook, "1")).toBe("F. Scott Fitzgerald et al., The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
     });
+
+    it("should generate note citation for book with editor field specified", () => {
+        expect(bookNote(editor, "Page")).toBe("First Last, ed., Title (Place: Publisher, Year), Page.");
+    });
 });
 
 describe("Book.shortNote() testing", () => {
@@ -76,6 +101,10 @@ describe("Book.shortNote() testing", () => {
 
     test("should create short note with no author", () => {
         expect(bookShortNote(noAuthorBook, "1")).toBe("The Great Gatsby, 1.");
+    });
+
+    test("should create short note with no author", () => {
+        expect(bookShortNote(editor, "1")).toBe("Last, 1.");
     });
 });
 
@@ -101,33 +130,17 @@ describe("Book.bibliography() testing", () => {
     });
 
     test("should create bibliography citation with four+ authors", () => {
-        let sixAuthBook = {
-            title: "The Great Gatsby",
-            authorList: [
-                {first: "F. Scott", last: "Fitzgerald"},
-                {first: "Author", last: "Two"},
-                {first: "Author", last: "Three"},
-                {first: "Author", last: "Four"},
-                {first: "Author", last: "Five"},
-                {first: "Author", last: "Six"}
-            ],
-            publisher: "Charles Scribner's Sons",
-            placeOfPublication: "New York",
-            yearOfPublication: "2000"
-        };
         expect(bookBibliography(sixAuthBook)).toBe("Fitzgerald, F. Scott, Author Two, Author Three, Author Four, Author Five, and Author Six. " +
             "The Great Gatsby. New York: Charles Scribner's Sons, 2000.");
+    });
+
+    test('should generate bibliography for book with editor field specified', () => {
+        expect(bookBibliography(editor)).toBe("Last, First, ed. Title. Place: Publisher, Year.");
     });
 });
 
 describe("Book.eNote() testing", () => {
     test("should create book note citation with URL", () => {
         expect(eBookNote(book, "1", "www.thegreatgatsby.com")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.");
-    });
-});
-
-describe("Book.eBibliography() testing", () => {
-    test("should create book bibliography citation with URL", () => {
-        expect(eBookBibliography(book, "www.thegreatgatsby.com")).toBe("Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.");
     });
 });
