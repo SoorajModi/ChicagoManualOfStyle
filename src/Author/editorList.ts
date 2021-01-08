@@ -14,9 +14,9 @@ export default class EditorList extends AuthorList {
   }
 
   editorBibliography(edition: string): string {
-      if (edition !== ''){
-          return ` Edited by ${this.authors[0].first} ${this.authors[0].last},`;
-      }
-      return ` Edited by ${this.authors[0].first} ${this.authors[0].last}.`;
+    if (edition !== '') {
+      return ` Edited by ${this.authors[0].first} ${this.authors[0].last},`;
+    }
+    return ` Edited by ${this.authors[0].first} ${this.authors[0].last}.`;
   }
 }

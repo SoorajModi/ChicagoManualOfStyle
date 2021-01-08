@@ -2,9 +2,7 @@ import { BookInterface } from './Book/bookInterface';
 import { JournalInterface } from './Journal/journalInterface';
 import { WebpageInterface } from './Website/webpageInterface';
 import { LectureInterface } from './Lecture/lectureInterface';
-import {
-  bookBibliography, bookNoteList, eBookBibliography, eBookNoteList,
-} from './Book/book';
+import { bookBibliography, bookNoteList } from './Book/book';
 import { webpageBibliography, webpageNote } from './Website/webpage';
 import { lectureBibliography, lectureNote } from './Lecture/lecture';
 import {
@@ -13,11 +11,6 @@ import {
 
 export function book(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
   return { bibliography: bookBibliography(info), notes: bookNoteList(info, pages) };
-}
-
-export function eBook(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
-  if (!info.url) throw new Error('URL not specified');
-  return { bibliography: eBookBibliography(info, info.url), notes: eBookNoteList(info, pages, info.url) };
 }
 
 export function journal(info: JournalInterface, pages: {page: string}[]): {bibliography: string, notes: string[]} {

@@ -1,6 +1,5 @@
 import {
     book,
-    eBook,
     journal,
     eJournal,
     webpage,
@@ -58,7 +57,7 @@ describe("createBookCitation() testing", () => {
 
 describe("createEBookCitation() testing", () => {
     it("should create eBook citation", () => {
-        let citation = eBook({
+        let citation = book({
             title: "The Great Gatsby",
             authorList: [{first: "F. Scott", last: "Fitzgerald"}],
             publisher: "Charles Scribner's Sons",
@@ -74,7 +73,7 @@ describe("createEBookCitation() testing", () => {
     });
 
     it("should create eBook citation with only title and url", () => {
-        let citation = eBook({
+        let citation = book({
             title: "The Great Gatsby",
             url: "www.thegreatgatsby.com"
         }, ["1"]);
@@ -83,15 +82,6 @@ describe("createEBookCitation() testing", () => {
             "bibliography": "The Great Gatsby. www.thegreatgatsby.com.",
             "notes": ["The Great Gatsby, 1, www.thegreatgatsby.com."]
         });
-    });
-
-    it("should throw error if missing url field", () => {
-        try {
-            eBook({title: "The Great Gatsby"}, ["1"]);
-            fail("No error thrown with missing URL field");
-        } catch (e) {
-            expect(e.message).toBe("URL not specified");
-        }
     });
 });
 

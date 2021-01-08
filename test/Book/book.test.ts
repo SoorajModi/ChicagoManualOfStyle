@@ -93,6 +93,15 @@ let editionAndEditor = {
     edition: "Edition",
 };
 
+let urlBook = {
+    title: "The Great Gatsby",
+    authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+    publisher: "Charles Scribner's Sons",
+    placeOfPublication: "New York",
+    yearOfPublication: "2000",
+    url: "www.thegreatgatsby.com"
+};
+
 describe("Book.note() testing", () => {
     it("should create note citation with no author", () => {
         expect(bookNote(noAuthorBook, "1")).toBe("The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.");
@@ -128,6 +137,10 @@ describe("Book.note() testing", () => {
 
     it("should generate note citation for book with edition and editor", () => {
         expect(bookNote(editionAndEditor, "Page")).toBe("First Last, Title, ed. First Last, Edition (Place: Publisher, Year), Page.")
+    });
+
+    it("should create book note citation with URL", () => {
+        expect(bookNote(urlBook, "1")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.");
     });
 });
 
@@ -185,11 +198,5 @@ describe("Book.bibliography() testing", () => {
 
     it("should generate bibliography for book with edition and editor", () => {
         expect(bookBibliography(editionAndEditor)).toBe("Last, First. Title. Edited by First Last, Edition. Place: Publisher, Year.");
-    });
-});
-
-describe("Book.eNote() testing", () => {
-    it("should create book note citation with URL", () => {
-        expect(eBookNote(book, "1", "www.thegreatgatsby.com")).toBe("F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.");
     });
 });

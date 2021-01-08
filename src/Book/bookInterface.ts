@@ -13,11 +13,20 @@ export interface BookInterface {
     url?: string;
 }
 
-export function createBook(info: BookInterface): {title: string, authorList: AuthorList, editor: EditorList, info: BookInfoInterface} {
+export interface validBookInterface {
+    title: string;
+    authorList: AuthorList;
+    editor: EditorList;
+    url: string,
+    info: BookInfoInterface;
+}
+
+export function createBook(info: BookInterface): validBookInterface {
   return {
     title: info.title,
     authorList: new AuthorList(info.authorList || []),
     editor: new EditorList(info.editor || []),
+    url: info.url || '',
     info: {
       edition: info.edition || '',
       publisher: info.publisher || '',
