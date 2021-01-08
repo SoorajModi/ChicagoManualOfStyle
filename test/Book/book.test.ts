@@ -83,6 +83,15 @@ let edition = {
     yearOfPublication: "Year",
     edition: "Edition",
 };
+let editionAndEditor = {
+    title: 'Title',
+    authorList: [{first: "First", last: "Last"}],
+    publisher: "Publisher",
+    placeOfPublication: "Place",
+    yearOfPublication: "Year",
+    editor: [{first: "First", last: "Last"}],
+    edition: "Edition",
+};
 
 describe("Book.note() testing", () => {
     it("should create note citation with no author", () => {
@@ -115,6 +124,10 @@ describe("Book.note() testing", () => {
 
     it("should generate note citation for book with edition", () => {
         expect(bookNote(edition, "Page")).toBe("First Last, Title, Edition (Place: Publisher, Year), Page.")
+    });
+
+    it("should generate note citation for book with edition and editor", () => {
+        expect(bookNote(editionAndEditor, "Page")).toBe("First Last, Title, ed. First Last, Edition (Place: Publisher, Year), Page.")
     });
 });
 
@@ -168,6 +181,10 @@ describe("Book.bibliography() testing", () => {
 
     it('should generate bibliography for book with edition', () => {
         expect(bookBibliography(edition)).toBe("Last, First. Title. Edition. Place: Publisher, Year.");
+    });
+
+    it("should generate bibliography for book with edition and editor", () => {
+        expect(bookBibliography(editionAndEditor)).toBe("Last, First. Title. Edited by First Last, Edition. Place: Publisher, Year.");
     });
 });
 

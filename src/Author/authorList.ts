@@ -3,7 +3,7 @@ import Author from './author';
 export default class AuthorList {
     authors: Array<Author> = [];
 
-    constructor(authorList: {first: string, last: string}[]) {
+    constructor(authorList: Array<{first: string, last: string}>) {
       authorList.forEach((author) => {
         this.authors.push(new Author(author.first, author.last));
       });

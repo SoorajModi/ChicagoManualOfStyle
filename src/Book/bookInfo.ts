@@ -1,4 +1,4 @@
-import {BookInfoInterface, ValidBookInfoInterface, createBookInfo} from './bookInfoInterface';
+import { BookInfoInterface, ValidBookInfoInterface, createBookInfo } from './bookInfoInterface';
 
 export function bookInfoNote(info: BookInfoInterface): string {
   let citation: ValidBookInfoInterface = createBookInfo(info);
@@ -27,17 +27,16 @@ function bookEditionBibliography(edition: string): string {
 }
 
 function addSpaceBetweenElements(citation: ValidBookInfoInterface): string {
-  return (isMiddleElementsEmpty(citation)) ? "" : " ";
+  return (isMiddleElementsEmpty(citation)) ? '' : ' ';
 }
 
 function createBookCitation(citation: ValidBookInfoInterface, note: boolean): string {
-  if (isMiddleElementsEmpty(citation)) return "";
+  if (isMiddleElementsEmpty(citation)) return '';
 
   if (note) {
-    return ("(" + generateMiddleElements(citation.pub, citation.pop, citation.yop) + ")");
-  } else {
-    return generateMiddleElements(citation.pub, citation.pop, citation.yop) + ".";
+    return (`(${generateMiddleElements(citation.pub, citation.pop, citation.yop)})`);
   }
+  return `${generateMiddleElements(citation.pub, citation.pop, citation.yop)}.`;
 }
 
 function generateMiddleElements(pub: string, pop: string, year: string): string {

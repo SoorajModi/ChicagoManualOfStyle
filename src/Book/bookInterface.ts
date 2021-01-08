@@ -1,6 +1,6 @@
 import AuthorList from '../Author/authorList';
 import { BookInfoInterface } from './bookInfoInterface';
-import EditorList from "../Author/editorList";
+import EditorList from '../Author/editorList';
 
 export interface BookInterface {
     authorList?: Array<{ first: string, last: string }>;
