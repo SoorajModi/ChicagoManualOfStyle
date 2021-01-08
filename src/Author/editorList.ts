@@ -14,10 +14,10 @@ export default class EditorList extends AuthorList {
     }
 
     editorNote(): string {
-        return ", ed. " + this.note().trim().slice(0, -1);
+        return ", ed. " + this.authors[0].first + " " + this.authors[0].last;
     }
 
     editorBibliography(): string {
-        return " Edited by " + this.note().trim().slice(0, -1) + ".";
+        return " Edited by " + this.authors[0].first + " " + this.authors[0].last + ".";
     };
 }
