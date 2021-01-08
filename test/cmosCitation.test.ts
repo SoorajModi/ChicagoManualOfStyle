@@ -8,7 +8,7 @@ import {
 } from "../src/cmosCitation";
 
 describe("createBookCitation() testing", () => {
-    test("should create book citation", () => {
+    it("should create book citation", () => {
         let citation = book({
             title: "The Great Gatsby",
             authorList: [{first: "F. Scott", last: "Fitzgerald"}],
@@ -25,7 +25,7 @@ describe("createBookCitation() testing", () => {
         });
     });
 
-    test("should create book citation with only title", () => {
+    it("should create book citation with only title", () => {
         let citation = book({
             title: "The Great Gatsby"
         }, ["1", "2", "3"]);
@@ -39,7 +39,7 @@ describe("createBookCitation() testing", () => {
         });
     });
 
-    // test("should create note citations with invalid pages", () => {
+    // it("should create note citations with invalid pages", () => {
     //     let citation = book({
     //         title: "The Great Gatsby",
     //         authorList: [{first: "F. Scott", last: "Fitzgerald"}],
@@ -57,7 +57,7 @@ describe("createBookCitation() testing", () => {
 });
 
 describe("createEBookCitation() testing", () => {
-    test("should create eBook citation", () => {
+    it("should create eBook citation", () => {
         let citation = eBook({
             title: "The Great Gatsby",
             authorList: [{first: "F. Scott", last: "Fitzgerald"}],
@@ -73,7 +73,7 @@ describe("createEBookCitation() testing", () => {
         });
     });
 
-    test("should create eBook citation with only title and url", () => {
+    it("should create eBook citation with only title and url", () => {
         let citation = eBook({
             title: "The Great Gatsby",
             url: "www.thegreatgatsby.com"
@@ -85,7 +85,7 @@ describe("createEBookCitation() testing", () => {
         });
     });
 
-    test("should throw error if missing url field", () => {
+    it("should throw error if missing url field", () => {
         try {
             eBook({title: "The Great Gatsby"}, ["1"]);
             fail("No error thrown with missing URL field");
@@ -96,7 +96,7 @@ describe("createEBookCitation() testing", () => {
 });
 
 describe("createJournalCitation() testing", () => {
-    test("should create journal citation", () => {
+    it("should create journal citation", () => {
         let citation = journal({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10"
@@ -111,7 +111,7 @@ describe("createJournalCitation() testing", () => {
         });
     });
 
-    test("should create journal citation with only title", () => {
+    it("should create journal citation with only title", () => {
         let citation = journal({
             title: "Title"
         }, [{page: "1"}, {page: "2"}, {page: "3"}]);
@@ -128,7 +128,7 @@ describe("createJournalCitation() testing", () => {
 });
 
 describe("createEJournalCitation() testing", () => {
-    test("should create eJournal citation", () => {
+    it("should create eJournal citation", () => {
         let citation = eJournal({
             title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10",
@@ -140,7 +140,7 @@ describe("createEJournalCitation() testing", () => {
         });
     });
 
-    test("should create eJournal citation with only title and url", () => {
+    it("should create eJournal citation with only title and url", () => {
         let citation = eJournal({
             title: "Title",
             url: "www.test.com"
@@ -152,7 +152,7 @@ describe("createEJournalCitation() testing", () => {
         });
     });
 
-    test("should throw error if missing url field", () => {
+    it("should throw error if missing url field", () => {
         try {
             eJournal({title: "The Great Gatsby"}, [{page: "1"}]);
             expect(true).toBe(false);   // Will trigger if no error thrown
@@ -163,7 +163,7 @@ describe("createEJournalCitation() testing", () => {
 });
 
 describe("createWebpageCitation() testing", () => {
-    test("should create webpage citation", () => {
+    it("should create webpage citation", () => {
         let citation = webpage({
             title: "Title of Webpage",
             authorList: [{first: "First", last: "Last"}],
@@ -178,7 +178,7 @@ describe("createWebpageCitation() testing", () => {
         });
     });
 
-    test("should create webpage citation with only title and url", () => {
+    it("should create webpage citation with only title and url", () => {
         let citation = webpage({
             title: "Title of Webpage",
             nameOfSite: "testWebsite",
@@ -192,7 +192,7 @@ describe("createWebpageCitation() testing", () => {
 });
 
 describe("createLectureCitation() testing", () => {
-    test("should create lecture citation", () => {
+    it("should create lecture citation", () => {
         let citation = lecture({
             title: "Course",
             professor: [{first: "First", last: "Last"}],
@@ -207,7 +207,7 @@ describe("createLectureCitation() testing", () => {
         });
     });
 
-    test("should create lecture with only title and prof", () => {
+    it("should create lecture with only title and prof", () => {
         let citation = lecture({
             title: "Course",
             professor: [{first: "First", last: "Last"}]

@@ -8,6 +8,7 @@ export interface BookInterface {
     publisher?: string;
     placeOfPublication?: string;
     yearOfPublication?: string;
+    edition?: string;
     url?: string;
 }
 
@@ -17,6 +18,7 @@ export function createBook(info: BookInterface): {title: string, authorList: Aut
     authorList: new AuthorList(info.authorList || []),
     editor: new AuthorList(info.editor || []),
     info: {
+      edition: info.edition || '',
       publisher: info.publisher || '',
       placeOfPublication: info.placeOfPublication || '',
       yearOfPublication: info.yearOfPublication || '',
