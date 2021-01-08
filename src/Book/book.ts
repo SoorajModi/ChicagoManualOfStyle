@@ -12,14 +12,14 @@ export function bookNote(info: BookInterface, page: string): string {
 }
 
 function standardBookNote(citation: validBookInterface, page: string): string {
-  if (citation.editor.length() > 0) {
-    if (citation.authorList.length() === 0) {
-      return (`${citation.editor.noAuthorsNote() + citation.title + bookInfoNote(citation.info)}, ${page}.`);
+  if (citation.editors.length() > 0) {
+    if (citation.authors.length() === 0) {
+      return (`${citation.editors.noAuthorsNote() + citation.title + bookInfoNote(citation.info)}, ${page}.`);
     }
-    return `${citation.authorList.note() + citation.title + citation.editor.editorNote() + bookInfoNote(citation.info)}, ${page}.`;
+    return `${citation.authors.note() + citation.title + citation.editors.editorNote() + bookInfoNote(citation.info)}, ${page}.`;
   }
 
-  return (`${citation.authorList.note() + citation.title + bookInfoNote(citation.info)}, ${page}.`);
+  return (`${citation.authors.note() + citation.title + bookInfoNote(citation.info)}, ${page}.`);
 }
 
 export function bookShortNote(info: BookInterface, page: string): string {
@@ -37,14 +37,14 @@ export function bookBibliography(info: BookInterface): string {
 }
 
 function standardBookBibliography(citation: validBookInterface): string {
-  if (citation.editor.length() > 0) {
-    if (citation.authorList.length() === 0) {
-      return (`${citation.editor.noAuthorBibliography() + citation.title}.${bookInfoBibliography(citation.info)}`);
+  if (citation.editors.length() > 0) {
+    if (citation.authors.length() === 0) {
+      return (`${citation.editors.noAuthorBibliography() + citation.title}.${bookInfoBibliography(citation.info)}`);
     }
-    return (`${citation.authorList.bibliography() + citation.title}.${citation.editor.editorBibliography(citation.info.edition || '')}${bookInfoBibliography(citation.info)}`);
+    return (`${citation.authors.bibliography() + citation.title}.${citation.editors.editorBibliography(citation.info.edition || '')}${bookInfoBibliography(citation.info)}`);
   }
 
-  return (`${citation.authorList.bibliography() + citation.title}.${bookInfoBibliography(citation.info)}`);
+  return (`${citation.authors.bibliography() + citation.title}.${bookInfoBibliography(citation.info)}`);
 }
 
 export function bookNoteList(info: BookInterface, pages: string[]): string[] {
@@ -68,10 +68,10 @@ export function eBookBibliography(info: BookInterface, url: string): string {
 function getShortNotePrefix(info: BookInterface): string {
   let citation = createBook(info);
 
-  if (citation.authorList.authors.length > 0) {
-    return (`${citation.authorList.authors[0].last}, `);
-  } if (citation.editor.authors.length > 0) {
-    return (`${citation.editor.authors[0].last}, `);
+  if (citation.authors.authors.length > 0) {
+    return (`${citation.authors.authors[0].last}, `);
+  } if (citation.editors.authors.length > 0) {
+    return (`${citation.editors.authors[0].last}, `);
   }
 
   return (`${citation.title}, `);

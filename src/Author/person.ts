@@ -1,4 +1,4 @@
-export default class Author {
+export default class Person {
     first: string;
 
     last: string;

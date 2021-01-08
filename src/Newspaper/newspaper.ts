@@ -2,12 +2,12 @@ import { createNewspaper, NewspaperInterface, validNewspaperInterface } from './
 
 export function newspaperNote(info: NewspaperInterface): string {
   let citation: validNewspaperInterface = createNewspaper(info);
-  return `${citation.authorList.note()}"${citation.articleTitle}," ${citation.newspaperTitle}, ${citation.date}${newspaperNoteAppend(citation)}`;
+  return `${citation.authors.note()}"${citation.articleTitle}," ${citation.newspaperTitle}, ${citation.date}${newspaperNoteAppend(citation)}`;
 }
 
 export function newspaperBibliography(info: NewspaperInterface): string {
   let citation: validNewspaperInterface = createNewspaper(info);
-  return `${citation.authorList.bibliography()}"${citation.articleTitle}." ${citation.newspaperTitle}${addEditionInfo(citation.edition)}, ${citation.date}.${addURLBibliography(citation.url)}`;
+  return `${citation.authors.bibliography()}"${citation.articleTitle}." ${citation.newspaperTitle}${addEditionInfo(citation.edition)}, ${citation.date}.${addURLBibliography(citation.url)}`;
 }
 
 function newspaperNoteAppend(citation: validNewspaperInterface): string {

@@ -11,10 +11,11 @@ This is an application to create citations in Chicago Manual of Style (CMoS) 17t
 
 - Will create note and bibliography citations for the following source types
 
-    - Books / Electronic Books
-    - Journal / Electronic Journals
+    - Books
+    - Journal
     - Lectures
-    - Webpages
+    - Web Pages
+    - Newspapers
     
 ## Installation
 
@@ -30,55 +31,30 @@ let CMOS = require('chicagomanualofstyle');
 
 ## Usage
 
+The return value of each call will be:
+
+```
+{
+    bibliography: string,
+    notes: Array<string>
+}
+```
+
 #### Book
 
 ```
 let citation = CMOS.book({
     title: "The Great Gatsby",                              // Required
-    authorList: [{first: "F. Scott", last: "Fitzgerald"}],  // Optional
-    publisher: "Charles Scribner's Sons",                   // Optional
-    placeOfPublication: "New York",                         // Optional
-    yearOfPublication: "2000"                               // Optional
-}, ["1", "2", "3"]);                 // Optional list of pages to be cited in notes
-
-console.log(citation);
-```
-
-This will return:
-
-```
-{
-  bibliography: "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000.",
-  notes: [
-    "F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1."
-  ]
-}
-```
-
-#### Electronic Book
-
-```
-let citation = CMOS.eBook({
-    title: "The Great Gatsby",                              // Required
-    authorList: [{first: "F. Scott", last: "Fitzgerald"}],  // Optional
+    authors: [{first: "F. Scott", last: "Fitzgerald"}],     // Optional
+    editors: [{first: "F. Scott", last: "Fitzgerald"}],     // Optional
     publisher: "Charles Scribner's Sons",                   // Optional
     placeOfPublication: "New York",                         // Optional
     yearOfPublication: "2000",                              // Optional
-    url: "www.thegreatgatsby.com"                           // Required
-}, [{page: "1"}]);
+    edition: "Edition Information"                          // Optional
+    url: "URL or DOI"                                       // Optional
+}, ["1", "2", "3"]);                 // Optional list of pages to be cited in notes
 
 console.log(citation);
-```
-
-This will return:
-
-```
-{
-  bibliography: "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.",
-  notes: [
-    "F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com."
-  ]
-}
 ```
 
 #### Journal
@@ -86,60 +62,25 @@ This will return:
 ```
 let citation = CMOS.journal({
     title: "Title",                                 // Required
-    authorList: [{first: "First", last: "Last"}],   // Optional
+    authors: [{first: "First", last: "Last"}],   // Optional
     publisher: "Publisher",                         // Optional
     yearOfPublication: "Year",                      // Optional             
     volume: "vol",                                  // Optional
     issue: "iss",                                   // Optional
     startRange: "1",                                // Optional
-    endRange: "10"                                  // Optional
-}, [{page: "1"}]);
-
-console.log(citation);
-```
-
-returns
-
-```
-{
-  bibliography: 'Last, First. "Title." Publisher vol, no. iss (Year): 1-10.',
-  notes: [ 'First Last, "Title," Publisher vol, no. iss (Year): 1.' ]
-}
-```
-
-#### Electronic Journal
-
-```
-let citation = eJournal({
-    title: "Title",                                 // Required
-    authorList: [{first: "First", last: "Last"}],   // Optional
-    publisher: "Publisher",                         // Optional
-    yearOfPublication: "Year",                      // Optional
-    volume: "vol",                                  // Optional
-    issue: "iss",                                   // Optional
-    startRange: "1",                                // Optional
     endRange: "10",                                 // Optional
-    url: "www.test.com"                             // Required
+    url: "URL or DOI"                               // Optional
 }, [{page: "1"}]);
 
 console.log(citation);
 ```
 
-Returns:
-
-```
-{
-  bibliography: 'Last, First. "Title." Publisher vol, no. iss (Year): 1-10.',
-  notes: [ 'First Last, "Title," Publisher vol, no. iss (Year): 1.' ]
-}
-```
-
-#### Webpage
+#### Web Page
 
 ```
 let citation = CMOS.webpage({
     title: "Title of Webpage",                      // Required
-    authorList: [{first: "First", last: "Last"}],   // Optional
+    authors: [{first: "First", last: "Last"}],   // Optional
     publisher: "testPublisher",                     // Optional
     nameOfSite: "testWebsite",                      // Required
     date: "2000",                                   // Optional
@@ -147,17 +88,6 @@ let citation = CMOS.webpage({
 });
 
 console.log
-```
-
-Returns:
-
-```
-{
-  bibliography: 'Last, First. "Title of Webpage." testWebsite. testPublisher, 2000. wwww.testwebsite.com.',
-  notes: [
-    'First Last, "Title of Webpage," testWebsite, testPublisher, 2000, wwww.testwebsite.com.'
-  ]
-}
 ```
 
 #### Lecture
@@ -175,15 +105,17 @@ let citation = CMOS.lecture({
 console.log(citation);
 ```
 
-Returns:
+#### Newspaper
 
 ```
-{
-  bibliography: 'Last, First. "Course." Lecture, University, City, Province, Date.',
-  notes: [
-    'First Last, "Course" (lecture, University, City, Province, Date).'
-  ]
-}
+let citation = newspaper({
+    articleTitle: "Article Title",
+    newspaperTitle: "Newspaper Title",
+    authors: [{first: "First", last: "Last"}],
+    date: "Date",
+    edition: "Edition",
+    url: "URL",
+});
 ```
 
 ## How to Run Locally

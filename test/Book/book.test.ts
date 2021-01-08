@@ -2,7 +2,7 @@ import {bookNote, bookBibliography, bookShortNote} from "../../src/Book/book";
 
 let book = {
     title: "The Great Gatsby",
-    authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+    authors: [{first: "F. Scott", last: "Fitzgerald"}],
     publisher: "Charles Scribner's Sons",
     placeOfPublication: "New York",
     yearOfPublication: "2000"
@@ -15,7 +15,7 @@ let noAuthorBook = {
 };
 let twoAuthBook = {
     title: "The Great Gatsby",
-    authorList: [
+    authors: [
         {first: "F. Scott", last: "Fitzgerald"},
         {first: "Author", last: "Two"}
     ],
@@ -25,7 +25,7 @@ let twoAuthBook = {
 };
 let threeAuthBook = {
     title: "The Great Gatsby",
-    authorList: [
+    authors: [
         {first: "F. Scott", last: "Fitzgerald"},
         {first: "Author", last: "Two"},
         {first: "Author", last: "Three"}
@@ -36,7 +36,7 @@ let threeAuthBook = {
 };
 let fourAuthBook = {
     title: "The Great Gatsby",
-    authorList: [
+    authors: [
         {first: "F. Scott", last: "Fitzgerald"},
         {first: "Author", last: "Two"},
         {first: "Author", last: "Three"},
@@ -48,7 +48,7 @@ let fourAuthBook = {
 };
 let sixAuthBook = {
     title: "The Great Gatsby",
-    authorList: [
+    authors: [
         {first: "F. Scott", last: "Fitzgerald"},
         {first: "Author", last: "Two"},
         {first: "Author", last: "Three"},
@@ -65,19 +65,19 @@ let editorInsteadOFAuthors = {
     publisher: "Publisher",
     placeOfPublication: "Place",
     yearOfPublication: "Year",
-    editor: [{first: "First", last: "Last"}],
+    editors: [{first: "First", last: "Last"}],
 };
 let editorAndAuthor = {
     title: 'Title',
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     publisher: "Publisher",
     placeOfPublication: "Place",
     yearOfPublication: "Year",
-    editor: [{first: "First", last: "Last"}],
+    editors: [{first: "First", last: "Last"}],
 };
 let edition = {
     title: 'Title',
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     publisher: "Publisher",
     placeOfPublication: "Place",
     yearOfPublication: "Year",
@@ -85,17 +85,17 @@ let edition = {
 };
 let editionAndEditor = {
     title: 'Title',
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     publisher: "Publisher",
     placeOfPublication: "Place",
     yearOfPublication: "Year",
-    editor: [{first: "First", last: "Last"}],
+    editors: [{first: "First", last: "Last"}],
     edition: "Edition",
 };
 
 let urlBook = {
     title: "The Great Gatsby",
-    authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+    authors: [{first: "F. Scott", last: "Fitzgerald"}],
     publisher: "Charles Scribner's Sons",
     placeOfPublication: "New York",
     yearOfPublication: "2000",

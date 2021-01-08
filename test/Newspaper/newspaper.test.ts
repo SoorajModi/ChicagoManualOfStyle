@@ -3,7 +3,7 @@ import {newspaperBibliography, newspaperNote} from "../../src/Newspaper/newspape
 let newspaper = {
     articleTitle: "Article Title",
     newspaperTitle: "Newspaper Title",
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     date: "Date",
     edition: "Edition",
 };
@@ -11,14 +11,14 @@ let newspaper = {
 let noEdition = {
     articleTitle: "Article Title",
     newspaperTitle: "Newspaper Title",
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     date: "Date",
 };
 
 let url = {
     articleTitle: "Article Title",
     newspaperTitle: "Newspaper Title",
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     date: "Date",
     edition: "Edition",
     url: "URL",

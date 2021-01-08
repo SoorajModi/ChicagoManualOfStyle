@@ -1,20 +1,20 @@
-import AuthorList from "../../src/Author/authorList";
+import Authors from "../../src/Author/authors";
 
-let authorList = new AuthorList([{first: "Author", last: "One"}]);
-let emptyAuthorList = new AuthorList([]);
-let twoAuthorList = new AuthorList([{first: "Author", last: "One"}, {first: "Author", last: "Two"}]);
-let threeAuthorList = new AuthorList([
+let authorList = new Authors([{first: "Author", last: "One"}]);
+let emptyAuthorList = new Authors([]);
+let twoAuthorList = new Authors([{first: "Author", last: "One"}, {first: "Author", last: "Two"}]);
+let threeAuthorList = new Authors([
     {first: "Author", last: "One"},
     {first: "Author", last: "Two"},
     {first: "Author", last: "Three"}
 ]);
-let fourAuthorList = new AuthorList([
+let fourAuthorList = new Authors([
     {first: "Author", last: "One"},
     {first: "Author", last: "Two"},
     {first: "Author", last: "Three"},
     {first: "Author", last: "Four"}
 ]);
-let elevenAuthorList = new AuthorList([
+let elevenAuthorList = new Authors([
     {first: "Author", last: "One"},
     {first: "Author", last: "Two"},
     {first: "Author", last: "Three"},
@@ -27,7 +27,7 @@ let elevenAuthorList = new AuthorList([
     {first: "Author", last: "Ten"},
     {first: "Author", last: "Eleven"}
 ]);
-let invalidAuthorList = new AuthorList([
+let invalidAuthorList = new Authors([
     {first: "", last: ""},
     {first: "Author", last: ""},
     {first: "", last: "Three"},

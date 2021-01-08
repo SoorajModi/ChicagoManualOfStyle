@@ -9,7 +9,7 @@ describe("book() testing", () => {
     it("should create book citation", () => {
         let citation = book({
             title: "The Great Gatsby",
-            authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+            authors: [{first: "F. Scott", last: "Fitzgerald"}],
             publisher: "Charles Scribner's Sons",
             placeOfPublication: "New York",
             yearOfPublication: "2000"
@@ -56,7 +56,7 @@ describe("book() testing", () => {
     it("should create book citation with url", () => {
         let citation = book({
             title: "The Great Gatsby",
-            authorList: [{first: "F. Scott", last: "Fitzgerald"}],
+            authors: [{first: "F. Scott", last: "Fitzgerald"}],
             publisher: "Charles Scribner's Sons",
             placeOfPublication: "New York",
             yearOfPublication: "2000",
@@ -85,7 +85,7 @@ describe("book() testing", () => {
 describe("journal() testing", () => {
     it("should create journal citation", () => {
         let citation = journal({
-            title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
+            title: "Title", authors: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10"
         }, [{page: "1"}, {page: "2"}, {page: "3"}]);
         expect(citation).toStrictEqual({
@@ -115,7 +115,7 @@ describe("journal() testing", () => {
 
     it("should create journal citation of url", () => {
         let citation = journal({
-            title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
+            title: "Title", authors: [{first: "First", last: "Last"}], publisher: "Publisher",
             yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10",
             url: "www.test.com"
         }, [{page: "1"}]);
@@ -142,7 +142,7 @@ describe("webpage() testing", () => {
     it("should create webpage citation", () => {
         let citation = webpage({
             title: "Title of Webpage",
-            authorList: [{first: "First", last: "Last"}],
+            authors: [{first: "First", last: "Last"}],
             publisher: "testPublisher",
             nameOfSite: "testWebsite",
             date: "2000",
@@ -173,7 +173,7 @@ describe("lecture() testing", () => {
     it("should create lecture citation", () => {
         let citation = lecture({
             title: "Course",
-            professor: [{first: "First", last: "Last"}],
+            professors: [{first: "First", last: "Last"}],
             university: "University",
             province: "Province",
             city: "City",
@@ -188,7 +188,7 @@ describe("lecture() testing", () => {
     it("should create lecture with only title and prof", () => {
         let citation = lecture({
             title: "Course",
-            professor: [{first: "First", last: "Last"}]
+            professors: [{first: "First", last: "Last"}]
         });
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Course.\" Lecture.",
@@ -202,7 +202,7 @@ describe("newspaper() testing", () => {
         let citation = newspaper({
             articleTitle: "Article Title",
             newspaperTitle: "Newspaper Title",
-            authorList: [{first: "First", last: "Last"}],
+            authors: [{first: "First", last: "Last"}],
             date: "Date",
             edition: "Edition",
         });
@@ -217,7 +217,7 @@ describe("newspaper() testing", () => {
         let citation = newspaper({
             articleTitle: "Article Title",
             newspaperTitle: "Newspaper Title",
-            authorList: [{first: "First", last: "Last"}],
+            authors: [{first: "First", last: "Last"}],
             date: "Date",
             edition: "Edition",
             url: "URL",

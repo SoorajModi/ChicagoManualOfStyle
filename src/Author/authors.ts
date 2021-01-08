@@ -1,23 +1,23 @@
-import Author from './author';
+import Person from './person';
 
-export default class AuthorList {
-    authors: Array<Author> = [];
+export default class Authors {
+    authors: Array<Person> = [];
 
     constructor(authorList: Array<{first: string, last: string}>) {
       authorList.forEach((author) => {
-        this.authors.push(new Author(author.first, author.last));
+        this.authors.push(new Person(author.first, author.last));
       });
     }
 
     note(): string {
-      let authorList: Array<Author> = validateAuthorList(this.authors);
+      let authorList: Array<Person> = validateAuthorList(this.authors);
       let len: number = authorList.length;
 
       return generateNote(authorList, len);
     }
 
     bibliography(): string {
-      let authorList: Array<Author> = validateAuthorList(this.authors);
+      let authorList: Array<Person> = validateAuthorList(this.authors);
       let len: number = authorList.length;
 
       return generateBibliography(authorList, len);
@@ -28,7 +28,7 @@ export default class AuthorList {
     }
 }
 
-function generateNote(authorList: Array<Author>, len: number) {
+function generateNote(authorList: Array<Person>, len: number) {
   if (len === 1) {
     return authorList[0].noteString();
   } if (len === 2) {
@@ -41,7 +41,7 @@ function generateNote(authorList: Array<Author>, len: number) {
   return '';
 }
 
-function generateBibliography(authorList: Array<Author>, len: number) {
+function generateBibliography(authorList: Array<Person>, len: number) {
   if (len === 1) {
     return authorList[0].bibliographyString();
   } if (len > 1 && len <= 10) {
@@ -52,19 +52,19 @@ function generateBibliography(authorList: Array<Author>, len: number) {
   return '';
 }
 
-function twoAuthorNote(authors: Array<Author>): string {
+function twoAuthorNote(authors: Array<Person>): string {
   return trimAndReplaceLastElement(authors[0].noteString(), ' and ') + authors[1].noteString();
 }
 
-function threeAuthorNote(authors: Array<Author>): string {
+function threeAuthorNote(authors: Array<Person>): string {
   return `${authors[0].noteString() + authors[1].noteString()}and ${authors[2].noteString()}`;
 }
 
-function threePlusAuthorNote(authors: Array<Author>): string {
+function threePlusAuthorNote(authors: Array<Person>): string {
   return trimAndReplaceLastElement(authors[0].noteString(), ' et al., ');
 }
 
-function twoPlusAuthors(authors: Array<Author>, len: number): string {
+function twoPlusAuthors(authors: Array<Person>, len: number): string {
   let str = trimAndReplaceLastElement(authors[0].bibliographyString(), ', ');
 
   for (let i = 1; i < (len - 1); i++) {
@@ -74,7 +74,7 @@ function twoPlusAuthors(authors: Array<Author>, len: number): string {
   return `${str}and ${trimAndReplaceLastElement(authors[len - 1].noteString(), '. ')}`;
 }
 
-function tenPlusAuthors(authors: Array<Author>): string {
+function tenPlusAuthors(authors: Array<Person>): string {
   let str = trimAndReplaceLastElement(authors[0].bibliographyString(), ', ');
 
   for (let i = 1; i < 7; i++) {
@@ -88,8 +88,8 @@ function trimAndReplaceLastElement(str: string, replaceValue: string): string {
   return str.trim().replace(/.$/, replaceValue);
 }
 
-function validateAuthorList(authors: Array<Author>): Array<Author> {
-  let newAuthorList: Array<Author> = [];
+function validateAuthorList(authors: Array<Person>): Array<Person> {
+  let newAuthorList: Array<Person> = [];
 
   authors.forEach((author) => {
     if (author.isValid()) newAuthorList.push(author);

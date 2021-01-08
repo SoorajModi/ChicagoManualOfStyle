@@ -1,9 +1,9 @@
-import AuthorList from '../Author/authorList';
+import Authors from '../Author/authors';
 import { JournalInfoInterface } from './journalInfoInterface';
 
 export interface JournalInterface {
     title: string;
-    authorList?: Array<{ first: string, last: string }>;
+    authors?: Array<{ first: string, last: string }>;
     publisher?: string;
     yearOfPublication?: string;
     volume?: string;
@@ -15,7 +15,7 @@ export interface JournalInterface {
 
 export interface validJournalInterface {
     title: string;
-    authorList: AuthorList;
+    authorList: Authors;
     info: JournalInfoInterface;
     startRange: string;
     endRange: string;
@@ -25,7 +25,7 @@ export interface validJournalInterface {
 export function createJournal(info: JournalInterface): validJournalInterface {
   return {
     title: info.title,
-    authorList: new AuthorList(info.authorList || []),
+    authorList: new Authors(info.authors || []),
     info: {
       journal: info.publisher || '',
       date: info.yearOfPublication || '',

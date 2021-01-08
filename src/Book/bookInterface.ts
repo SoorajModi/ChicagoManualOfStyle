@@ -1,10 +1,10 @@
-import AuthorList from '../Author/authorList';
+import Authors from '../Author/authors';
 import { BookInfoInterface } from './bookInfoInterface';
-import EditorList from '../Author/editorList';
+import Editors from '../Author/editors';
 
 export interface BookInterface {
-    authorList?: Array<{ first: string, last: string }>;
-    editor?: Array<{ first: string, last: string }>;
+    authors?: Array<{ first: string, last: string }>;
+    editors?: Array<{ first: string, last: string }>;
     title: string;
     publisher?: string;
     placeOfPublication?: string;
@@ -15,8 +15,8 @@ export interface BookInterface {
 
 export interface validBookInterface {
     title: string;
-    authorList: AuthorList;
-    editor: EditorList;
+    authors: Authors;
+    editors: Editors;
     url: string,
     info: BookInfoInterface;
 }
@@ -24,8 +24,8 @@ export interface validBookInterface {
 export function createBook(info: BookInterface): validBookInterface {
   return {
     title: info.title,
-    authorList: new AuthorList(info.authorList || []),
-    editor: new EditorList(info.editor || []),
+    authors: new Authors(info.authors || []),
+    editors: new Editors(info.editors || []),
     url: info.url || '',
     info: {
       edition: info.edition || '',

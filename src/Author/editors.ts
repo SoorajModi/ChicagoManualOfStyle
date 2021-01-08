@@ -1,6 +1,6 @@
-import AuthorList from './authorList';
+import Authors from './authors';
 
-export default class EditorList extends AuthorList {
+export default class Editors extends Authors {
   noAuthorBibliography(): string {
     return (this.bibliography()).replace('.', ', ed.');
   }

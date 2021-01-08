@@ -2,7 +2,7 @@ import {webpageNote, webpageBibliography, webpageShortNote} from "../../src/Webs
 
 let webpage = {
     title: "Title of Webpage",
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     publisher: "testPublisher",
     nameOfSite: "testWebsite",
     date: "2000",
@@ -11,7 +11,7 @@ let webpage = {
 
 let noPub = {
     title: "Title of Webpage",
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     nameOfSite: "testWebsite",
     date: "2000",
     url: "wwww.testwebsite.com"

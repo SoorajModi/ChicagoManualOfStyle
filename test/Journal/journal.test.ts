@@ -5,7 +5,7 @@ import {
 } from "../../src/Journal/journal";
 
 let journal = {
-    title: "Title", authorList: [{first: "First", last: "Last"}], publisher: "Publisher",
+    title: "Title", authors: [{first: "First", last: "Last"}], publisher: "Publisher",
     yearOfPublication: "Year", volume: "vol", issue: "iss", startRange: "1", endRange: "10"
 };
 let noAuthor = {
@@ -14,7 +14,7 @@ let noAuthor = {
 };
 let twoAuth = {
     title: "Title",
-    authorList: [{first: "Author", last: "One"}, {first: "Author", last: "Two"}],
+    authors: [{first: "Author", last: "One"}, {first: "Author", last: "Two"}],
     publisher: "Publisher",
     yearOfPublication: "Year",
     volume: "vol",
@@ -24,7 +24,7 @@ let twoAuth = {
 };
 let threeAuth = {
     title: "Title",
-    authorList: [{first: "Author", last: "One"}, {first: "Author", last: "Two"}, {first: "Author", last: "Three"}],
+    authors: [{first: "Author", last: "One"}, {first: "Author", last: "Two"}, {first: "Author", last: "Three"}],
     publisher: "Publisher",
     yearOfPublication: "Year",
     volume: "vol",
@@ -34,7 +34,7 @@ let threeAuth = {
 };
 let urlJournal = {
     title: "Title",
-    authorList: [{first: "First", last: "Last"}],
+    authors: [{first: "First", last: "Last"}],
     publisher: "Publisher",
     yearOfPublication: "Year",
     volume: "vol",

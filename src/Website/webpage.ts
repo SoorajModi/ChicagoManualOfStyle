@@ -2,12 +2,12 @@ import { WebpageInterface, createWebpage, validWebpageInterface } from './webpag
 
 export function webpageNote(info: WebpageInterface): string {
   let webpage: validWebpageInterface = createWebpage(info);
-  return `${webpage.authorList.note()}"${webpage.title}," ${webpage.nameOfSite}, ${publisherCitation(webpage.publisher)}${webpage.date}${isCommaRequired(webpage.publisher, webpage.date)}${webpage.url}.`;
+  return `${webpage.authors.note()}"${webpage.title}," ${webpage.nameOfSite}, ${publisherCitation(webpage.publisher)}${webpage.date}${isCommaRequired(webpage.publisher, webpage.date)}${webpage.url}.`;
 }
 
 export function webpageBibliography(info: WebpageInterface): string {
   let webpage: validWebpageInterface = createWebpage(info);
-  return `${webpage.authorList.bibliography()}"${webpage.title}." ${webpage.nameOfSite}. ${publisherCitation(webpage.publisher)}${webpage.date}${isPeriodRequired(webpage.publisher, webpage.date)}${webpage.url}.`;
+  return `${webpage.authors.bibliography()}"${webpage.title}." ${webpage.nameOfSite}. ${publisherCitation(webpage.publisher)}${webpage.date}${isPeriodRequired(webpage.publisher, webpage.date)}${webpage.url}.`;
 }
 
 export function webpageShortNote(info: WebpageInterface): string {
@@ -28,5 +28,5 @@ function isPeriodRequired(pub: string, date: string): string {
 }
 
 function shortNotePrepend(citation: validWebpageInterface): string {
-  return (citation.authorList.length() > 0) ? `${citation.authorList.authors[0].last}, ` : `${citation.nameOfSite}, `;
+  return (citation.authors.length() > 0) ? `${citation.authors.authors[0].last}, ` : `${citation.nameOfSite}, `;
 }

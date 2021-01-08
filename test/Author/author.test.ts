@@ -1,8 +1,8 @@
-import Author from "../../src/Author/author";
+import Person from "../../src/Author/person";
 
-describe("Author.ts testing", () => {
+describe("Person.ts testing", () => {
 
-    let author = new Author("F. Scott", "Fitzgerald");
+    let author = new Person("F. Scott", "Fitzgerald");
 
     test("should have first name", () => {
         expect(author.first).toBe("F. Scott");
@@ -21,6 +21,6 @@ describe("Author.ts testing", () => {
     });
 
     test("should return true if empty", () => {
-        expect(new Author().isEmpty()).toBe(true);
+        expect(new Person().isEmpty()).toBe(true);
     });
 });

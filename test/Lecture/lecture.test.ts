@@ -1,6 +1,6 @@
 import {lectureNote, lectureBibliography, lectureShortNote} from "../../src/Lecture/lecture";
 
-let lecture = {title: "Course", professor: [{first: "First", last: "Last"}], university: "University", province: "Province", city: "City", date: "Date"};
+let lecture = {title: "Course", professors: [{first: "First", last: "Last"}], university: "University", province: "Province", city: "City", date: "Date"};
 let noProf = {title: "Course", university: "University", province: "Province", city: "City", date: "Date"};
 
 describe("Lecture.note() should generate note citation", () => {
