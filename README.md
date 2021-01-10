@@ -16,6 +16,7 @@ This is an application to create citations in Chicago Manual of Style (CMoS) 17t
     - Lectures
     - Web Pages
     - Newspapers
+    - Films
     
 ## Installation
 
@@ -52,7 +53,7 @@ let citation = CMOS.book({
     yearOfPublication: "2000",                              // Optional
     edition: "Edition Information"                          // Optional
     url: "URL or DOI"                                       // Optional
-}, ["1", "2", "3"]);                 // Optional list of pages to be cited in notes
+}, ["1", "2", "3"]);                                        // Optional list of pages to be cited in notes
 
 console.log(citation);
 ```
@@ -62,7 +63,7 @@ console.log(citation);
 ```
 let citation = CMOS.journal({
     title: "Title",                                 // Required
-    authors: [{first: "First", last: "Last"}],   // Optional
+    authors: [{first: "First", last: "Last"}],      // Optional
     publisher: "Publisher",                         // Optional
     yearOfPublication: "Year",                      // Optional             
     volume: "vol",                                  // Optional
@@ -80,7 +81,7 @@ console.log(citation);
 ```
 let citation = CMOS.webpage({
     title: "Title of Webpage",                      // Required
-    authors: [{first: "First", last: "Last"}],   // Optional
+    authors: [{first: "First", last: "Last"}],      // Optional
     publisher: "testPublisher",                     // Optional
     nameOfSite: "testWebsite",                      // Required
     date: "2000",                                   // Optional
@@ -109,13 +110,29 @@ console.log(citation);
 
 ```
 let citation = newspaper({
-    articleTitle: "Article Title",
-    newspaperTitle: "Newspaper Title",
-    authors: [{first: "First", last: "Last"}],
-    date: "Date",
-    edition: "Edition",
-    url: "URL",
+    articleTitle: "Article Title",              // Required
+    newspaperTitle: "Newspaper Title",          // Required
+    authors: [{first: "First", last: "Last"}],  // Optional
+    date: "Date",                               // Required
+    edition: "Edition",                         // Optional
+    url: "URL",                                 // Optional
 });
+```
+
+#### Film
+
+```
+const citation = film({
+    title: "Title",                             // Required
+    director: [{first: "First", last: "Last"}], // Optional
+    originalRelease: "Original Release Date",   // Optional
+    videoRelease: "Video Release Year",         // Optional
+    city: "City",                               // Optional
+    distributor: "Studio/Distributor",          // Optional             
+    medium: "Medium",                           // Required
+    scene: ["Scene 1", "Scene 2", "Scene 3"],   // Optional
+});
+
 ```
 
 ## How to Run Locally

@@ -1,5 +1,5 @@
 import Authors from '../Author/authors';
-import {FilmInfoInterface} from "./filmInfoInterface";
+import { FilmInfoInterface } from './filmInfoInterface';
 
 export interface FilmInterface {
     title: string;
@@ -25,12 +25,12 @@ export function createFilm(info: FilmInterface): validFilmInterface {
     title: info.title,
     medium: info.medium,
     director: new Authors(info.director || []),
-      info: {
-          originalRelease: info.originalRelease || '',
-          videoRelease: info.videoRelease || '',
-          city: info.city || '',
-          distributor: info.distributor || '',
-      },
+    info: {
+      originalRelease: info.originalRelease || '',
+      videoRelease: info.videoRelease || '',
+      city: info.city || '',
+      distributor: info.distributor || '',
+    },
     scene: info.scene || [],
   };
 }

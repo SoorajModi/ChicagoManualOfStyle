@@ -8,24 +8,24 @@ import { lectureBibliography, lectureNote, lectureShortNote } from './Lecture/le
 import { journalBibliography, journalNoteList } from './Journal/journal';
 import { NewspaperInterface } from './Newspaper/newspaperInterface';
 import { newspaperBibliography, newspaperNote } from './Newspaper/newspaper';
-import {FilmInterface} from "./Film/filmInterface";
-import {filmBibliography, filmNoteList} from "./Film/film";
+import { FilmInterface } from './Film/filmInterface';
+import { filmBibliography, filmNoteList } from './Film/film';
 
-export function book(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
+export function book(info: BookInterface, pages: string[]): {bibliography: string, notes: Array<string>} {
   let bibliography: string = bookBibliography(info);
-  let notes: string[] = bookNoteList(info, pages);
+  let notes: Array<string> = bookNoteList(info, pages);
 
   return { bibliography, notes };
 }
 
-export function journal(info: JournalInterface, pages: {page: string}[]): {bibliography: string, notes: string[]} {
+export function journal(info: JournalInterface, pages: {page: string}[]): {bibliography: string, notes: Array<string>} {
   let bibliography: string = journalBibliography(info);
-  let notes: string[] = journalNoteList(info, pages);
+  let notes: Array<string> = journalNoteList(info, pages);
 
   return { bibliography, notes };
 }
 
-export function webpage(info: WebpageInterface): {bibliography: string, notes: string[]} {
+export function webpage(info: WebpageInterface): {bibliography: string, notes: Array<string>} {
   let bibliography: string = webpageBibliography(info);
   let note: string = webpageNote(info);
   let shortNote: string = webpageShortNote(info);
@@ -33,7 +33,7 @@ export function webpage(info: WebpageInterface): {bibliography: string, notes: s
   return { bibliography, notes: [note, shortNote] };
 }
 
-export function lecture(info: LectureInterface): {bibliography: string, notes: string[]} {
+export function lecture(info: LectureInterface): {bibliography: string, notes: Array<string>} {
   let bibliography: string = lectureBibliography(info);
   let note: string = lectureNote(info);
   let shortNote: string = lectureShortNote(info);
@@ -41,16 +41,16 @@ export function lecture(info: LectureInterface): {bibliography: string, notes: s
   return { bibliography, notes: [note, shortNote] };
 }
 
-export function newspaper(info: NewspaperInterface): {bibliography: string, notes: string[]} {
+export function newspaper(info: NewspaperInterface): {bibliography: string, notes: Array<string>} {
   let bibliography: string = newspaperBibliography(info);
   let note: string = newspaperNote(info);
 
   return { bibliography, notes: [note] };
 }
 
-export function film(info: FilmInterface): {bibliography: string, notes: string[]} {
+export function film(info: FilmInterface): {bibliography: string, notes: Array<string>} {
   let bibliography: string = filmBibliography(info);
   let notes: Array<string> = filmNoteList(info);
 
-  return { bibliography, notes: notes };
+  return { bibliography, notes };
 }
