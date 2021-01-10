@@ -9,11 +9,19 @@ export default class Person {
     }
 
     noteString(): string {
-      return (this.isEmpty()) ? '' : (`${this.first} ${this.last}, `);
+      return (this.isEmpty()) ? '' : (`${this.forwardString()}, `);
     }
 
     bibliographyString(): string {
-      return this.isEmpty() ? '' : (`${this.last}, ${this.first}. `);
+      return this.isEmpty() ? '' : (`${this.reverseString()}. `);
+    }
+
+    forwardString(): string {
+      return (`${this.first} ${this.last}`);
+    }
+
+    reverseString(): string {
+      return (`${this.last}, ${this.first}`);
     }
 
     isEmpty(): boolean {

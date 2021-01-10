@@ -2,7 +2,7 @@ import {
     book,
     journal,
     webpage,
-    lecture, newspaper
+    lecture, newspaper, film
 } from "../src/citation";
 
 describe("book() testing", () => {
@@ -226,6 +226,63 @@ describe("newspaper() testing", () => {
         expect(citation).toStrictEqual({
             "bibliography": "Last, First. \"Article Title.\" Newspaper Title, Edition, Date. URL.",
             "notes": ["First Last, \"Article Title,\" Newspaper Title, Date, Edition, URL."]
+        })
+    });
+});
+
+describe("film() testing", () => {
+    it("should create film citation", () => {
+        const citation = film({
+            title: "Title",
+            director: [{first: "First", last: "Last"}],
+            originalRelease: "Original Release Date",
+            videoRelease: "Video Release Year",
+            city: "City",
+            distributor: "Studio/Distributor",
+            medium: "Medium",
+            scene: ["Scene 1", "Scene 2", "Scene 3"],
+        });
+
+        expect(citation).toStrictEqual({
+            "bibliography": "Last, First, dir. Title. Original Release Date; City: Studio/Distributor, Video Release Year. Medium.",
+            "notes": [
+                "Scene 1, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
+                "Scene 2, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
+                "Scene 3, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium."
+            ]
+        })
+    });
+
+    it("should create film citation with unfilled scenes", () => {
+        const citation = film({
+            title: "Title",
+            director: [{first: "First", last: "Last"}],
+            originalRelease: "Original Release Date",
+            videoRelease: "Video Release Year",
+            city: "City",
+            distributor: "Studio/Distributor",
+            medium: "Medium",
+            scene: ["Scene 1", "", "Scene 3"],
+        });
+
+        expect(citation).toStrictEqual({
+            "bibliography": "Last, First, dir. Title. Original Release Date; City: Studio/Distributor, Video Release Year. Medium.",
+            "notes": [
+                "Scene 1, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
+                "Scene 3, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium."
+            ]
+        })
+    });
+
+    it("should create film citation with only title and medium", () => {
+        const citation = film({
+            title: "Title",
+            medium: "Medium",
+        });
+
+        expect(citation).toStrictEqual({
+            "bibliography": "Title. Medium.",
+            "notes": []
         })
     });
 });

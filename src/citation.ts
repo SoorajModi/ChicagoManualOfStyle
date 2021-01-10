@@ -8,6 +8,8 @@ import { lectureBibliography, lectureNote, lectureShortNote } from './Lecture/le
 import { journalBibliography, journalNoteList } from './Journal/journal';
 import { NewspaperInterface } from './Newspaper/newspaperInterface';
 import { newspaperBibliography, newspaperNote } from './Newspaper/newspaper';
+import {FilmInterface} from "./Film/filmInterface";
+import {filmBibliography, filmNoteList} from "./Film/film";
 
 export function book(info: BookInterface, pages: string[]): {bibliography: string, notes: string[]} {
   let bibliography: string = bookBibliography(info);
@@ -44,4 +46,11 @@ export function newspaper(info: NewspaperInterface): {bibliography: string, note
   let note: string = newspaperNote(info);
 
   return { bibliography, notes: [note] };
+}
+
+export function film(info: FilmInterface): {bibliography: string, notes: string[]} {
+  let bibliography: string = filmBibliography(info);
+  let notes: Array<string> = filmNoteList(info);
+
+  return { bibliography, notes: notes };
 }
