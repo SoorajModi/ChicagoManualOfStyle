@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+# 1.4.1
+## Changed
+- Fix bug where incorrect main was specified.
+
 # 1.4.0
 ## Added
 - Added citation generation for books with editors and/or editions beyond the first.
