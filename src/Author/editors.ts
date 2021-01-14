@@ -1,4 +1,4 @@
-import Authors from './authors';
+import Authors from "./authors";
 
 export default class Editors extends Authors {
   editorNote(): string {
@@ -7,14 +7,14 @@ export default class Editors extends Authors {
 
   editorBibliography(edition: string): string {
     const str = ` Edited by ${this.authors[0].first} ${this.authors[0].last}`;
-    return (edition !== '') ? `${str},` : `${str}.`;
+    return edition !== "" ? `${str},` : `${str}.`;
   }
 
   noAuthorBibliography(): string {
-    return (this.bibliography()).replace('.', ', ed.');
+    return this.bibliography().replace(".", ", ed.");
   }
 
   noAuthorsNote(): string {
-    return (`${this.note()}ed., `);
+    return `${this.note()}ed., `;
   }
 }

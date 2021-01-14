@@ -2,38 +2,50 @@ import {
   book,
   journal,
   webpage,
-  lecture, newspaper, film,
-} from '../src/citation';
+  lecture,
+  newspaper,
+  film,
+} from "../src/citation";
 
-describe('book() testing', () => {
-  it('should create book citation', () => {
-    let citation = book({
-      title: 'The Great Gatsby',
-      authors: [{ first: 'F. Scott', last: 'Fitzgerald' }],
-      publisher: "Charles Scribner's Sons",
-      placeOfPublication: 'New York',
-      yearOfPublication: '2000',
-    }, ['1', '2', '3']);
+describe("book() testing", () => {
+  it("should create book citation", () => {
+    let citation = book(
+      {
+        title: "The Great Gatsby",
+        authors: [{ first: "F. Scott", last: "Fitzgerald" }],
+        publisher: "Charles Scribner's Sons",
+        placeOfPublication: "New York",
+        yearOfPublication: "2000",
+      },
+      ["1", "2", "3"]
+    );
 
     expect(citation).toStrictEqual({
-      bibliography: "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000.",
-      notes: ["F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.",
-        'Fitzgerald, 2.',
-        'Fitzgerald, 3.'],
+      bibliography:
+        "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000.",
+      notes: [
+        "F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1.",
+        "Fitzgerald, 2.",
+        "Fitzgerald, 3.",
+      ],
     });
   });
 
-  it('should create book citation with only title', () => {
-    let citation = book({
-      title: 'The Great Gatsby',
-    }, ['1', '2', '3']);
+  it("should create book citation with only title", () => {
+    let citation = book(
+      {
+        title: "The Great Gatsby",
+      },
+      ["1", "2", "3"]
+    );
 
     expect(citation).toStrictEqual({
-      bibliography: 'The Great Gatsby.',
+      bibliography: "The Great Gatsby.",
       notes: [
-        'The Great Gatsby, 1.',
-        'The Great Gatsby, 2.',
-        'The Great Gatsby, 3.'],
+        "The Great Gatsby, 1.",
+        "The Great Gatsby, 2.",
+        "The Great Gatsby, 3.",
+      ],
     });
   });
 
@@ -53,95 +65,116 @@ describe('book() testing', () => {
   //     });
   // });
 
-  it('should create book citation with url', () => {
-    let citation = book({
-      title: 'The Great Gatsby',
-      authors: [{ first: 'F. Scott', last: 'Fitzgerald' }],
-      publisher: "Charles Scribner's Sons",
-      placeOfPublication: 'New York',
-      yearOfPublication: '2000',
-      url: 'www.thegreatgatsby.com',
-    }, ['1']);
+  it("should create book citation with url", () => {
+    let citation = book(
+      {
+        title: "The Great Gatsby",
+        authors: [{ first: "F. Scott", last: "Fitzgerald" }],
+        publisher: "Charles Scribner's Sons",
+        placeOfPublication: "New York",
+        yearOfPublication: "2000",
+        url: "www.thegreatgatsby.com",
+      },
+      ["1"]
+    );
 
     expect(citation).toStrictEqual({
-      bibliography: "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.",
-      notes: ["F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com."],
+      bibliography:
+        "Fitzgerald, F. Scott. The Great Gatsby. New York: Charles Scribner's Sons, 2000. www.thegreatgatsby.com.",
+      notes: [
+        "F. Scott Fitzgerald, The Great Gatsby (New York: Charles Scribner's Sons, 2000), 1, www.thegreatgatsby.com.",
+      ],
     });
   });
 
-  it('should create book citation with only title and url', () => {
-    let citation = book({
-      title: 'The Great Gatsby',
-      url: 'www.thegreatgatsby.com',
-    }, ['1']);
+  it("should create book citation with only title and url", () => {
+    let citation = book(
+      {
+        title: "The Great Gatsby",
+        url: "www.thegreatgatsby.com",
+      },
+      ["1"]
+    );
 
     expect(citation).toStrictEqual({
-      bibliography: 'The Great Gatsby. www.thegreatgatsby.com.',
-      notes: ['The Great Gatsby, 1, www.thegreatgatsby.com.'],
+      bibliography: "The Great Gatsby. www.thegreatgatsby.com.",
+      notes: ["The Great Gatsby, 1, www.thegreatgatsby.com."],
     });
   });
 });
 
-describe('journal() testing', () => {
-  it('should create journal citation', () => {
-    let citation = journal({
-      title: 'Title',
-      authors: [{ first: 'First', last: 'Last' }],
-      publisher: 'Publisher',
-      yearOfPublication: 'Year',
-      volume: 'vol',
-      issue: 'iss',
-      startRange: '1',
-      endRange: '10',
-    }, [{ page: '1' }, { page: '2' }, { page: '3' }]);
+describe("journal() testing", () => {
+  it("should create journal citation", () => {
+    let citation = journal(
+      {
+        title: "Title",
+        authors: [{ first: "First", last: "Last" }],
+        publisher: "Publisher",
+        yearOfPublication: "Year",
+        volume: "vol",
+        issue: "iss",
+        startRange: "1",
+        endRange: "10",
+      },
+      [{ page: "1" }, { page: "2" }, { page: "3" }]
+    );
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First. "Title." Publisher vol, no. iss (Year): 1-10.',
+      bibliography:
+        'Last, First. "Title." Publisher vol, no. iss (Year): 1-10.',
       notes: [
         'First Last, "Title," Publisher vol, no. iss (Year): 1.',
-        'Last, 2.',
-        'Last, 3.',
+        "Last, 2.",
+        "Last, 3.",
       ],
     });
   });
 
-  it('should create journal citation with only title', () => {
-    let citation = journal({
-      title: 'Title',
-    }, [{ page: '1' }, { page: '2' }, { page: '3' }]);
+  it("should create journal citation with only title", () => {
+    let citation = journal(
+      {
+        title: "Title",
+      },
+      [{ page: "1" }, { page: "2" }, { page: "3" }]
+    );
 
     expect(citation).toStrictEqual({
       bibliography: '"Title."',
+      notes: ['"Title," 1.', '"Title," 2.', '"Title," 3.'],
+    });
+  });
+
+  it("should create journal citation of url", () => {
+    let citation = journal(
+      {
+        title: "Title",
+        authors: [{ first: "First", last: "Last" }],
+        publisher: "Publisher",
+        yearOfPublication: "Year",
+        volume: "vol",
+        issue: "iss",
+        startRange: "1",
+        endRange: "10",
+        url: "www.test.com",
+      },
+      [{ page: "1" }]
+    );
+    expect(citation).toStrictEqual({
+      bibliography:
+        'Last, First. "Title." Publisher vol, no. iss (Year): 1-10. www.test.com.',
       notes: [
-        '"Title," 1.',
-        '"Title," 2.',
-        '"Title," 3.',
+        'First Last, "Title," Publisher vol, no. iss (Year): 1, www.test.com.',
       ],
     });
   });
 
-  it('should create journal citation of url', () => {
-    let citation = journal({
-      title: 'Title',
-      authors: [{ first: 'First', last: 'Last' }],
-      publisher: 'Publisher',
-      yearOfPublication: 'Year',
-      volume: 'vol',
-      issue: 'iss',
-      startRange: '1',
-      endRange: '10',
-      url: 'www.test.com',
-    }, [{ page: '1' }]);
-    expect(citation).toStrictEqual({
-      bibliography: 'Last, First. "Title." Publisher vol, no. iss (Year): 1-10. www.test.com.',
-      notes: ['First Last, "Title," Publisher vol, no. iss (Year): 1, www.test.com.'],
-    });
-  });
-
-  it('should create journal citation with only title and url', () => {
-    let citation = journal({
-      title: 'Title',
-      url: 'www.test.com',
-    }, [{ page: '1' }]);
+  it("should create journal citation with only title and url", () => {
+    let citation = journal(
+      {
+        title: "Title",
+        url: "www.test.com",
+      },
+      [{ page: "1" }]
+    );
 
     expect(citation).toStrictEqual({
       bibliography: '"Title." www.test.com.',
@@ -150,57 +183,66 @@ describe('journal() testing', () => {
   });
 });
 
-describe('webpage() testing', () => {
-  it('should create webpage citation', () => {
+describe("webpage() testing", () => {
+  it("should create webpage citation", () => {
     let citation = webpage({
-      title: 'Title of Webpage',
-      authors: [{ first: 'First', last: 'Last' }],
-      publisher: 'testPublisher',
-      nameOfSite: 'testWebsite',
-      date: '2000',
-      url: 'wwww.testwebsite.com',
+      title: "Title of Webpage",
+      authors: [{ first: "First", last: "Last" }],
+      publisher: "testPublisher",
+      nameOfSite: "testWebsite",
+      date: "2000",
+      url: "wwww.testwebsite.com",
     });
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First. "Title of Webpage." testWebsite. testPublisher, 2000. wwww.testwebsite.com.',
-      notes: ['First Last, "Title of Webpage," testWebsite, testPublisher, 2000, wwww.testwebsite.com.',
-        'Last, "Title of Webpage."'],
+      bibliography:
+        'Last, First. "Title of Webpage." testWebsite. testPublisher, 2000. wwww.testwebsite.com.',
+      notes: [
+        'First Last, "Title of Webpage," testWebsite, testPublisher, 2000, wwww.testwebsite.com.',
+        'Last, "Title of Webpage."',
+      ],
     });
   });
 
-  it('should create webpage citation with only title and url', () => {
+  it("should create webpage citation with only title and url", () => {
     let citation = webpage({
-      title: 'Title of Webpage',
-      nameOfSite: 'testWebsite',
-      url: 'wwww.testwebsite.com',
+      title: "Title of Webpage",
+      nameOfSite: "testWebsite",
+      url: "wwww.testwebsite.com",
     });
     expect(citation).toStrictEqual({
       bibliography: '"Title of Webpage." testWebsite. wwww.testwebsite.com.',
-      notes: ['"Title of Webpage," testWebsite, wwww.testwebsite.com.',
-        'testWebsite, "Title of Webpage."'],
+      notes: [
+        '"Title of Webpage," testWebsite, wwww.testwebsite.com.',
+        'testWebsite, "Title of Webpage."',
+      ],
     });
   });
 });
 
-describe('lecture() testing', () => {
-  it('should create lecture citation', () => {
+describe("lecture() testing", () => {
+  it("should create lecture citation", () => {
     let citation = lecture({
-      title: 'Course',
-      professors: [{ first: 'First', last: 'Last' }],
-      university: 'University',
-      province: 'Province',
-      city: 'City',
-      date: 'Date',
+      title: "Course",
+      professors: [{ first: "First", last: "Last" }],
+      university: "University",
+      province: "Province",
+      city: "City",
+      date: "Date",
     });
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First. "Course." Lecture, University, City, Province, Date.',
-      notes: ['First Last, "Course" (lecture, University, City, Province, Date).', 'Last, "Course."'],
+      bibliography:
+        'Last, First. "Course." Lecture, University, City, Province, Date.',
+      notes: [
+        'First Last, "Course" (lecture, University, City, Province, Date).',
+        'Last, "Course."',
+      ],
     });
   });
 
-  it('should create lecture with only title and prof', () => {
+  it("should create lecture with only title and prof", () => {
     let citation = lecture({
-      title: 'Course',
-      professors: [{ first: 'First', last: 'Last' }],
+      title: "Course",
+      professors: [{ first: "First", last: "Last" }],
     });
     expect(citation).toStrictEqual({
       bibliography: 'Last, First. "Course." Lecture.',
@@ -209,91 +251,97 @@ describe('lecture() testing', () => {
   });
 });
 
-describe('newspaper() testing', () => {
-  it('should create newspaper citation', () => {
+describe("newspaper() testing", () => {
+  it("should create newspaper citation", () => {
     let citation = newspaper({
-      articleTitle: 'Article Title',
-      newspaperTitle: 'Newspaper Title',
-      authors: [{ first: 'First', last: 'Last' }],
-      date: 'Date',
-      edition: 'Edition',
+      articleTitle: "Article Title",
+      newspaperTitle: "Newspaper Title",
+      authors: [{ first: "First", last: "Last" }],
+      date: "Date",
+      edition: "Edition",
     });
 
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First. "Article Title." Newspaper Title, Edition, Date.',
+      bibliography:
+        'Last, First. "Article Title." Newspaper Title, Edition, Date.',
       notes: ['First Last, "Article Title," Newspaper Title, Date, Edition.'],
     });
   });
 
-  it('should create newspaper citation with URL', () => {
+  it("should create newspaper citation with URL", () => {
     let citation = newspaper({
-      articleTitle: 'Article Title',
-      newspaperTitle: 'Newspaper Title',
-      authors: [{ first: 'First', last: 'Last' }],
-      date: 'Date',
-      edition: 'Edition',
-      url: 'URL',
+      articleTitle: "Article Title",
+      newspaperTitle: "Newspaper Title",
+      authors: [{ first: "First", last: "Last" }],
+      date: "Date",
+      edition: "Edition",
+      url: "URL",
     });
 
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First. "Article Title." Newspaper Title, Edition, Date. URL.',
-      notes: ['First Last, "Article Title," Newspaper Title, Date, Edition, URL.'],
+      bibliography:
+        'Last, First. "Article Title." Newspaper Title, Edition, Date. URL.',
+      notes: [
+        'First Last, "Article Title," Newspaper Title, Date, Edition, URL.',
+      ],
     });
   });
 });
 
-describe('film() testing', () => {
-  it('should create film citation', () => {
+describe("film() testing", () => {
+  it("should create film citation", () => {
     const citation = film({
-      title: 'Title',
-      director: [{ first: 'First', last: 'Last' }],
-      originalRelease: 'Original Release Date',
-      videoRelease: 'Video Release Year',
-      city: 'City',
-      distributor: 'Studio/Distributor',
-      medium: 'Medium',
-      scene: ['Scene 1', 'Scene 2', 'Scene 3'],
+      title: "Title",
+      director: [{ first: "First", last: "Last" }],
+      originalRelease: "Original Release Date",
+      videoRelease: "Video Release Year",
+      city: "City",
+      distributor: "Studio/Distributor",
+      medium: "Medium",
+      scene: ["Scene 1", "Scene 2", "Scene 3"],
     });
 
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First, dir. Title. Original Release Date; City: Studio/Distributor, Video Release Year. Medium.',
+      bibliography:
+        "Last, First, dir. Title. Original Release Date; City: Studio/Distributor, Video Release Year. Medium.",
       notes: [
-        'Scene 1, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.',
-        'Scene 2, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.',
-        'Scene 3, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.',
+        "Scene 1, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
+        "Scene 2, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
+        "Scene 3, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
       ],
     });
   });
 
-  it('should create film citation with unfilled scenes', () => {
+  it("should create film citation with unfilled scenes", () => {
     const citation = film({
-      title: 'Title',
-      director: [{ first: 'First', last: 'Last' }],
-      originalRelease: 'Original Release Date',
-      videoRelease: 'Video Release Year',
-      city: 'City',
-      distributor: 'Studio/Distributor',
-      medium: 'Medium',
-      scene: ['Scene 1', '', 'Scene 3'],
+      title: "Title",
+      director: [{ first: "First", last: "Last" }],
+      originalRelease: "Original Release Date",
+      videoRelease: "Video Release Year",
+      city: "City",
+      distributor: "Studio/Distributor",
+      medium: "Medium",
+      scene: ["Scene 1", "", "Scene 3"],
     });
 
     expect(citation).toStrictEqual({
-      bibliography: 'Last, First, dir. Title. Original Release Date; City: Studio/Distributor, Video Release Year. Medium.',
+      bibliography:
+        "Last, First, dir. Title. Original Release Date; City: Studio/Distributor, Video Release Year. Medium.",
       notes: [
-        'Scene 1, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.',
-        'Scene 3, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.',
+        "Scene 1, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
+        "Scene 3, Title, directed by First Last (Original Release Date; City: Studio/Distributor, Video Release Year), Medium.",
       ],
     });
   });
 
-  it('should create film citation with only title and medium', () => {
+  it("should create film citation with only title and medium", () => {
     const citation = film({
-      title: 'Title',
-      medium: 'Medium',
+      title: "Title",
+      medium: "Medium",
     });
 
     expect(citation).toStrictEqual({
-      bibliography: 'Title. Medium.',
+      bibliography: "Title. Medium.",
       notes: [],
     });
   });
