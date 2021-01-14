@@ -7,7 +7,7 @@
     "test": "jest --config jest.config.js",
     "coverage": "jest --coverage",
     "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix",
+    "lint-fix": "eslint '*/**/*.{js,ts,tsx}' --fix",
     "build-tsc": "tsc",
     "build": "tsc"
   },
