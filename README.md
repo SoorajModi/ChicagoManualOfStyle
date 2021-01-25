@@ -27,6 +27,12 @@ npm i chicagomanualofstyle
 Add to file
 
 ```
+const { book, journal, webpage, lecture, newspaper, film } = require('chicagomanualofstyle');
+```
+
+or
+
+```
 let CMOS = require('chicagomanualofstyle');
 ```
 
@@ -41,10 +47,12 @@ The return value of each call will be:
 }
 ```
 
+The first element of the notes array will be a full note citation, but subsequent elements will be shortened note citations.
+
 #### Book
 
 ```
-let citation = CMOS.book({
+let citation = book({
     title: "The Great Gatsby",                              // Required
     authors: [{first: "F. Scott", last: "Fitzgerald"}],     // Optional
     editors: [{first: "F. Scott", last: "Fitzgerald"}],     // Optional
@@ -61,7 +69,7 @@ console.log(citation);
 #### Journal
 
 ```
-let citation = CMOS.journal({
+let citation = journal({
     title: "Title",                                 // Required
     authors: [{first: "First", last: "Last"}],      // Optional
     publisher: "Publisher",                         // Optional
@@ -79,7 +87,7 @@ console.log(citation);
 #### Web Page
 
 ```
-let citation = CMOS.webpage({
+let citation = webpage({
     title: "Title of Webpage",                      // Required
     authors: [{first: "First", last: "Last"}],      // Optional
     publisher: "testPublisher",                     // Optional
@@ -94,7 +102,7 @@ console.log
 #### Lecture
 
 ```
-let citation = CMOS.lecture({
+let citation = lecture({
     title: "Course",                                // Required
     professor: [{first: "First", last: "Last"}],    // Optional
     university: "University",                       // Optional
