@@ -47,7 +47,7 @@ The return value of each call will be:
 }
 ```
 
-The first element of the notes array will be a full note citation, but subsequent elements will be shortened note citations.
+The first element of the notes array will be a full note citation, but subsequent elements will be shortened note citations. Only book or journal citation will return an empty notes array if the list of pages to be cited is empty.
 
 #### Book
 
@@ -62,8 +62,6 @@ let citation = book({
     edition: "Edition Information"                          // Optional
     url: "URL or DOI"                                       // Optional
 }, ["1", "2", "3"]);                                        // Optional list of pages to be cited in notes
-
-console.log(citation);
 ```
 
 #### Journal
@@ -80,8 +78,6 @@ let citation = journal({
     endRange: "10",                                 // Optional
     url: "URL or DOI"                               // Optional
 }, [{page: "1"}]);
-
-console.log(citation);
 ```
 
 #### Web Page
@@ -95,8 +91,6 @@ let citation = webpage({
     date: "2000",                                   // Optional
     url: "wwww.testwebsite.com"                     // Required
 });
-
-console.log
 ```
 
 #### Lecture
@@ -110,8 +104,6 @@ let citation = lecture({
     city: "City",                                   // Optional
     date: "Date"                                    // Optional
 }); 
-
-console.log(citation);
 ```
 
 #### Newspaper
@@ -140,7 +132,6 @@ const citation = film({
     medium: "Medium",                           // Required
     scene: ["Scene 1", "Scene 2", "Scene 3"],   // Optional
 });
-
 ```
 
 ## How to Run Locally
